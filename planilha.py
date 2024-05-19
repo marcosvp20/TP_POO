@@ -17,7 +17,6 @@ class Planilha:
    def salvar(self, dados):
       if not self.verifica_se_objeto_existe(dados[0]):
          for i in range(0, len(dados)):
-            print(string.ascii_uppercase[i], self.proxima_linha)
             self.planilha[f'{string.ascii_uppercase[i]}{self.proxima_linha}'] = dados[i]
          self.workbook.save(self.nome_planilha)
          self.exclui_linha_vazia()
@@ -25,12 +24,11 @@ class Planilha:
    #edita o status do objeto
    #não edita o nome
    def editar(self, dados):
-      self.exclui_linha_vazia()
       i = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == dados[0]:
             for j in range(1, len(dados)):
-               if linha[j] != dados[j] and linha[j] != None:
+               if linha[j] != dados[j]:
                   cell = self.planilha[f'{string.ascii_uppercase[j]}{i}']
                   cell.value = dados[j]
                   self.workbook.save(self.nome_planilha)
@@ -54,14 +52,14 @@ class Planilha:
    
    def exclui_linha_vazia(self):
       i = 1
-      linhas_vazias = 0
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         linhas_vazias = 0
          for j in range(0, len(linha)):
             if linha[j] == None:
                linhas_vazias += 1
-         if linhas_vazias > 1:
+         if linhas_vazias == len(linha):
             self.planilha.delete_rows(i)
             self.workbook.save(self.nome_planilha)
-            linhas_vazias = 0
          i += 1
+
          

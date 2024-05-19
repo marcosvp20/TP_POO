@@ -6,7 +6,7 @@ class Televisao (Objeto):
         super().__init__(nome)
         self.canal = None
         self.volume = 0
-        self.ligado = 0
+        self.ligado = False
         self.dados_tv = [self.nome, self.canal, self.volume, self.ligado]
         self.salvar()
 
@@ -38,7 +38,7 @@ class Televisao (Objeto):
     def salvar (self):
         self.planilha.salvar(self.dados_tv)
 
-tv = Televisao ('Tv da sala')
+tv = Televisao ('Tv da cozinha')
 tv.ligar()
 tv.mudar_canal('Canal 3')
 tv.mudar_volume (10)

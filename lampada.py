@@ -1,5 +1,4 @@
 from objetos import Objeto
-from planilha import Planilha
 
 class Lampada(Objeto):
     def __init__(self, nome) -> None:
@@ -8,7 +7,7 @@ class Lampada(Objeto):
         self.dados_lampada = [self.nome, self.brilho, self.ligado]
         self.salvar()
 
-    def ligar(self):
+    def ligar(self) -> None:
         self.ligado = self.planilha.retorna_valor(self.nome, 3)
         if self.ligado == False:
             self.dados_lampada[2] = True
@@ -16,7 +15,7 @@ class Lampada(Objeto):
             self.dados_lampada[2] = False
         self.planilha.editar(self.dados_lampada)
 
-    def aumentar_brilho(self, porcentagem):
+    def aumentar_brilho(self, porcentagem:int) -> None:
         self.brilho = self.planilha.retorna_valor(self.nome, 2)
         if self.brilho < 100:
             if self.brilho + porcentagem > 100:
@@ -25,7 +24,7 @@ class Lampada(Objeto):
                 self.dados_lampada[1] += porcentagem
         self.planilha.editar(self.dados_lampada)
         
-    def diminuir_brilho(self, porcentagem):
+    def diminuir_brilho(self, porcentagem:int) -> None:
         self.brilho = self.planilha.retorna_valor(self.nome, 2)
         if self.brilho > 0:
             if self.brilho - porcentagem < 0:
@@ -34,7 +33,7 @@ class Lampada(Objeto):
                 self.dados_lampada[1] -= porcentagem
         self.planilha.editar(self.dados_lampada)
     
-    def salvar(self):
+    def salvar(self) -> None:
         self.planilha.salvar(self.dados_lampada)
         
 lamp = Lampada('Lampada do quarto')

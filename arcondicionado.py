@@ -8,14 +8,14 @@ class ArCondicionado(Objeto):
         self.dados_ar = [self.nome, self.temperatura, self.ligado]
         self.salvar()
     
-    def salvar(self):
+    def salvar(self) -> None:
         self.planilha.salvar(self.dados_ar)
     
-    def mudar_temperatura(self, temperatura):
+    def mudar_temperatura(self, temperatura) -> None:
         self.dados_ar[1] = temperatura
         self.planilha.editar(self.dados_ar)
         
-    def ligar(self):
+    def ligar(self) -> None:
         self.dados_ar[2] = True
         self.planilha.editar(self.dados_ar)
     
