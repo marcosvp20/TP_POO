@@ -40,5 +40,5 @@ class Lampada(Objeto):
 lamp = Lampada('Lampada do quarto')
 lamp1 = Lampada('Lampada da sala')
 lamp.ligar()
-lamp.aumentar_brilho(50)
+lamp.aumentar_brilho(30)
 lamp.aumentar_brilho(100)
