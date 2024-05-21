@@ -7,7 +7,7 @@ class Caixa_de_som(Objeto):
         self.musica = None
         self.pausado = False
         self.dados_caixa = [self.nome, self.ligado, self.volume, self.musica, self.pausado]
-        self.salvar()
+        self.salvar(self.dados_caixa)
         
         
     def ligar(self) -> None:
@@ -18,9 +18,6 @@ class Caixa_de_som(Objeto):
             self.dados_caixa[1] = False
         self.planilha.editar(self.dados_caixa)
         
-    def salvar(self) -> None:
-        self.planilha.salvar(self.dados_caixa)
-    
     def mudar_volume(self, volume:int) -> None:
         self.dados_caixa[2] = volume
         self.planilha.editar(self.dados_caixa)

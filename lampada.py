@@ -5,7 +5,7 @@ class Lampada(Objeto):
         super().__init__(nome)
         self.brilho = 0
         self.dados_lampada = [self.nome, self.brilho, self.ligado]
-        self.salvar()
+        self.salvar(self.dados_lampada)
 
     def ligar(self) -> None:
         self.ligado = self.planilha.retorna_valor(self.nome, 3)
@@ -33,8 +33,6 @@ class Lampada(Objeto):
                 self.dados_lampada[1] -= porcentagem
         self.planilha.editar(self.dados_lampada)
     
-    def salvar(self) -> None:
-        self.planilha.salvar(self.dados_lampada)
         
 lamp = Lampada('Lampada do quarto')
 lamp1 = Lampada('Lampada da sala')

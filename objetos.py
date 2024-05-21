@@ -7,9 +7,8 @@ class Objeto(ABC):
         self.planilha = Planilha('objetos.xlsx')
         self.ligado = False
         
-    @abstractmethod
-    def salvar(self):
-        pass
+    def salvar(self,dados):
+        self.planilha.salvar(dados)
     @abstractmethod
     def ligar(self):
         pass

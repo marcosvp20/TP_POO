@@ -8,7 +8,7 @@ class Televisao (Objeto):
         self.volume = 0
         self.ligado = False
         self.dados_tv = [self.nome, self.canal, self.volume, self.ligado]
-        self.salvar()
+        self.salvar(self.dados_tv)
 
     def ligar (self) -> None:
         self.ligado = self.planilha.retorna_valor(self.nome, 4)
@@ -34,9 +34,6 @@ class Televisao (Objeto):
             return
         self.dados_tv[2] = novo_volume
         self.planilha.editar(self.dados_tv)
-
-    def salvar (self):
-        self.planilha.salvar(self.dados_tv)
 
 tv = Televisao ('Tv da cozinha')
 tv.ligar()
