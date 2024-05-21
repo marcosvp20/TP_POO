@@ -1,10 +1,6 @@
 import customtkinter as ctk
-from PIL import Image
+from PIL import Image, ImageTk
 import os
-
-def get_absolute_path(relative_path):
-    base_path = os.path.abspath(".")
-    return os.path.join(base_path, relative_path)
 
 #definição do menu principal
 class MainMenu(ctk.CTk):
@@ -13,15 +9,15 @@ class MainMenu(ctk.CTk):
         
         #definição da janela
         self.title("Menu Principal")
-        self.geometry("800x480")
+        self.geometry("800x600")
         
         #definição de etiquetas
-        self.main_menu_label = ctk.CTkLabel(self, text="Menu Principal", font=("Poppins", 20))
+        self.main_menu_label = ctk.CTkLabel(self, text="Menu Principal", font=("Arial Bold", 20))
         self.main_menu_label.pack(pady=50)
         
         #botão do menu dos Ar Condicionado
-        img = ctk.CTkImage(light_image=Image.open("/volume.png"), 
-                           dark_image=Image.open("/volume.png"),
+        img1 = ctk.CTkImage(light_image=Image.open("imagens/arcondicionado.png"), 
+                           dark_image=Image.open("imagens/arcondicionado.png"),
                            size = (20,20))
         self.button1 = ctk.CTkButton(self, 
                                      text="Ar Condicionado", 
@@ -34,19 +30,54 @@ class MainMenu(ctk.CTk):
                                      font = ("arial bold", 18),
                                      corner_radius=20,
                                      state = "normal",
-                                     image=img).pack(pady=25)
+                                     image=img1).pack(pady=25)
         
         #botão do menu de lâmpadas
-        self.button2 = ctk.CTkButton(self, text="Lâmpadas", command=self.abrir_menu2)
-        self.button2.pack(pady=25)
+        img2 = ctk.CTkImage(light_image=Image.open("imagens/led-inteligente.png"), 
+                           dark_image=Image.open("imagens/led-inteligente.png"),
+                           size = (20,20))
+        self.button2 = ctk.CTkButton(self, 
+                                     text="Lâmpadas", 
+                                     command=self.abrir_menu2,
+                                     width = 300,
+                                     height=50,
+                                     fg_color="blue",
+                                     hover_color= "#4e31ff",
+                                     text_color="white",
+                                     font = ("arial bold", 18),
+                                     corner_radius=20,
+                                     state = "normal",
+                                     image=img2).pack(pady=25)
 
         #botão do menu de televisões
-        self.button3 = ctk.CTkButton(self, text="Televisões", command=self.abrir_menu3)
-        self.button3.pack(pady=25)
+        img3 = ctk.CTkImage(light_image=Image.open("imagens/monitor-de-tv.png"), 
+                           dark_image=Image.open("imagens/monitor-de-tv.png"),
+                           size = (20,20))
+        self.button3 = ctk.CTkButton(self, 
+                                     text="Televisões", 
+                                     command=self.abrir_menu3,
+                                     width = 300,
+                                     height=50,
+                                     fg_color="blue",
+                                     hover_color= "#4e31ff",
+                                     text_color="white",
+                                     font = ("arial bold", 18),
+                                     corner_radius=20,
+                                     state = "normal",
+                                     image=img3).pack(pady=25)
         
         #botão adicionar dispositivo
-        self.button4 = ctk.CTkButton (self, text = "Novo dispositivo", command = self.abrir_menu4)
-        self.button4.pack (pady=25)
+        self.button4 = ctk.CTkButton (self, 
+                                      text = "Novo dispositivo", 
+                                      command = self.abrir_menu4,
+                                      width = 300,
+                                     height=50,
+                                     fg_color="blue",
+                                     hover_color= "#4e31ff",
+                                     text_color="white",
+                                     font = ("arial bold", 18),
+                                     corner_radius=20,
+                                     state = "normal").pack (pady=25)
 
     def abrir_menu1(self) -> None:
         MenuAr()
