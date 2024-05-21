@@ -45,6 +45,7 @@ class Planilha:
       return False
    
    #Retorna o valor da coluna desejada a partir do nome do objeto
+   #O número das colunas começam em 1
    def retorna_valor(self, nome, coluna):
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == nome:
