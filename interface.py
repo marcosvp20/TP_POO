@@ -18,11 +18,11 @@ class MainMenu(ctk.CTk):
         #botão do menu dos Ar Condicionado
         img1 = ctk.CTkImage(light_image=Image.open("imagens/arcondicionado.png"), 
                            dark_image=Image.open("imagens/arcondicionado.png"),
-                           size = (20,20))
+                           size = (30,30))
         self.button1 = ctk.CTkButton(self, 
                                      text="Ar Condicionado", 
                                      command=self.abrir_menu1, 
-                                     width = 300,
+                                     width = 150,
                                      height=50,
                                      fg_color="blue",
                                      hover_color= "#4e31ff",
@@ -35,11 +35,11 @@ class MainMenu(ctk.CTk):
         #botão do menu de lâmpadas
         img2 = ctk.CTkImage(light_image=Image.open("imagens/led-inteligente.png"), 
                            dark_image=Image.open("imagens/led-inteligente.png"),
-                           size = (20,20))
+                           size = (30,30))
         self.button2 = ctk.CTkButton(self, 
                                      text="Lâmpadas", 
                                      command=self.abrir_menu2,
-                                     width = 300,
+                                     width = 150,
                                      height=50,
                                      fg_color="blue",
                                      hover_color= "#4e31ff",
@@ -52,11 +52,11 @@ class MainMenu(ctk.CTk):
         #botão do menu de televisões
         img3 = ctk.CTkImage(light_image=Image.open("imagens/monitor-de-tv.png"), 
                            dark_image=Image.open("imagens/monitor-de-tv.png"),
-                           size = (20,20))
+                           size = (30,30))
         self.button3 = ctk.CTkButton(self, 
                                      text="Televisões", 
                                      command=self.abrir_menu3,
-                                     width = 300,
+                                     width = 150,
                                      height=50,
                                      fg_color="blue",
                                      hover_color= "#4e31ff",
@@ -67,17 +67,21 @@ class MainMenu(ctk.CTk):
                                      image=img3).pack(pady=25)
         
         #botão adicionar dispositivo
+        img4 = ctk.CTkImage(light_image=Image.open("imagens/plus.png"), 
+                           dark_image=Image.open("imagens/plus.png"),
+                           size = (30,30))
         self.button4 = ctk.CTkButton (self, 
                                       text = "Novo dispositivo", 
                                       command = self.abrir_menu4,
-                                      width = 300,
+                                      width = 150,
                                      height=50,
                                      fg_color="blue",
                                      hover_color= "#4e31ff",
                                      text_color="white",
                                      font = ("arial bold", 18),
                                      corner_radius=20,
-                                     state = "normal").pack (pady=25)
+                                     state = "normal",
+                                     image= img4).pack (pady=25)
 
     def abrir_menu1(self) -> None:
         MenuAr()
