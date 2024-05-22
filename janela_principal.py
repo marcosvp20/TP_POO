@@ -17,14 +17,14 @@ class JanelaPrincipal:
 
     def botaodispositivos(self) -> None:
         self.botao_dispositivos = ctk.CTkButton(master=self.frame_inferior, width=300, height=100, 
-                                                corner_radius=46, text='Dispositivos',font= ('Rockwell', 15), 
+                                                corner_radius=35, text='Dispositivos',font= ('Rockwell', 15), 
                                                 fg_color='transparent', hover_color='#4e31ff')
         self.botao_dispositivos.place(y = 0, x = 50)
     
     def botaoautomacao(self) -> None:
         self.botao_automacao = ctk.CTkButton(master=self.frame_inferior, width=300, height=100, 
-                                             corner_radius=46, text='Automação', fg_color='transparent', 
-                                             hover_color='#4e31ff')
+                                             corner_radius=35, text='Automação', font= ('Rockwell', 15),
+                                             fg_color='transparent', hover_color='#4e31ff')
         self.botao_automacao.place(y = 0, x = 450)
         
 
