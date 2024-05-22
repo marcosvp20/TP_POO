@@ -14,7 +14,7 @@ class Planilha:
       
    #salva um lista de dados na planilha
    #PRÉ CONDIÇÃO: O nome precisa ser o primeiro na lista de dados
-   def salvar(self, dados):
+   def salvar(self, dados) -> None:
       if not self.verifica_se_objeto_existe(dados[0]):
          for i in range(0, len(dados)):
             self.planilha[f'{string.ascii_uppercase[i]}{self.proxima_linha}'] = dados[i]
@@ -23,7 +23,7 @@ class Planilha:
    
    #edita o status do objeto
    #não edita o nome
-   def editar(self, dados):
+   def editar(self, dados) -> None:
       i = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == dados[0]:
@@ -35,7 +35,7 @@ class Planilha:
          i += 1
 
    #verifica se o objeto já está cadastrado
-   def verifica_se_objeto_existe(self,nome):
+   def verifica_se_objeto_existe(self,nome) -> None:
       objetos_com_o_mesmo_nome = 0
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == nome:
@@ -46,12 +46,12 @@ class Planilha:
    
    #Retorna o valor da coluna desejada a partir do nome do objeto
    #O número das colunas começam em 1
-   def retorna_valor(self, nome, coluna):
+   def retorna_valor(self, nome, coluna) -> None:
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == nome:
             return linha[coluna-1]
    
-   def exclui_linha_vazia(self):
+   def exclui_linha_vazia(self) -> None:
       i = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
          linhas_vazias = 0
@@ -63,6 +63,7 @@ class Planilha:
             self.workbook.save(self.nome_planilha)
          i += 1
    
+   #retorna a quantidade da classe de objetos presente na planilha
    def retorna_quantidade(self, tipo:str) ->  int:
       quantidade = 0
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
