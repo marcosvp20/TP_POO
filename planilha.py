@@ -62,5 +62,10 @@ class Planilha:
             self.planilha.delete_rows(i)
             self.workbook.save(self.nome_planilha)
          i += 1
-
-         
+   
+   def retorna_quantidade(self, tipo:str) ->  int:
+      quantidade = 0
+      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         if linha[1] == tipo:
+            quantidade += 1
+      return quantidade
