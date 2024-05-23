@@ -1,6 +1,11 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import os
+from arcondicionado import ArCondicionado
+from caixa_de_som import Caixa_de_som
+from fechadura import Fechadura
+from lampada import Lampada
+from televisao import Televisao
 
 #definição do menu principal
 class MainMenu(ctk.CTk):
@@ -165,14 +170,14 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
         
         #definição da janela
         self.title("Novo Dispositivo")
-        self.geometry("400x240")
+        self.geometry("800x600")
         
         #definição de etiquetas
         self.label = ctk.CTkLabel(self, text="Novo Dispositivo", font=("Poppins", 20))
         self.label.pack(pady=10)
 
         # Menu de opções
-        self.opcoes = ["Lâmpada", "Ar Condicionado", "Televisão"]
+        self.opcoes = ["Ar Condicionado", "Caixa de Som", "Fechadura", "Lâmpada", "Televisão"]
         self.option_menu = ctk.CTkOptionMenu(self, values=self.opcoes)
         self.option_menu.pack(pady=10)
 
@@ -183,15 +188,51 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
         # Botão retornar
         self.back_button = ctk.CTkButton(self, text="Voltar", command=self.destroy)
         self.back_button.pack(pady=10)
-        
-        #botão retornar
-        self.back_button = ctk.CTkButton(self, text="Voltar", command=self.destroy)
-        self.back_button.pack(pady=10)
 
+        self.entry = None
+        self.submit_button = None
+        self.novo_nome = None
+
+    # Confirmação da classe do novo dispositivo
     def confirmar_dispositivo(self):
         escolha = self.option_menu.get()
         print(f"Dispositivo selecionado: {escolha}")
-        self.destroy()
+        self.solicitar_nome(escolha)
+
+    # Solicita o nome do novo dispositivo ao usuário
+    def solicitar_nome(self, escolha):
+        # Criar campo de entrada
+        self.entry = ctk.CTkEntry(self, placeholder_text="Defina o nome do novo dispositivo: ")
+        self.entry.pack(pady=20)
+        
+        # Botão para usar o texto do campo de entrada
+        self.submit_button = ctk.CTkButton(self, text="Confirmar", command=lambda: self.use_text(escolha))
+        self.submit_button.pack(pady=20)
+
+    # Função para acessar o texto da entry e criar o novo objeto
+    def use_text(self, escolha):
+        if self.entry: #garantir que não está vazio
+            self.novo_nome = self.entry.get()
+            if self.novo_nome:
+                match(escolha):
+                    case "Ar Condicionado":
+                        ArCondicionado(self.novo_nome)
+                        print(f"Novo A/C adicionado: {self.novo_nome}")
+                    case "Caixa de Som":
+                        Caixa_de_som(self.novo_nome)
+                        print(f"Nova Caixa de Som adicionada: {self.novo_nome}")
+                    case "Fechadura":
+                        Fechadura(self.novo_nome)
+                        print(f"Nova Fechadura adicionada: {self.novo_nome}")
+                    case "Lâmpada":
+                        Lampada(self.novo_nome)
+                        print(f"Nova Lâmpada adicionada: {self.novo_nome}")
+                    case "Televisão":
+                        Televisao(self.novo_nome)
+                        print(f"Nova TV adicionada: {self.novo_nome}")
+
+                self.entry.destroy()
+                self.submit_button.destroy()
 
 if __name__ == "__main__":
     app = MainMenu()
