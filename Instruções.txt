@@ -1,7 +1,0 @@
-Para criar um objeto:
--Importe a classe objeto;
--crie uma lista com os dados do objeto (dados_objeto = [self.dado1, self.dado2]), o nome
-do objeto sempre deverá ser o primeiro da lista e o tipo sempre deverá ser o segundo
-- Os métodos que mudam algum atributo do objeto deverão chamar a função self.planilha.editar(self.dados_objeto)
-
-
