@@ -9,6 +9,3 @@ class Objeto(ABC):
         
     def salvar(self,dados):
         self.planilha.salvar(dados)
-    @abstractmethod
-    def ligar(self):
-        pass
