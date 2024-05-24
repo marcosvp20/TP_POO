@@ -8,7 +8,7 @@ class FrameInferior:
         self.janela = janela
     
     def criaframe(self) -> None:
-        self.frame_inferior = ctk.CTkFrame(master=self.janela, width=800, height=100, fg_color="#2a2a2a", corner_radius=0)
+        self.frame_inferior = ctk.CTkFrame(master=self.janela, width=800, height=101, fg_color="#2a2a2a", corner_radius=0)
         self.frame_inferior.place(x = 0, y = 500)
 
     def botaodispositivos(self) -> None:

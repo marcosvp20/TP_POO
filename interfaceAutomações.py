@@ -49,11 +49,18 @@ class interfaceAutomacoes:
                                     corner_radius=35)
         self.botao_6.place(x = 475, y = 305)
     
-    def botaoadicionar(self) -> None:
-        self.botao_adicionar = ctk.CTkButton(master=self.frame_automacoes, text='Adicionar',
-                                    font=('Rockwell', 15), width=150, height=100, fg_color='#2a2a2a',
+    def botaop1(self) -> None:
+        self.botao_personalizado_1 = ctk.CTkButton(master=self.frame_automacoes, text='Automação personalizada 1',
+                                    font=('Rockwell', 15), width=300, height=55, fg_color='#2a2a2a',
                                     corner_radius=35)
-        self.botao_adicionar.place(x = 600, y = 395)
+        self.botao_personalizado_1.place(x = 25, y = 395)
+    
+    def botaop2(self) -> None:
+        self.botao_personoalizado_2 = ctk.CTkButton(master=self.frame_automacoes, text='Automação personalizada 2',
+                                    font=('Rockwell', 15), width=300, height=55, fg_color='#2a2a2a',
+                                    corner_radius=35)
+        self.botao_personoalizado_2.place(x = 475, y = 395)
+        
     def executar(self) -> None:
         self.criaframe()
         self.textosuperior()
@@ -63,5 +70,6 @@ class interfaceAutomacoes:
         self.botao4()
         self.botao5()
         self.botao6()
-        #self.botaoadicionar()
+        self.botaop1()
+        self.botaop2()
         self.frame_automacoes.place(x = 0, y = 0)
