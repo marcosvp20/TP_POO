@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from InterfaceDispositivos import interfaceDispositivos
+from interfaceAutomações import interfaceAutomacoes
 
 class FrameInferior:
     
@@ -18,9 +19,10 @@ class FrameInferior:
         self.botao_dispositivos.place(y = 0, x = 50)
     
     def botaoautomacao(self) -> None:
+        interface_autoacao = interfaceAutomacoes(self.janela)
         self.botao_automacao = ctk.CTkButton(master=self.frame_inferior, width=300, height=100, 
                                              corner_radius=35, text='Automação', font= ('Rockwell', 15),
-                                             fg_color='transparent', hover_color='#4e31ff')
+                                             fg_color='transparent', hover_color='#4e31ff', command=interface_autoacao.executar)
         self.botao_automacao.place(y = 0, x = 450)
     
     def executar(self) -> None:
