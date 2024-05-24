@@ -209,9 +209,14 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
         self.label.pack(pady=10)
 
         # Menu de opções
+<<<<<<< HEAD
         self.opcoes = ["Lâmpada", "Ar Condicionado", "Televisão"]
         self.option_menu = ctk.CTkOptionMenu(self, 
                                              values=self.opcoes)
+=======
+        self.opcoes = ["Ar Condicionado", "Caixa de Som", "Fechadura", "Lâmpada", "Televisão"]
+        self.option_menu = ctk.CTkOptionMenu(self, values=self.opcoes)
+>>>>>>> f7ad72ed2aeb72382b009071183d0d5403d03d9b
         self.option_menu.pack(pady=10)
 
         # Botão de confirmação
@@ -225,13 +230,21 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
                                          text="Voltar", 
                                          command=self.destroy)
         self.back_button.pack(pady=10)
+<<<<<<< HEAD
         
         #botão retornar
         self.back_button = ctk.CTkButton(self, 
                                          text="Voltar", 
                                          command=self.destroy)
         self.back_button.pack(pady=10)
+=======
+>>>>>>> f7ad72ed2aeb72382b009071183d0d5403d03d9b
 
+        self.entry = None
+        self.submit_button = None
+        self.novo_nome = None
+
+    # Confirmação da classe do novo dispositivo
     def confirmar_dispositivo(self):
         escolha = self.option_menu.get()
         print(f"Dispositivo selecionado: {escolha}")
