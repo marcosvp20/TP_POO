@@ -2,11 +2,6 @@ import customtkinter as ctk
 import tkinter as tk
 from PIL import Image, ImageTk
 import os
-from arcondicionado import ArCondicionado
-from caixa_de_som import Caixa_de_som
-from fechadura import Fechadura
-from lampada import Lampada
-from televisao import Televisao
 
 class MainMenu(ctk.CTk):
     def __init__(self):
@@ -53,7 +48,8 @@ class MainMenu(ctk.CTk):
                                      font = ("arial bold", 18),
                                      corner_radius = 20,
                                      state = "normal",
-                                     image=img1).pack(pady=25)
+                                     image=img1,
+                                     ).pack(pady=25)
         
         #botão do menu de lâmpadas
         img2 = ctk.CTkImage(light_image=Image.open("imagens/lampada.png"), 
@@ -204,7 +200,7 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
         
         #definição da janela
         self.title("Novo Dispositivo")
-        self.geometry("800x600")
+        self.geometry("400x240")
         
         #definição de etiquetas
         self.label = ctk.CTkLabel(self, 
@@ -213,8 +209,14 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
         self.label.pack(pady=10)
 
         # Menu de opções
+<<<<<<< HEAD
+        self.opcoes = ["Lâmpada", "Ar Condicionado", "Televisão"]
+        self.option_menu = ctk.CTkOptionMenu(self, 
+                                             values=self.opcoes)
+=======
         self.opcoes = ["Ar Condicionado", "Caixa de Som", "Fechadura", "Lâmpada", "Televisão"]
         self.option_menu = ctk.CTkOptionMenu(self, values=self.opcoes)
+>>>>>>> f7ad72ed2aeb72382b009071183d0d5403d03d9b
         self.option_menu.pack(pady=10)
 
         # Botão de confirmação
@@ -228,6 +230,15 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
                                          text="Voltar", 
                                          command=self.destroy)
         self.back_button.pack(pady=10)
+<<<<<<< HEAD
+        
+        #botão retornar
+        self.back_button = ctk.CTkButton(self, 
+                                         text="Voltar", 
+                                         command=self.destroy)
+        self.back_button.pack(pady=10)
+=======
+>>>>>>> f7ad72ed2aeb72382b009071183d0d5403d03d9b
 
         self.entry = None
         self.submit_button = None
@@ -237,42 +248,7 @@ class MenuAdicionarDispositivo (ctk.CTkToplevel):
     def confirmar_dispositivo(self):
         escolha = self.option_menu.get()
         print(f"Dispositivo selecionado: {escolha}")
-        self.solicitar_nome(escolha)
-
-    # Solicita o nome do novo dispositivo ao usuário
-    def solicitar_nome(self, escolha):
-        # Criar campo de entrada
-        self.entry = ctk.CTkEntry(self, placeholder_text="Defina o nome do novo dispositivo: ")
-        self.entry.pack(pady=20)
-        
-        # Botão para usar o texto do campo de entrada
-        self.submit_button = ctk.CTkButton(self, text="Confirmar", command=lambda: self.use_text(escolha))
-        self.submit_button.pack(pady=20)
-
-    # Função para acessar o texto da entry e criar o novo objeto
-    def use_text(self, escolha):
-        if self.entry: #garantir que não está vazio
-            self.novo_nome = self.entry.get()
-            if self.novo_nome:
-                match(escolha):
-                    case "Ar Condicionado":
-                        ArCondicionado(self.novo_nome)
-                        print(f"Novo A/C adicionado: {self.novo_nome}")
-                    case "Caixa de Som":
-                        Caixa_de_som(self.novo_nome)
-                        print(f"Nova Caixa de Som adicionada: {self.novo_nome}")
-                    case "Fechadura":
-                        Fechadura(self.novo_nome)
-                        print(f"Nova Fechadura adicionada: {self.novo_nome}")
-                    case "Lâmpada":
-                        Lampada(self.novo_nome)
-                        print(f"Nova Lâmpada adicionada: {self.novo_nome}")
-                    case "Televisão":
-                        Televisao(self.novo_nome)
-                        print(f"Nova TV adicionada: {self.novo_nome}")
-
-                self.entry.destroy()
-                self.submit_button.destroy()
+        self.destroy()
 
 if __name__ == "__main__":
     app = MainMenu()
