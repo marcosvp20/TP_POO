@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from frame_inferior import FrameInferior
-from PIL import Image, ImageTk
+from PIL import Image
 
 class JanelaPrincipal:
     
