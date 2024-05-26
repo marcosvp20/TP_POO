@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-from planilha import Planilha
-
+from planilhas import Planilha
 class Objeto(ABC):
     def __init__(self, nome) -> None:
         self.nome = nome

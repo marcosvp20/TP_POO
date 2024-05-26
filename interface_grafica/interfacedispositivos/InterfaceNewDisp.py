@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
+from interfacedispositivos.InterfaceNameDisp import InterfaceNameDisp
 
 class InterfaceNewDisp:
     def __init__(self, janela) -> None:
@@ -41,7 +42,7 @@ class InterfaceNewDisp:
                                     y = 100)
         
     def botao_ar (self):
-        new_ar = InterfaceNewDisp(self.janela)
+        new_ar = InterfaceNameDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -53,7 +54,7 @@ class InterfaceNewDisp:
                                          y = 184)
         
     def botao_lampada (self):
-        new_lamp = InterfaceNewDisp(self.janela)
+        new_lamp = InterfaceNameDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -65,7 +66,7 @@ class InterfaceNewDisp:
                                          y = 280)
         
     def botao_tv (self):
-        new_tv = InterfaceNewDisp(self.janela)
+        new_tv = InterfaceNameDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 

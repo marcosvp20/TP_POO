@@ -1,4 +1,4 @@
-from objetos import Objeto
+from src.objetos import Objeto
 
 class ArCondicionado(Objeto):
     
@@ -17,7 +17,7 @@ class ArCondicionado(Objeto):
         self.dados_ar[3] = True
         self.planilha.editar(self.dados_ar)
     
-ar = ArCondicionado('Ar da sala')
-ar1 = ArCondicionado('Ar do quarto')
-ar.ligar()
-ar.mudar_temperatura(18)
+# ar = ArCondicionado('Ar da sala')
+# ar1 = ArCondicionado('Ar do quarto')
+# ar.ligar()
+# ar.mudar_temperatura(18)
