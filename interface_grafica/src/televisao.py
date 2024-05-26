@@ -7,7 +7,8 @@ class Televisao (Objeto):
         self.canal = None
         self.volume = 0
         self.ligado = False
-        self.dados_tv = [self.nome, self.canal, self.volume, self.ligado]
+        self.tipo = 'televisao'
+        self.dados_tv = [self.nome, self.tipo, self.canal, self.volume, self.ligado]
         self.salvar(self.dados_tv)
 
     def ligar (self) -> None:
