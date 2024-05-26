@@ -26,6 +26,20 @@ class InterfaceNewDisp:
         label.place(x = 0, 
                     y = 0)
         
+        self.caixa_de_texto1 = ctk.CTkLabel(self.frame_new_disp,
+                                             text='Qual dispositivo deseja',
+                                             font=('League Spartan', 30),
+                                             fg_color='white')
+        self.caixa_de_texto1.place(x = 10,
+                                    y = 60)
+        
+        self.caixa_de_texto2 = ctk.CTkLabel(self.frame_new_disp,
+                                             text='adicionar?:',
+                                             font=('League Spartan', 30),
+                                             fg_color='white')
+        self.caixa_de_texto2.place(x = 10,
+                                    y = 100)
+        
     def botao_ar (self):
         new_ar = InterfaceNewDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))

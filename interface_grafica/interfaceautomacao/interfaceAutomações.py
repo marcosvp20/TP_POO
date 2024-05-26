@@ -22,6 +22,13 @@ class interfaceAutomacoes:
                              text='')
         label.place(x = 0, 
                     y = 0)
+        
+        self.caixa_de_texto = ctk.CTkLabel(self.frame_automacoes,
+                                             text='Automações: ',
+                                             font=('League Spartan', 30),
+                                             fg_color='white')
+        self.caixa_de_texto.place(x = 10,
+                                    y = 60)
     
     def botaoadicionar(self) -> None:
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
