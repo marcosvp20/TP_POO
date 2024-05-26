@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 from interfacedispositivos.botao_disp import Botao
+from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 import os
 
 class interfaceDispositivos:
@@ -27,12 +28,16 @@ class interfaceDispositivos:
                     y = 0)
         
     def botao_add (self) -> None:
+        new_disp = InterfaceNewDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
-        botao_adicionar = Botao(janela=self.frame_dispositivos, 
+        self.botao_adicionar = Botao(janela=self.frame_dispositivos, 
                                 posx=42, 
                                 posy=184, 
                                 texto='Adicionar\nDispositivo', 
-                                imagem=imagem)
+                                imagem=imagem,
+                                comando = new_disp.executar)
+        self.botao_adicionar.botao.place(x = 42, 
+                                         y = 184)
         
     def executar(self) -> None:
         self.criaframe()
