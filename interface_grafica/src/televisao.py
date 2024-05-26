@@ -18,7 +18,6 @@ class Televisao (Objeto):
             self.dados_tv[3] = False
         self.planilha.editar(self.dados_tv)
 
-    # sera que nao poderia colocar um imput no metodo?
     def mudar_canal (self, novo_canal) -> None:
         self.dados_tv[1] = novo_canal
         self.planilha.editar(self.dados_tv)
@@ -35,7 +34,7 @@ class Televisao (Objeto):
         self.dados_tv[2] = novo_volume
         self.planilha.editar(self.dados_tv)
 
-tv = Televisao ('Tv da cozinha')
-tv.ligar()
-tv.mudar_canal('Canal 3')
-tv.mudar_volume (10)
+# tv = Televisao ('Tv da cozinha')
+# tv.ligar()
+# tv.mudar_canal('Canal 3')
+# tv.mudar_volume (10)

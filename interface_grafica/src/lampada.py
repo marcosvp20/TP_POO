@@ -35,8 +35,8 @@ class Lampada(Objeto):
         self.planilha.editar(self.dados_lampada)
     
         
-lamp = Lampada('Lampada do quarto')
-lamp1 = Lampada('Lampada da sala')
-lamp.ligar()
-lamp.aumentar_brilho(30)
-lamp.aumentar_brilho(100)
+# lamp = Lampada('Lampada do quarto')
+# lamp1 = Lampada('Lampada da sala')
+# lamp.ligar()
+# lamp.aumentar_brilho(30)
+# lamp.aumentar_brilho(100)

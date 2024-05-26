@@ -24,15 +24,15 @@ class interfaceDispositivos:
                              image=bg, 
                              text='')
         
-        label.place(x = 0, 
-                    y = 0)
-        
         self.caixa_de_texto = ctk.CTkLabel(self.frame_dispositivos,
                                              text='Dispositivos: ',
                                              font=('League Spartan', 30),
                                              fg_color='white')
         self.caixa_de_texto.place(x = 10,
-                                    y = 60)
+                                    y = 30)
+        
+        label.place(x = 0, 
+                    y = 0)
         
     def botao_add (self) -> None:
         new_disp = InterfaceNewDisp(self.janela)
