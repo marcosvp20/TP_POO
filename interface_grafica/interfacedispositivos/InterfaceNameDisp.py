@@ -2,10 +2,14 @@ from tkinter import *
 from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
+from src.arcondicionado import ArCondicionado
+from src.lampada import Lampada
+from src.televisao import Televisao
 
 class InterfaceNameDisp:
-    def __init__(self, janela) -> None:
+    def __init__(self, janela, tipo) -> None:
         self.janela = janela
+        self.tipo = tipo
         
     def criaframe(self) -> None:
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
@@ -51,12 +55,29 @@ class InterfaceNameDisp:
     def botao_confirmar (self):
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
-                                 posx=135, 
-                                 posy=250, 
-                                 texto='Confirmar', 
-                                 imagem=imagem)
+                                    posx=135, 
+                                    posy=250, 
+                                    texto='Confirmar', 
+                                    imagem=imagem,
+                                    comando=self.adicionar)
+        
         self.botao_adicionar.botao.place(x = 135, 
                                          y = 250)
+
+    def adicionar(self):
+        if self.tipo: # Garantir que não está vazio
+            self.new_name = self.txtbox_name_disp.get()
+            if self.new_name:
+                match(self.tipo):
+                    case "ac":
+                        ArCondicionado(self.new_name)
+                        print("AC adicionado")
+                    case "lamp":
+                        Lampada(self.new_name)
+                        print("Lamp adicionada")
+                    case "tv":
+                        Televisao(self.new_name)
+                        print("TV adicionada")
         
     def executar(self) -> None:
         self.criaframe()

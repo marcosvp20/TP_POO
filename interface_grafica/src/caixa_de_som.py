@@ -1,4 +1,4 @@
-from objetos import Objeto
+from src.objetos import Objeto
 
 class Caixa_de_som(Objeto):
     def __init__(self, nome) -> None:

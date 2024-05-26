@@ -1,4 +1,4 @@
-from objetos import Objeto
+from src.objetos import Objeto
 
 class Lampada(Objeto):
     def __init__(self, nome) -> None:
