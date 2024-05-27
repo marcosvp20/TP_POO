@@ -5,7 +5,7 @@ class ArCondicionado(Objeto):
     def __init__(self, nome) -> None:
         super().__init__(nome)
         self.temperatura = 23
-        self.tipo = 'climatizadores'
+        self.tipo = 'A/C'
         self.dados_ar = [self.nome, self.tipo, self.temperatura, self.ligado]
         self.salvar(self.dados_ar)
 

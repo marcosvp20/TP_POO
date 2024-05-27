@@ -7,7 +7,7 @@ class Televisao (Objeto):
         self.canal = None
         self.volume = 0
         self.ligado = False
-        self.tipo = 'televisao'
+        self.tipo = 'Televisor'
         self.dados_tv = [self.nome, self.tipo, self.canal, self.volume, self.ligado]
         self.salvar(self.dados_tv)
 

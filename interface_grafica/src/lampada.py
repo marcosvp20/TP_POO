@@ -4,7 +4,7 @@ class Lampada(Objeto):
     def __init__(self, nome) -> None:
         super().__init__(nome)
         self.brilho = 0
-        self.tipo = 'lampada'
+        self.tipo = 'Lâmpada'
         self.dados_lampada = [self.nome, self.tipo, self.brilho, self.ligado]
         self.salvar(self.dados_lampada)
 

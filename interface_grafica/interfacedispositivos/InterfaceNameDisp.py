@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
+
+from src.planilha import Planilha
 from src.arcondicionado import ArCondicionado
 from src.lampada import Lampada
 from src.televisao import Televisao
@@ -10,6 +12,8 @@ class InterfaceNameDisp:
     def __init__(self, janela, tipo) -> None:
         self.janela = janela
         self.tipo = tipo
+        self.planilha = Planilha('objetos.xlsx')
+
         
     def criaframe(self) -> None:
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
@@ -65,20 +69,23 @@ class InterfaceNameDisp:
                                          y = 250)
 
     def adicionar(self):
-        if self.tipo: # Garantir que não está vazio
-            self.new_name = self.txtbox_name_disp.get()
-            if self.new_name:
-                match(self.tipo):
-                    case "ac":
-                        ArCondicionado(self.new_name)
-                        print("AC adicionado")
-                    case "lamp":
-                        Lampada(self.new_name)
-                        print("Lamp adicionada")
-                    case "tv":
-                        Televisao(self.new_name)
-                        print("TV adicionada")
-        
+        if self.planilha.retorna_quantidade(self.tipo) < 6:
+            if self.tipo: # Garantir que não está vazio
+                self.new_name = self.txtbox_name_disp.get()
+                if self.new_name:
+                    match(self.tipo):
+                        case "A/C":
+                            ArCondicionado(self.new_name)
+                            print("AC adicionado")
+                        case "Lâmpada":
+                            Lampada(self.new_name)
+                            print("Lamp adicionada")
+                        case "Televisor":
+                            Televisao(self.new_name)
+                            print("TV adicionada")
+        else:
+            print("Erro") # Implementar
+
     def executar(self) -> None:
         self.criaframe()
         self.botao_confirmar()
