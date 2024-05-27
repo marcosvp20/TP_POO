@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
+import time
 
 from src.planilha import Planilha
 from src.arcondicionado import ArCondicionado
@@ -65,27 +66,60 @@ class InterfaceNameDisp:
                                     imagem=imagem,
                                     comando=self.adicionar)
         
-        self.botao_adicionar.botao.place(x = 135, 
-                                         y = 250)
-
     def adicionar(self):
-        if self.planilha.retorna_quantidade(self.tipo) < 6:
-            if self.tipo: # Garantir que não está vazio
-                self.new_name = self.txtbox_name_disp.get()
-                if self.new_name:
-                    match(self.tipo):
-                        case "A/C":
-                            ArCondicionado(self.new_name)
+        self.frame_new_disp.update()
+        if self.tipo: # Garantir que não está vazio
+            self.new_name = self.txtbox_name_disp.get().strip()
+            print(self.new_name)
+            if self.new_name:
+                match(self.tipo):
+                    case "A/C":
+                        if ArCondicionado(self.new_name).salvar():
                             print("AC adicionado")
-                        case "Lâmpada":
-                            Lampada(self.new_name)
+                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()
+                        else:
+                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()                            
+                    case "Lâmpada":
+                        if Lampada(self.new_name).salvar():
+                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()
                             print("Lamp adicionada")
-                        case "Televisor":
-                            Televisao(self.new_name)
+                        else:
+                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()
+                    case "Televisor":
+                        if Televisao(self.new_name).salvar():
+                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()
                             print("TV adicionada")
-        else:
-            print("Erro") # Implementar
+                        else:
+                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')  
+                            self.apagar_mensagem_confirmacao()
+                            self.frame_new_disp.update()
+                            
+    def mensagem_confirmacao(self,mensagem) -> None:
+        self.texto = ctk.CTkLabel(master=self.frame_new_disp, text=mensagem,
+                             font=('League Spartan', 20), fg_color='white')
+        self.texto.place(x = 75, y = 350)
+        self.frame_new_disp.update()
+        time.sleep(1)
+        
+    def apagar_mensagem_confirmacao(self):
+        self.texto.destroy()
+        
+    def parar_execucao(self) -> None:
+        self.frame_new_disp.destroy()
+        
+
 
     def executar(self) -> None:
         self.criaframe()
         self.botao_confirmar()
+        

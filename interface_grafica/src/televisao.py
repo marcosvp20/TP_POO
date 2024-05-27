@@ -9,7 +9,6 @@ class Televisao (Objeto):
         self.ligado = False
         self.tipo = 'Televisor'
         self.dados_tv = [self.nome, self.tipo, self.canal, self.volume, self.ligado]
-        self.salvar(self.dados_tv)
 
     def ligar (self) -> None:
         self.ligado = self.planilha.retorna_valor(self.nome, 4)
@@ -34,7 +33,12 @@ class Televisao (Objeto):
             return
         self.dados_tv[2] = novo_volume
         self.planilha.editar(self.dados_tv)
-
+    
+    def salvar(self) -> bool:
+        if self.planilha.retorna_quantidade('Televisor') < 6:
+            return super().salvar(self.dados_tv)
+        else:
+            return False
 # tv = Televisao ('Tv da cozinha')
 # tv.ligar()
 # tv.mudar_canal('Canal 3')

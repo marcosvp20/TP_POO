@@ -6,8 +6,7 @@ class Lampada(Objeto):
         self.brilho = 0
         self.tipo = 'Lâmpada'
         self.dados_lampada = [self.nome, self.tipo, self.brilho, self.ligado]
-        self.salvar(self.dados_lampada)
-
+        
     def ligar(self) -> None:
         self.ligado = self.planilha.retorna_valor(self.nome, 4)
         if self.ligado == False:
@@ -34,6 +33,11 @@ class Lampada(Objeto):
                 self.dados_lampada[2] -= porcentagem
         self.planilha.editar(self.dados_lampada)
     
+    def salvar(self) -> bool:
+        if self.planilha.retorna_quantidade('Lâmpada') < 6:
+            return super().salvar(self.dados_lampada)
+        else:
+            return False
         
 # lamp = Lampada('Lampada do quarto')
 # lamp1 = Lampada('Lampada da sala')

@@ -7,5 +7,6 @@ class Objeto(ABC):
         self.planilha = Planilha('objetos.xlsx')
         self.ligado = False
         
-    def salvar(self,dados):
+    def salvar(self,dados) -> bool:
         self.planilha.salvar(dados)
+        return True

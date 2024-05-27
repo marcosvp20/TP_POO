@@ -14,12 +14,14 @@ class Planilha:
       
    #salva um lista de dados na planilha
    #PRÉ CONDIÇÃO: O nome precisa ser o primeiro na lista de dados
-   def salvar(self, dados) -> None:
+   def salvar(self, dados) -> bool:
       if not self.verifica_se_objeto_existe(dados[0]):
          for i in range(0, len(dados)):
             self.planilha[f'{string.ascii_uppercase[i]}{self.proxima_linha}'] = dados[i]
          self.workbook.save(self.nome_planilha)
          self.exclui_linha_vazia()
+         return True
+      return False
    
    #edita o status do objeto
    #não edita o nome
@@ -35,18 +37,19 @@ class Planilha:
          i += 1
 
    #verifica se o objeto já está cadastrado
-   def verifica_se_objeto_existe(self,nome) -> None:
+   def verifica_se_objeto_existe(self,nome:str) -> None:
       objetos_com_o_mesmo_nome = 0
-      for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
-         if linha[0] == nome:
-            objetos_com_o_mesmo_nome += 1
-      if objetos_com_o_mesmo_nome > 0:
-         return True
-      return False
+      if not self.verifica_se_esta_vazio():
+         for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
+            if linha[0].upper() == nome.upper():
+               objetos_com_o_mesmo_nome += 1
+         if objetos_com_o_mesmo_nome > 0:
+            return True
+         return False
    
    #Retorna o valor da coluna desejada a partir do nome do objeto
    #O número das colunas começam em 1
-   def retorna_valor(self, nome, coluna) -> None:
+   def retorna_valor(self, nome, coluna) -> str:
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == nome:
             return linha[coluna-1]
@@ -66,7 +69,21 @@ class Planilha:
    #retorna a quantidade da classe de objetos presente na planilha
    def retorna_quantidade(self, tipo:str) ->  int:
       quantidade = 0
-      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-         if linha[1] == tipo:
-            quantidade += 1
-      return quantidade
+      if not self.verifica_se_esta_vazio():   
+         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+            if linha[1] == tipo:
+               quantidade += 1
+         return quantidade
+      else:
+         return 0
+   
+   def verifica_se_esta_vazio(self) -> bool:
+
+    for row in self.planilha.iter_rows():
+        for cell in row:
+            if cell.value is not None:
+                return False
+    return True
+
+# pla = Planilha('objetos.xlsx')
+# print(pla.retorna_quantidade('A/C'))
