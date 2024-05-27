@@ -84,6 +84,17 @@ class Planilha:
             if cell.value is not None:
                 return False
     return True
+ 
+   def retorna_quantidade_dispositivos(self) -> int:
+      return self.planilha.max_row
+   
+   def retorna_nome(self) -> str:
+      nomes = []
+      i = 0
+      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         nomes.append(linha[0])
+      
+      return nomes
 
 # pla = Planilha('objetos.xlsx')
 # print(pla.retorna_quantidade('A/C'))

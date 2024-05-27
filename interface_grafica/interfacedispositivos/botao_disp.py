@@ -18,4 +18,6 @@ class Botao:
                                    command= comando)
         self.botao.place(x = self.posx, 
                          y = self.posy)
+    
+    
         
