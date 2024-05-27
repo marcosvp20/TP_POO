@@ -63,7 +63,8 @@ class InterfaceNameDisp:
         #imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botao_adicionar = ctk.CTkButton(master=self.frame_new_disp, width=170, height=50,
                                              font=('League Spartan bold',17),fg_color='#d7ebf8',
-                                             corner_radius=0, text='Concluir', text_color='black')
+                                             corner_radius=0, text='Concluir', text_color='black',
+                                             command = self.adicionar)
         self.botao_adicionar.place(x = 140, y = 320)
         
     def adicionar(self):
@@ -107,7 +108,7 @@ class InterfaceNameDisp:
     def mensagem_confirmacao(self,mensagem) -> None:
         self.texto = ctk.CTkLabel(master=self.frame_new_disp, text=mensagem,
                              font=('League Spartan', 20), fg_color='white')
-        self.texto.place(x = 75, y = 350)
+        self.texto.place(x = 75, y = 400)
         self.frame_new_disp.update()
         time.sleep(1)
         
