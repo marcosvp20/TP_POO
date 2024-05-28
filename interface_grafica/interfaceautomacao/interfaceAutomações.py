@@ -11,7 +11,7 @@ class interfaceAutomacoes:
                           size=(450,750))
         self.frame_automacoes = ctk.CTkFrame(self.janela, 
                                              width=450, 
-                                             height=640, 
+                                             height=660, 
                                              fg_color='transparent')
         self.frame_automacoes.place(x = 0, 
                                     y = 0)

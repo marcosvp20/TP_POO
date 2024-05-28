@@ -86,15 +86,26 @@ class Planilha:
     return True
  
    def retorna_quantidade_dispositivos(self) -> int:
+      if self.verifica_se_esta_vazio():
+         return 0
       return self.planilha.max_row
    
    def retorna_nome(self) -> str:
-      nomes = []
-      i = 0
-      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-         nomes.append(linha[0])
-      
-      return nomes
-
-# pla = Planilha('objetos.xlsx')
-# print(pla.retorna_quantidade('A/C'))
+      if not self.verifica_se_esta_vazio():
+         nomes = []
+         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+            nomes.append(linha[0])
+         
+         return nomes
+      else:
+         return None
+   def retorna_tipos(self) -> str:
+      if not self.verifica_se_esta_vazio():
+         tipos = []
+         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+            tipos.append(linha[1])
+         return tipos
+      else:
+         return None
+pla = Planilha('objetos.xlsx')
+print(pla.retorna_quantidade_dispositivos())

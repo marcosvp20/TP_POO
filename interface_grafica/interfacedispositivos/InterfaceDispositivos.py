@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 from interfacedispositivos.botao_disp import Botao
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 import os
+from src.botao_dinamico import BotaoDinamico
 
 class interfaceDispositivos:
     def __init__(self, janela) -> None:
@@ -48,7 +49,9 @@ class interfaceDispositivos:
         
     def executar(self) -> None:
         self.criaframe()
-        self.botao_add()
+        #self.botao_add()
         self.frame_dispositivos.place(x = 0, 
                                       y = 0)
+        new_disp = InterfaceNewDisp(self.janela)
+        botao = BotaoDinamico(self.frame_dispositivos)
         
