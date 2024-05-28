@@ -36,7 +36,8 @@ class Televisao (Objeto):
     
     def salvar(self) -> bool:
         if self.planilha.retorna_quantidade('Televisor') < 6:
-            return super().salvar(self.dados_tv)
+            if not (self.planilha.verifica_se_objeto_existe(self.nome)):
+                return super().salvar(self.dados_tv)
         else:
             return False
 # tv = Televisao ('Tv da cozinha')

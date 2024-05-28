@@ -18,9 +18,9 @@ class InterfaceNameDisp:
         
     def criaframe(self) -> None:
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
-                          size=(450,750))
+                          size=(500,750))
         self.frame_new_disp = ctk.CTkFrame(self.janela, 
-                                           width=450, 
+                                           width=800, 
                                            height=660,
                                            fg_color= "transparent")
         self.frame_new_disp.place(x=0, 
@@ -81,7 +81,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.frame_new_disp.update()
                         else:
-                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')
+                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')
                             self.apagar_mensagem_confirmacao()
                             self.frame_new_disp.update()                            
                     case "Lâmpada":
@@ -91,7 +91,7 @@ class InterfaceNameDisp:
                             self.frame_new_disp.update()
                             print("Lamp adicionada")
                         else:
-                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')
+                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')
                             self.apagar_mensagem_confirmacao()
                             self.frame_new_disp.update()
                     case "Televisor":
@@ -101,7 +101,7 @@ class InterfaceNameDisp:
                             self.frame_new_disp.update()
                             print("TV adicionada")
                         else:
-                            self.mensagem_confirmacao('O número máximo de dispositivos\n foi atingido')  
+                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')  
                             self.apagar_mensagem_confirmacao()
                             self.frame_new_disp.update()
                             
@@ -118,8 +118,6 @@ class InterfaceNameDisp:
     def parar_execucao(self) -> None:
         self.frame_new_disp.destroy()
         
-
-
     def executar(self) -> None:
         self.criaframe()
         self.botao_confirmar()

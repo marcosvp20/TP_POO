@@ -35,7 +35,8 @@ class Lampada(Objeto):
     
     def salvar(self) -> bool:
         if self.planilha.retorna_quantidade('Lâmpada') < 6:
-            return super().salvar(self.dados_lampada)
+            if not (self.planilha.verifica_se_objeto_existe(self.nome)):
+                return super().salvar(self.dados_lampada)
         else:
             return False
         

@@ -18,8 +18,9 @@ class ArCondicionado(Objeto):
         self.planilha.editar(self.dados_ar)
     
     def salvar(self):
-        if self.planilha.retorna_quantidade('A/C') < 6:
-            return super().salvar(self.dados_ar)
+        if (self.planilha.retorna_quantidade('A/C') < 6):
+            if not (self.planilha.verifica_se_objeto_existe(self.nome)):
+                return super().salvar(self.dados_ar)
         return False
     
 # ar = ArCondicionado('Ar da sala')

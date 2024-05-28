@@ -37,15 +37,12 @@ class Planilha:
          i += 1
 
    #verifica se o objeto já está cadastrado
-   def verifica_se_objeto_existe(self,nome:str) -> None:
-      objetos_com_o_mesmo_nome = 0
+   def verifica_se_objeto_existe(self, nome: str) -> bool:
       if not self.verifica_se_esta_vazio():
-         for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
+         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
             if linha[0].upper() == nome.upper():
-               objetos_com_o_mesmo_nome += 1
-         if objetos_com_o_mesmo_nome > 0:
-            return True
-         return False
+               return True
+      return False
    
    #Retorna o valor da coluna desejada a partir do nome do objeto
    #O número das colunas começam em 1
