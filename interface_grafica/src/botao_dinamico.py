@@ -37,7 +37,7 @@ class BotaoDinamico:
         self.botao_adicionar = self.botao = ctk.CTkButton(master=self.janela, 
                                    width= 187, 
                                    height=82, 
-                                   text='Adicionar', 
+                                   text='Adicionar\nDispositivo', 
                                    font=('League Spartan bold',15),
                                    image= imagem, 
                                    compound='left', 

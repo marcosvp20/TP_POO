@@ -30,7 +30,7 @@ class interfaceDispositivos:
                                              font=('League Spartan', 30),
                                              fg_color='white')
         self.caixa_de_texto.place(x = 10,
-                                    y = 30)
+                                    y = 60)
         
         label.place(x = 0, 
                     y = 0)
