@@ -13,7 +13,6 @@ class InterfaceAC:
 
     def criaframe(self) -> None:
 
-        # Frame, ackground e título
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(500,750))
         self.frame_ac = ctk.CTkFrame(self.janela, 
@@ -39,7 +38,7 @@ class InterfaceAC:
         self.caixa_de_texto1.place(x = 10,
                                     y = 60)
         
-        # Switch
+    def switch(self):
         off_label = ctk.CTkLabel(self.frame_ac, text="OFF")
         off_label.pack(side="left")
         switch = ctk.CTkSwitch(self.frame_ac,
@@ -62,7 +61,7 @@ class InterfaceAC:
         
         switch.pack()
 
-        # Slider
+    def slider(self):
         self.temperatura_label = ctk.CTkLabel(self.frame_ac,
                                           text=f"Temperatura: {self.planilha.retorna_valor(nome, 3)} °C")
         self.temperatura_label.pack(pady=10)
@@ -73,8 +72,13 @@ class InterfaceAC:
         slider_temperatura.set(self.planilha.retorna_valor(nome, 3))
         slider_temperatura.pack(pady=10)
         
-        # Botão remover
-        # ...
+    def botao_excluir(self):
+        self.botao_excluir = ctk.CTkButton(master=self.frame_new_disp, width=170, height=50,
+                                             font=('League Spartan bold',17),fg_color='#f5e0df',
+                                             corner_radius=0, text='Exlcuir dispositivo', text_color='black',
+                                             #command = exlcuir
+                                             )
+        self.botao_excluir.place(x = 140, y = 320)
 
     def ligar_desligar(self) -> None:
         if self.planilha.retorna_valor(nome, 4) == True:
@@ -85,4 +89,10 @@ class InterfaceAC:
     def atualiza_valor(self, value) -> None:
         self.temperatura_label.configure(text=f"Temperatura: {int(value)}° C")
         self.ar.mudar_temperatura(int(value))
+
+    def executar(self):
+        self.criaframe()
+        self.switch()
+        self.slider()
+
 
