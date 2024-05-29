@@ -96,6 +96,7 @@ class Planilha:
          return nomes
       else:
          return None
+      
    def retorna_tipos(self) -> str:
       if not self.verifica_se_esta_vazio():
          tipos = []
@@ -104,5 +105,6 @@ class Planilha:
          return tipos
       else:
          return None
-pla = Planilha('objetos.xlsx')
-print(pla.retorna_quantidade_dispositivos())
+      
+# pla = Planilha('objetos.xlsx')
+# print(pla.retorna_quantidade_dispositivos())

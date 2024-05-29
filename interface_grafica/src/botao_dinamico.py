@@ -55,7 +55,6 @@ class BotaoDinamico:
         for linha in self.planilha_1.iter_rows(min_row=1, values_only=True):
             self.posicoesx.append(linha[0])
             self.posicoesy.append(linha[1])
-        
 
     def importa_nomes(self) -> None:
         self.nome = self.planilha.retorna_nome()

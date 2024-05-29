@@ -16,6 +16,10 @@ class ArCondicionado(Objeto):
     def ligar(self) -> None:
         self.dados_ar[3] = True
         self.planilha.editar(self.dados_ar)
+
+    def desligar(self) -> None:
+        self.dados_ar[3] = False
+        self.planilha.editar(self.dados_ar)
     
     def salvar(self):
         if (self.planilha.retorna_quantidade('A/C') < 6):

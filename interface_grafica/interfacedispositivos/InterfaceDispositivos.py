@@ -50,8 +50,6 @@ class interfaceDispositivos:
     def executar(self) -> None:
         self.criaframe()
         #self.botao_add()
-        self.frame_dispositivos.place(x = 0, 
-                                      y = 0)
         new_disp = InterfaceNewDisp(self.janela)
         botao = BotaoDinamico(self.frame_dispositivos)
         

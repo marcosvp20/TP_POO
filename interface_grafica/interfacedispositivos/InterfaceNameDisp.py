@@ -36,7 +36,7 @@ class InterfaceNameDisp:
                     y = 0)
         
         self.caixa_de_texto1 = ctk.CTkLabel(self.frame_new_disp,
-                                             text='Qual dispositivo será o nome',
+                                             text='Qual será o nome',
                                              font=('League Spartan', 30),
                                              fg_color='white')
         self.caixa_de_texto1.place(x = 10,
