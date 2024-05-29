@@ -9,8 +9,11 @@ class InterfaceAC:
         self.janela = janela
         self.tipo = tipo
         self.planilha = Planilha('objetos.xlsx')
+        self.ar = ArCondicionado(nome, "A/C", self.planilha.retorna_valor(nome, 3), self.planilha.retorna_valor(nome, 4))
 
     def criaframe(self) -> None:
+
+        # Frame, ackground e título
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(500,750))
         self.frame_ac = ctk.CTkFrame(self.janela, 
@@ -41,7 +44,7 @@ class InterfaceAC:
         off_label.pack(side="left")
         switch = ctk.CTkSwitch(self.frame_ac,
                                 text="",
-                                command=ligar_desligar(),
+                                command=self.ligar_desligar(),
                                 width=100,
                                 height=50,
                                 fg_color="white",
@@ -59,22 +62,27 @@ class InterfaceAC:
         
         switch.pack()
 
-        temperatura_label = ctk.CTkLabel(self.frame_ac,
+        # Slider
+        self.temperatura_label = ctk.CTkLabel(self.frame_ac,
                                           text=f"Temperatura: {self.planilha.retorna_valor(nome, 3)} °C")
-        temperatura_label.pack(pady=10)
+        self.temperatura_label.pack(pady=10)
 
         slider_temperatura = ctk.CTkSlider(self.frame_ac,
                                             from_=16, to=30,
-                                            command=atualiza_valor)
-        slider_temperatura.set(16)  # Definir valor inicial do slider
+                                            command=self.atualiza_valor())
+        slider_temperatura.set(self.planilha.retorna_valor(nome, 3))
         slider_temperatura.pack(pady=10)
         
+        # Botão remover
+        # ...
+
     def ligar_desligar(self) -> None:
         if self.planilha.retorna_valor(nome, 4) == True:
-            ArCondicionado.desligar()
+            self.ar.desligar()
         elif self.planilha.retorna_valor(nome, 4) == False:
-            ArCondicionado.ligar()
+            self.ar.ligar()
 
-    def atualiza_valor(value) -> None:
-        temperatura_label.configure(text=f"Temperatura: {int(value)}° C")
+    def atualiza_valor(self, value) -> None:
+        self.temperatura_label.configure(text=f"Temperatura: {int(value)}° C")
+        self.ar.mudar_temperatura(int(value))
 
