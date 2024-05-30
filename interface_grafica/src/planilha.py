@@ -106,5 +106,15 @@ class Planilha:
       else:
          return None
       
+   def excluir_dispositivo(self, nome) -> bool:
+      linha_a_excluir = 1
+      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         if linha[0] == nome:
+            self.planilha.delete_rows(linha_a_excluir)
+            self.workbook.save('objetos.xlsx')
+            return True
+         linha_a_excluir += 1
+      return False
+      
 # pla = Planilha('objetos.xlsx')
-# print(pla.retorna_quantidade_dispositivos())
+# print(pla.excluir_dispositivo('Tv da sala'))
