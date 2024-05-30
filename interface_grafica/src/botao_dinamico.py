@@ -2,6 +2,7 @@ import customtkinter as ctk
 from src.planilha import Planilha
 import openpyxl
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
+from interfacedispositivos.InterfaceAC import InterfaceAC
 from PIL import Image
 
 class BotaoDinamico:
@@ -17,7 +18,7 @@ class BotaoDinamico:
         self.tipos = self.planilha.retorna_tipos()
         self.insere_botao()
     
-    def configura_botao(self, posx, posy, texto, imagem):
+    def configura_botao(self, posx, posy, texto, imagem, comando):
         self.botao = ctk.CTkButton(master=self.janela,
                                    width= 187, 
                                    height=82, 
@@ -28,7 +29,7 @@ class BotaoDinamico:
                                    fg_color='#d7ebf8', 
                                    text_color='black', 
                                    corner_radius=0,
-                                   command= self.comando)
+                                   command= comando)
         self.botao.place(x = posx, y = posy)
         
     def botao_add (self, posx, posy ) -> None:
@@ -68,14 +69,15 @@ class BotaoDinamico:
                 
                 match(self.tipos[i]):
                     case 'A/C':
+                        interfaceAC = InterfaceAC(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                        texto=self.nome[i], imagem=self.imagem_ac)
+                                        texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                        texto=self.nome[i], imagem=self.imagem_lamp)
+                        texto=self.nome[i], imagem=self.imagem_lamp, comando= None)
                     case 'Televisor':
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                        texto=self.nome[i], imagem=self.imagem_tv)
+                        texto=self.nome[i], imagem=self.imagem_tv, comando= None)
                     
         if self.quantidade < 6:
             self.botao_add(self.posicoesx[self.quantidade], self.posicoesy[self.quantidade])
