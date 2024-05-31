@@ -13,8 +13,8 @@ class interfaceDispositivos:
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
         self.frame_dispositivos = ctk.CTkFrame(self.janela, 
-                                                width=800, 
-                                                height=500,
+                                                width=450, 
+                                                height=660,
                                                 fg_color= "transparent")
         self.frame_dispositivos.place(x=0, 
                                       y=0)

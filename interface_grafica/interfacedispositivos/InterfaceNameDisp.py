@@ -21,7 +21,7 @@ class InterfaceNameDisp:
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(500,750))
         self.frame_new_disp = ctk.CTkFrame(self.janela, 
-                                           width=800, 
+                                           width=450, 
                                            height=660,
                                            fg_color= "transparent")
         self.frame_new_disp.place(x=0, 

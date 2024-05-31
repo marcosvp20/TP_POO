@@ -68,7 +68,7 @@ class BotaoDinamico:
                 
                 match(self.tipos[i]):
                     case 'A/C':
-                        interfaceAC = InterfaceAC(self.janela, self.nome[i])
+                        interfaceAC = InterfaceAC(self.janela, self.nome[i], self.janela)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                                         texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
