@@ -2,6 +2,7 @@ import customtkinter as ctk
 from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
 from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
 from PIL import Image
+from tela_inicial import TelaInicial
 
 class FrameInferior:
     
@@ -34,3 +35,5 @@ class FrameInferior:
         self.criaframe()
         self.botaodispositivos()
         self.botaoautomacao()
+        tela_inicial = TelaInicial(self.janela)
+        tela_inicial.executar()
