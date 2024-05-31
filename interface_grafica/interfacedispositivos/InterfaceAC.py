@@ -58,7 +58,6 @@ class InterfaceAC:
                                 fg_color="gray",
                                 progress_color="#348faa",
                                 button_color="black",
-                                button_hover_color="gray",
                                 corner_radius=35,
                                 bg_color='white', 
                                 switch_height=40,
@@ -98,7 +97,7 @@ class InterfaceAC:
     def botao_excluir(self):
         self.botao_excluir = ctk.CTkButton(master=self.frame_ac, width=170, height=50,
                                              font=('League Spartan bold',17),fg_color='#f5e0df',
-                                             corner_radius=0, text='Exlcuir dispositivo', text_color='black',
+                                             corner_radius=0, text='Excluir dispositivo', text_color='black',
                                              command = self.excluir
                                              )
         self.botao_excluir.place(x = 140, y = 560)
