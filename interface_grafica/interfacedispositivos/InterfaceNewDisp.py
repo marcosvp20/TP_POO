@@ -42,7 +42,7 @@ class InterfaceNewDisp:
                                     y = 100)
         
     def botao_ar (self):
-        new_ar = InterfaceNameDisp(self.janela, "A/C")
+        new_ar = InterfaceNameDisp(self.janela, "A/C",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -54,7 +54,7 @@ class InterfaceNewDisp:
                                          y = 184)
         
     def botao_lampada (self):
-        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada")
+        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -66,7 +66,7 @@ class InterfaceNewDisp:
                                          y = 280)
         
     def botao_tv (self):
-        new_tv = InterfaceNameDisp(self.janela, "Televisor")
+        new_tv = InterfaceNameDisp(self.janela, "Televisor",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 

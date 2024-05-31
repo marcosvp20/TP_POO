@@ -10,7 +10,8 @@ from src.lampada import Lampada
 from src.televisao import Televisao
 
 class InterfaceNameDisp:
-    def __init__(self, janela, tipo) -> None:
+    def __init__(self, janela, tipo, frame_anterior:ctk) -> None:
+        self.frame_anterior = frame_anterior
         self.janela = janela
         self.tipo = tipo
         self.planilha = Planilha('objetos.xlsx')
@@ -78,7 +79,7 @@ class InterfaceNameDisp:
                         if ArCondicionado(self.new_name).salvar():
                             print("AC adicionado")
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
-                            self.apagar_mensagem_confirmacao()
+                            self.parar_execucao()
                             self.frame_new_disp.update()
                         else:
                             self.mensagem_confirmacao('O dispositivo não pode ser adicionado')
@@ -87,7 +88,7 @@ class InterfaceNameDisp:
                     case "Lâmpada":
                         if Lampada(self.new_name).salvar():
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
-                            self.apagar_mensagem_confirmacao()
+                            self.parar_execucao()
                             self.frame_new_disp.update()
                             print("Lamp adicionada")
                         else:
@@ -97,7 +98,7 @@ class InterfaceNameDisp:
                     case "Televisor":
                         if Televisao(self.new_name).salvar():
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
-                            self.apagar_mensagem_confirmacao()
+                            self.parar_execucao()
                             self.frame_new_disp.update()
                             print("TV adicionada")
                         else:
@@ -117,6 +118,7 @@ class InterfaceNameDisp:
         
     def parar_execucao(self) -> None:
         self.frame_new_disp.destroy()
+        #self.frame_anterior.destroy()
         
     def executar(self) -> None:
         self.criaframe()

@@ -14,7 +14,7 @@ class JanelaPrincipal:
         label.place(x = 0, y = 0)
         frame_1 = FrameInferior(self.janela_principal)
         frame_1.executar()
-
+        
         self.janela_principal.mainloop()
 
 j = JanelaPrincipal()

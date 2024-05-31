@@ -7,9 +7,8 @@ from PIL import Image
 
 class BotaoDinamico:
 
-    def __init__(self, janela:ctk, comando = None) -> None:
+    def __init__(self, janela:ctk) -> None:
         self.janela = janela
-        self.comando = comando
         self.nome = []
         self.posicoesx = []
         self.posicoesy = []

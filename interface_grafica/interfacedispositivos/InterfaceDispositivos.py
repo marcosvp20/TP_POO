@@ -52,4 +52,7 @@ class interfaceDispositivos:
         #self.botao_add()
         new_disp = InterfaceNewDisp(self.janela)
         botao = BotaoDinamico(self.frame_dispositivos)
+    
+    def atualizar(self) -> None:
+        self.frame_dispositivos.update()
         
