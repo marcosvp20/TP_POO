@@ -7,7 +7,6 @@ class ArCondicionado(Objeto):
         self.temperatura = 23
         self.tipo = 'A/C'
         self.dados_ar = [self.nome, self.tipo, self.temperatura, self.ligado]
-        # self.salvar(self.dados_ar)
 
     def mudar_temperatura(self, temperatura) -> None:
         self.dados_ar[2] = temperatura

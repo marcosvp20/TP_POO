@@ -4,6 +4,7 @@ import openpyxl
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 from interfacedispositivos.InterfaceAC import InterfaceAC
 from interfacedispositivos.InterfaceLamp import InterfaceLamp
+from interfacedispositivos.InterfaceTV import InterfaceTV
 from PIL import Image
 
 class BotaoDinamico:
@@ -71,14 +72,15 @@ class BotaoDinamico:
                     case 'A/C':
                         interfaceAC = InterfaceAC(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                        texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
+                        texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
                         interfaceLamp = InterfaceLamp(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_lamp, comando= interfaceLamp.executar)
                     case 'Televisor':
+                        interfaceTV = InterfaceTV(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                        texto=self.nome[i], imagem=self.imagem_tv, comando= None)
+                        texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
                     
         if self.quantidade < 6:
             self.botao_add(self.posicoesx[self.quantidade], self.posicoesy[self.quantidade])
@@ -87,9 +89,3 @@ class BotaoDinamico:
         self.imagem_ac = ctk.CTkImage(Image.open('imagens/arcondicionado.png'),size=(40,40))
         self.imagem_lamp = ctk.CTkImage(Image.open('imagens/lampada.png'),size=(40,40))
         self.imagem_tv = ctk.CTkImage(Image.open('imagens/tv.png'),size=(40,40))
-
-# jan = ctk.CTk()
-# jan.geometry('800x800')
-# bot = BotaoDinamico(jan)
-# bot.insere_botao()
-# jan.mainloop()
