@@ -5,10 +5,18 @@ from interfacedispositivos.botao_disp import Botao
 from interfacedispositivos.InterfaceNameDisp import InterfaceNameDisp
 
 class InterfaceNewDisp:
+    """
+    Classe responsável por criar a interface gráfica para adicionar novos dispositivos.
+    """
+
     def __init__(self, janela) -> None:
         self.janela = janela
         
     def criaframe(self) -> None:
+        """
+        Cria o frame da interface para adicionar um novo dispositivo.
+        """
+
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
         self.frame_new_disp = ctk.CTkFrame(self.janela, 
@@ -41,7 +49,10 @@ class InterfaceNewDisp:
         self.caixa_de_texto2.place(x = 10,
                                     y = 100)
         
-    def botao_ar (self):
+    def botao_ar (self) -> None:
+        """
+        Cria o botão para adicionar um ar condicionado.
+        """
         new_ar = InterfaceNameDisp(self.janela, "A/C",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
@@ -53,7 +64,10 @@ class InterfaceNewDisp:
         self.botao_adicionar.botao.place(x = 135, 
                                          y = 184)
         
-    def botao_lampada (self):
+    def botao_lampada (self) -> None:
+        """
+        Cria o botão para adicionar uma lâmpada.
+        """
         new_lamp = InterfaceNameDisp(self.janela, "Lâmpada",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
@@ -65,7 +79,10 @@ class InterfaceNewDisp:
         self.botao_adicionar.botao.place(x = 135, 
                                          y = 280)
         
-    def botao_tv (self):
+    def botao_tv (self) -> None:
+        """
+        Cria o botão para adicionar uma TV.
+        """
         new_tv = InterfaceNameDisp(self.janela, "Televisor",self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
@@ -78,6 +95,9 @@ class InterfaceNewDisp:
                                          y = 376)
 
     def executar(self) -> None:
+        """
+        Executa a interface gráfica.
+        """
         self.criaframe()
         self.frame_new_disp.place(x = 0, 
                                   y = 0)

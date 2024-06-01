@@ -7,9 +7,15 @@ from src.botao_dinamico import BotaoDinamico
 
 class interfaceDispositivos:
     def __init__(self, janela) -> None:
+        """
+        Classe responsável por criar a interface de dispositivos.
+        """
         self.janela = janela
         
     def criaframe(self) -> None:
+        """
+        Cria o frame da interface de dispositivos.
+        """
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
         self.frame_dispositivos = ctk.CTkFrame(self.janela, 
@@ -36,8 +42,12 @@ class interfaceDispositivos:
                     y = 0)
         
     def botao_add (self) -> None:
+        """
+        Cria o botão de adicionar dispositivo.
+        """
         new_disp = InterfaceNewDisp(self.janela)
-        imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
+        imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),
+                              size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_dispositivos, 
                                 posx=42, 
                                 posy=184, 
@@ -48,11 +58,16 @@ class interfaceDispositivos:
                                          y = 184)
         
     def executar(self) -> None:
+        """
+        Executa a interface de dispositivos.
+        """
         self.criaframe()
-        #self.botao_add()
         new_disp = InterfaceNewDisp(self.janela)
         botao = BotaoDinamico(self.frame_dispositivos)
     
     def atualizar(self) -> None:
+        """
+        Atualiza a interface de dispositivos.
+        """
         self.frame_dispositivos.update()
         

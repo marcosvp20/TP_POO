@@ -5,7 +5,10 @@ from src.lampada import Lampada
 import time
 
 class InterfaceLamp:
-    def __init__(self, janela:ctk, nome:str):
+    """
+    Classe que representa a interface gráfica de uma lâmpada.
+    """
+    def __init__(self, janela:ctk, nome:str) -> None:
         self.janela = janela
         self.nome = nome
         self.planilha = Planilha('objetos.xlsx')
@@ -14,7 +17,9 @@ class InterfaceLamp:
         self.lampada.ligado = self.planilha.retorna_valor(self.nome, 4)
 
     def criaframe(self) -> None:
-
+        """
+        Cria o frame da interface da lâmpada.
+        """
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
         self.frame_lamp = ctk.CTkFrame(self.janela, 
@@ -40,7 +45,10 @@ class InterfaceLamp:
         self.caixa_de_texto1.place(x = 30,
                                     y = 40)
         
-    def switch(self):
+    def switch(self) -> None:
+        """
+        Cria o switch de ligar/desligar da lâmpada.
+        """
         off_label = ctk.CTkLabel(self.frame_lamp,
                                  text="OFF",
                                  font=('League Spartan', 30),
@@ -72,7 +80,10 @@ class InterfaceLamp:
         if self.planilha.retorna_valor(self.nome, 4) == True:
             switch.select()
     
-    def slider(self):
+    def slider(self) -> None:
+        """
+        Cria o slider de controle de brilho da lâmpada.
+        """
         self.brilho_label = ctk.CTkLabel(self.frame_lamp,
                                           text=f"Brilho: {self.planilha.retorna_valor(self.nome, 3)} %",
                                           font=('League Spartan', 30),
@@ -92,7 +103,10 @@ class InterfaceLamp:
         slider_brilho.set(self.planilha.retorna_valor(self.nome, 3))
         slider_brilho.place(x=90, y=400)
         
-    def botao_excluir(self):
+    def botao_excluir(self) -> None:
+        """
+        Cria o botão de exclusão da lâmpada.
+        """
         self.botao_excluir = ctk.CTkButton(master=self.frame_lamp, width=170, height=50,
                                              font=('League Spartan bold',17),fg_color='#f5e0df',
                                              corner_radius=0, text='Excluir dispositivo', text_color='black',
@@ -101,13 +115,22 @@ class InterfaceLamp:
         self.botao_excluir.place(x = 140, y = 560)
 
     def ligar_desligar(self) -> None:
+        """
+        Liga ou desliga a lâmpada.
+        """
         self.lampada.ligar()
 
     def atualiza_valor(self, value) -> None:
+        """
+        Atualiza o valor do brilho da lâmpada.
+        """
         self.brilho_label.configure(text=f"Brilho: {int(value)}%")
         self.lampada.mudar_brilho(int(value))
     
     def excluir(self) -> None:
+        """
+        Exclui a lâmpada da planilha de objetos.
+        """
         if self.planilha.excluir_dispositivo(self.nome):
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_lamp.destroy()
@@ -117,6 +140,9 @@ class InterfaceLamp:
             self.mensagem('Falha ao excluir o dispositivo')
     
     def mensagem(self, mensagem:str) -> None:
+        """
+        Cria uma mensagem na tela.
+        """
         self.texto = ctk.CTkLabel(master=self.frame_lamp, text=mensagem,
                              font=('League Spartan', 20), fg_color='#d5e8f1')
         self.texto.place(x = 100, y = 620)
@@ -124,7 +150,10 @@ class InterfaceLamp:
         time.sleep(1)
         
 
-    def executar(self):
+    def executar(self) -> None:
+        """
+        Executa a interface da lâmpada.
+        """
         self.criaframe()
         self.switch()
         self.slider()
