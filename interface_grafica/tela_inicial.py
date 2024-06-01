@@ -3,7 +3,7 @@ import customtkinter as ctk
 from PIL import Image
 
 class TelaInicial:
-    def __init__(self, janela) -> None:
+    def __init__(self, janela:ctk) -> None:
         self.janela = janela
         
     def cria_frame(self) -> None:
@@ -21,7 +21,7 @@ class TelaInicial:
                              text='')
         label.place(x = 0, y = 0)
     
-    def cria_texto(self, texto) -> None:
+    def cria_texto(self, texto:str) -> None:
         self.texto_ola = ctk.CTkLabel(master=self.frame,
                                             text=f'Olá,',
                                              font=('League Spartan bold', 35),
@@ -35,10 +35,10 @@ class TelaInicial:
         
         self.texto_ola.place(x = 30, y = 50)
         self.texto_bomdia.place(x = 30, y = 100)
-    def importar_hora(self):
+    def importar_hora(self) -> None:
         self.hora_atual = time.localtime().tm_hour
         
-    def executar(self):
+    def executar(self) -> None:
         self.cria_frame()
         self.importar_hora()
         if self.hora_atual < 12 and self.hora_atual > 0:

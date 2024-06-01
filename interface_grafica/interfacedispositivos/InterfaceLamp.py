@@ -1,31 +1,30 @@
 from PIL import Image
 import customtkinter as ctk
-from interfacedispositivos.botao_disp import Botao
 from src.planilha import Planilha
-from src.arcondicionado import ArCondicionado
+from src.lampada import Lampada
 import time
 
-class InterfaceAC:
-    def __init__(self, janela, nome):
+class InterfaceLamp:
+    def __init__(self, janela:ctk, nome:str):
         self.janela = janela
         self.nome = nome
         self.planilha = Planilha('objetos.xlsx')
-        self.ar = ArCondicionado(self.nome)
-        self.ar.temperatura = self.planilha.retorna_valor(self.nome, 3)
-        self.ar.ligado = self.planilha.retorna_valor(self.nome, 4)
+        self.lampada = Lampada(self.nome)
+        self.lampada.brilho = self.planilha.retorna_valor(self.nome, 3)
+        self.lampada.ligado = self.planilha.retorna_valor(self.nome, 4)
 
     def criaframe(self) -> None:
 
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
-        self.frame_ac = ctk.CTkFrame(self.janela, 
+        self.frame_lamp = ctk.CTkFrame(self.janela, 
                                            width=450, 
                                            height=660,
                                            fg_color= "transparent")
-        self.frame_ac.place(x=0, 
+        self.frame_lamp.place(x=0, 
                             y=0)
         
-        label = ctk.CTkLabel(self.frame_ac, 
+        label = ctk.CTkLabel(self.frame_lamp, 
                              width=450, 
                              height= 660, 
                              image=bg, 
@@ -34,7 +33,7 @@ class InterfaceAC:
         label.place(x = 0, 
                     y = 0)
         
-        self.caixa_de_texto1 = ctk.CTkLabel(self.frame_ac,
+        self.caixa_de_texto1 = ctk.CTkLabel(self.frame_lamp,
                                              text=f'{self.nome}',
                                              font=('League Spartan', 30),
                                              fg_color='white')
@@ -42,14 +41,14 @@ class InterfaceAC:
                                     y = 40)
         
     def switch(self):
-        off_label = ctk.CTkLabel(self.frame_ac,
+        off_label = ctk.CTkLabel(self.frame_lamp,
                                  text="OFF",
                                  font=('League Spartan', 30),
                                  fg_color='white',
                                  bg_color='transparent')
         off_label.place(x=100, y=190)
         
-        switch = ctk.CTkSwitch(self.frame_ac,
+        switch = ctk.CTkSwitch(self.frame_lamp,
                                 text="",
                                 command=self.ligar_desligar,
                                 width=85,
@@ -63,7 +62,7 @@ class InterfaceAC:
                                 switch_width=85)
         switch.place(x=183, y=195)
                 
-        on_label = ctk.CTkLabel(self.frame_ac,
+        on_label = ctk.CTkLabel(self.frame_lamp,
                                 text="ON",
                                 font=('League Spartan', 30),
                                 fg_color="white",
@@ -74,15 +73,15 @@ class InterfaceAC:
             switch.select()
     
     def slider(self):
-        self.temperatura_label = ctk.CTkLabel(self.frame_ac,
-                                          text=f"Temperatura: {self.planilha.retorna_valor(self.nome, 3)} °C",
+        self.brilho_label = ctk.CTkLabel(self.frame_lamp,
+                                          text=f"Brilho: {self.planilha.retorna_valor(self.nome, 3)} %",
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
                                           fg_color='white',)
-        self.temperatura_label.place(x=100, y=330)
+        self.brilho_label.place(x=100, y=330)
 
-        slider_temperatura = ctk.CTkSlider(self.frame_ac,
-                                            from_=16, to=30,
+        slider_brilho = ctk.CTkSlider(self.frame_lamp,
+                                            from_=0, to=100,
                                             command=lambda value: self.atualiza_valor(value),
                                             bg_color='transparent',
                                             fg_color='gray',
@@ -90,11 +89,11 @@ class InterfaceAC:
                                             button_color='black',
                                             width = 270,
                                             height = 20)
-        slider_temperatura.set(self.planilha.retorna_valor(self.nome, 3))
-        slider_temperatura.place(x=90, y=400)
+        slider_brilho.set(self.planilha.retorna_valor(self.nome, 3))
+        slider_brilho.place(x=90, y=400)
         
     def botao_excluir(self):
-        self.botao_excluir = ctk.CTkButton(master=self.frame_ac, width=170, height=50,
+        self.botao_excluir = ctk.CTkButton(master=self.frame_lamp, width=170, height=50,
                                              font=('League Spartan bold',17),fg_color='#f5e0df',
                                              corner_radius=0, text='Excluir dispositivo', text_color='black',
                                              command = self.excluir
@@ -102,32 +101,33 @@ class InterfaceAC:
         self.botao_excluir.place(x = 140, y = 560)
 
     def ligar_desligar(self) -> None:
-        if self.planilha.retorna_valor(self.nome, 4) == True:
-            self.ar.desligar()
-        elif self.planilha.retorna_valor(self.nome, 4) == False:
-            self.ar.ligar()
+        self.lampada.ligar()
 
     def atualiza_valor(self, value) -> None:
-        self.temperatura_label.configure(text=f"Temperatura: {int(value)}° C")
-        self.ar.mudar_temperatura(int(value))
+        self.brilho_label.configure(text=f"Brilho: {int(value)}%")
+        self.lampada.mudar_brilho(int(value))
     
     def excluir(self) -> None:
         if self.planilha.excluir_dispositivo(self.nome):
             self.mensagem('Dispositivo excluido com sucesso!')
-            self.frame_ac.destroy() 
+            self.frame_lamp.destroy()
+            self.janela.update()
+        
         else:
             self.mensagem('Falha ao excluir o dispositivo')
-             
+    
     def mensagem(self, mensagem:str) -> None:
-        self.texto = ctk.CTkLabel(master=self.frame_ac, text=mensagem,
+        self.texto = ctk.CTkLabel(master=self.frame_lamp, text=mensagem,
                              font=('League Spartan', 20), fg_color='#d5e8f1')
         self.texto.place(x = 100, y = 620)
-        self.frame_ac.update()
+        self.frame_lamp.update()
         time.sleep(1)
         
+
     def executar(self):
         self.criaframe()
         self.switch()
         self.slider()
         self.botao_excluir()
+
 

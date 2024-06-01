@@ -3,6 +3,7 @@ from src.planilha import Planilha
 import openpyxl
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 from interfacedispositivos.InterfaceAC import InterfaceAC
+from interfacedispositivos.InterfaceLamp import InterfaceLamp
 from PIL import Image
 
 class BotaoDinamico:
@@ -68,12 +69,13 @@ class BotaoDinamico:
                 
                 match(self.tipos[i]):
                     case 'A/C':
-                        interfaceAC = InterfaceAC(self.janela, self.nome[i], self.janela)
+                        interfaceAC = InterfaceAC(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                                         texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
+                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i])
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                        texto=self.nome[i], imagem=self.imagem_lamp, comando= None)
+                        texto=self.nome[i], imagem=self.imagem_lamp, comando= interfaceLamp.executar)
                     case 'Televisor':
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_tv, comando= None)
