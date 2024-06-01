@@ -107,6 +107,7 @@ class InterfaceAC:
         """
         Cria o botão de exclusão do ar condicionado.
         """
+        image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
         self.botao_excluir = ctk.CTkButton(master=self.frame_ac, 
                                            width=170, 
                                            height=50, 
@@ -115,7 +116,8 @@ class InterfaceAC:
                                            corner_radius=0, 
                                            text='Excluir dispositivo', 
                                            text_color='black', 
-                                           command=self.excluir)
+                                           command=self.excluir,
+                                           image=image)
         self.botao_excluir.place(x=140, y=560)
 
     def ligar_desligar(self) -> None:
