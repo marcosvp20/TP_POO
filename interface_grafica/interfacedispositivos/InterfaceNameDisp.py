@@ -68,6 +68,7 @@ class InterfaceNameDisp:
         """
         Cria o botão de confirmação para adicionar o dispositivo.
         """
+        image = ctk.CTkImage(light_image= Image.open('imagens/check.png'),size=(25,25))
         self.botao_adicionar = ctk.CTkButton(master=self.frame_new_disp, 
                                              width=170, 
                                              height=50,
@@ -76,7 +77,8 @@ class InterfaceNameDisp:
                                              corner_radius=0, 
                                              text='Concluir', 
                                              text_color='black',
-                                             command = self.adicionar)
+                                             command = self.adicionar,
+                                             image=image)
         self.botao_adicionar.place(x = 140, y = 320)
         
     def adicionar(self) -> None:
