@@ -25,14 +25,12 @@ class Planilha:
    
    #edita o status do objeto
    #não edita o nome
-   def editar(self, dados) -> None:
+   def editar(self, dados:list, coluna:int) -> None:
       i = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True) :
          if linha[0] == dados[0]:
-            for j in range(1, len(dados)):
-               if linha[j] != dados[j]:
-                  cell = self.planilha[f'{string.ascii_uppercase[j]}{i}']
-                  cell.value = dados[j]
+                  cell = self.planilha[f'{string.ascii_uppercase[coluna]}{i}']
+                  cell.value = dados[coluna]
                   self.workbook.save(self.nome_planilha)
          i += 1
 

@@ -1,7 +1,6 @@
 from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
-from src.planilha import Planilha
 from src.arcondicionado import ArCondicionado
 import time
 
@@ -15,10 +14,9 @@ class InterfaceAC:
         """
         self.janela = janela
         self.nome = nome
-        self.planilha = Planilha('objetos.xlsx')
         self.ar = ArCondicionado(self.nome)
-        self.ar.temperatura = self.planilha.retorna_valor(self.nome, 3)
-        self.ar.ligado = self.planilha.retorna_valor(self.nome, 4)
+        self.ar.temperatura = self.ar.temperatura_atual()
+        self.ar.ligado = self.ar.esta_ligado()
 
     def criaframe(self) -> None:
         """
@@ -76,7 +74,7 @@ class InterfaceAC:
                                 bg_color='transparent')
         on_label.place(x=305, y=190)
 
-        if self.planilha.retorna_valor(self.nome, 4) == True:
+        if self.ar.esta_ligado() == True:
             switch.select()
     
     def slider(self) -> None:
@@ -84,9 +82,9 @@ class InterfaceAC:
         Cria o slider de controle de temperatura do ar condicionado.
         """
         self.temperatura_label = ctk.CTkLabel(self.frame_ac, 
-                                              text=f"Temperatura: {self.planilha.retorna_valor(self.nome, 3)} °C", 
+                                              text=f"Temperatura: {self.ar.temperatura_atual()} °C", 
                                               font=('League Spartan', 30), 
-                                              bg_color='transparent', 
+                                              bg_color='#F5F9FC', 
                                               fg_color='white',)
         self.temperatura_label.place(x=100, y=330)
 
@@ -94,13 +92,13 @@ class InterfaceAC:
                                            from_=16, 
                                            to=30, 
                                            command=lambda value: self.atualiza_valor(value), 
-                                           bg_color='transparent', 
+                                           bg_color='#EDF4F9', 
                                            fg_color='gray', 
                                            progress_color='#348faa', 
                                            button_color='black', 
                                            width=270, 
                                            height=20)
-        slider_temperatura.set(self.planilha.retorna_valor(self.nome, 3))
+        slider_temperatura.set(self.ar.temperatura_atual())
         slider_temperatura.place(x=90, y=400)
         
     def botao_excluir(self) -> None:
@@ -124,9 +122,9 @@ class InterfaceAC:
         """
         Liga ou desliga o ar condicionado.
         """
-        if self.planilha.retorna_valor(self.nome, 4) == True:
+        if self.ar.esta_ligado() == True:
             self.ar.desligar()
-        elif self.planilha.retorna_valor(self.nome, 4) == False:
+        elif self.ar.esta_ligado() == False:
             self.ar.ligar()
 
     def atualiza_valor(self, value) -> None:
@@ -140,7 +138,7 @@ class InterfaceAC:
         """
         Exclui o ar condicionado.
         """
-        if self.planilha.excluir_dispositivo(self.nome):
+        if self.ar.excluir():
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_ac.destroy() 
         else:
@@ -153,7 +151,7 @@ class InterfaceAC:
         self.texto = ctk.CTkLabel(master=self.frame_ac, 
                                   text=mensagem, 
                                   font=('League Spartan', 20), 
-                                  fg_color='#d5e8f1')
+                                  fg_color='#CEE2EF')
         self.texto.place(x=100, y=620)
         self.frame_ac.update()
         time.sleep(1)

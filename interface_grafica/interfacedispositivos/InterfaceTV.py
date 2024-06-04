@@ -1,6 +1,5 @@
 from PIL import Image
 import customtkinter as ctk
-from src.planilha import Planilha
 from src.televisao import Televisao
 import time
 
@@ -14,10 +13,9 @@ class InterfaceTV:
         """
         self.janela = janela
         self.nome = nome
-        self.planilha = Planilha('objetos.xlsx')
         self.tv = Televisao(self.nome)
-        self.volume = self.planilha.retorna_valor(self.nome, 4)
-        self.ligado = self.planilha.retorna_valor(self.nome, 5)
+        self.volume = self.tv.volume_atual()
+        self.ligado = self.tv.esta_ligado()
         self.canal = self.tv.canal_atual()
 
     def criaframe(self) -> None:
@@ -81,7 +79,7 @@ class InterfaceTV:
                                 bg_color='transparent')
         on_label.place(x=305, y=190)
 
-        if self.planilha.retorna_valor(self.nome, 4):
+        if self.tv.esta_ligado():
             switch.select()
 
     def ligar_desligar(self) -> None:
@@ -95,7 +93,7 @@ class InterfaceTV:
         Cria o slider de controle do volume da tv.
         """
         self.label_volume = ctk.CTkLabel(self.frame_tv,
-                                          text=f"Volume: {self.planilha.retorna_valor(self.nome, 4)} %",
+                                          text=f"Volume: {self.tv.volume_atual()} %",
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
                                           fg_color='#E5F0F7',)
@@ -110,7 +108,7 @@ class InterfaceTV:
                                             button_color='black',
                                             width = 270,
                                             height = 20)
-        slider_volume.set(self.planilha.retorna_valor(self.nome, 4))
+        slider_volume.set(self.tv.volume_atual())
         slider_volume.place(x=90, y=500)
 
 
@@ -142,7 +140,7 @@ class InterfaceTV:
                                         border_width=4, border_color='#348FAA', command=self.click_botao_mais)
         self.botao_mais.place(x = 325, y = 320)
         
-        self.label_ch = ctk.CTkLabel(master=self.frame_tv, text=f'CH {self.planilha.retorna_valor(self.nome, 3)}', font=('League Spartan bold',30),
+        self.label_ch = ctk.CTkLabel(master=self.frame_tv, text=f'CH {self.tv.canal_atual()}', font=('League Spartan bold',30),
                                      bg_color='#F8FBFD')
         self.label_ch.place(x = 200, y = 315)
         
@@ -167,8 +165,8 @@ class InterfaceTV:
         """
         Exclui a televisão.
         """
-        if self.planilha.excluir_dispositivo(self.nome):
-            self.mensagem('Dispositivo excluído!')
+        if self.tv.excluir():
+            self.mensagem('Dispositivo excluído com sucesso!')
             self.frame_tv.destroy()
             self.janela.update()
         else:
@@ -181,7 +179,7 @@ class InterfaceTV:
         self.mensagem = ctk.CTkLabel(self.frame_tv, 
                                      text=texto, 
                                      font=('League Spartan', 20), 
-                                     fg_color='#d5e8f1')
+                                     fg_color='#CEE2EF')
         self.mensagem.place(x=100, y=620)
         self.frame_tv.update()
         time.sleep(2)

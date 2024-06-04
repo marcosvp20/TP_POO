@@ -129,7 +129,7 @@ class InterfaceNameDisp:
         self.texto = ctk.CTkLabel(master=self.frame_new_disp, 
                                   text=mensagem,
                                     font=('League Spartan', 20), 
-                                    fg_color='white')
+                                    fg_color='#ECF4F9')
         self.texto.place(x = 75, y = 400)
         self.frame_new_disp.update()
         time.sleep(1)

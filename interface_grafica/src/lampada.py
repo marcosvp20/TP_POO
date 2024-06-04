@@ -13,30 +13,21 @@ class Lampada(Objeto):
             self.dados_lampada[3] = True
         else:
             self.dados_lampada[3] = False
-        self.planilha.editar(self.dados_lampada)
+        self.planilha.editar(self.dados_lampada,3)
         
     def mudar_brilho(self, porcentagem:int) -> None:
         self.dados_lampada[2] = porcentagem
-        self.planilha.editar(self.dados_lampada)
-        
-    # def aumentar_brilho(self, porcentagem:int) -> None:
-    #     self.brilho = self.planilha.retorna_valor(self.nome, 3)
-    #     if self.brilho < 100:
-    #         if self.brilho + porcentagem > 100:
-    #             self.dados_lampada[2] = 100
-    #         else:
-    #             self.dados_lampada[2] += porcentagem
-    #     self.planilha.editar(self.dados_lampada)
-        
-    # def diminuir_brilho(self, porcentagem:int) -> None:
-    #     self.brilho = self.planilha.retorna_valor(self.nome, 3)
-    #     if self.brilho > 0:
-    #         if self.brilho - porcentagem < 0:
-    #             self.dados_lampada[2] = 0
-    #         else:
-    #             self.dados_lampada[2] -= porcentagem
-    #     self.planilha.editar(self.dados_lampada)
+        self.planilha.editar(self.dados_lampada,2)
     
+    def brilho_atual(self) -> int:
+        return self.planilha.retorna_valor(self.nome, 3)
+    
+    def esta_ligado(self) -> bool:
+        return self.planilha.retorna_valor(self.nome, 4)
+    
+    def excluir(self) -> bool:
+        return self.planilha.excluir_dispositivo(self.nome)
+
     def salvar(self) -> bool:
         if self.planilha.retorna_quantidade('Lâmpada') < 6:
             if not (self.planilha.verifica_se_objeto_existe(self.nome)):
@@ -44,8 +35,3 @@ class Lampada(Objeto):
         else:
             return False
         
-# lamp = Lampada('Lampada do quarto')
-# lamp1 = Lampada('Lampada da sala')
-# lamp.ligar()
-# lamp.mudar_brilho(30)
-# lamp.mudar_brilho(10)
