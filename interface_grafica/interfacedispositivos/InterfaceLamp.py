@@ -86,13 +86,13 @@ class InterfaceLamp:
                                           text=f"Brilho: {self.lampada.brilho_atual()} %",
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
-                                          fg_color='white',)
+                                          fg_color='#F5F9FC',)
         self.brilho_label.place(x=100, y=330)
 
         slider_brilho = ctk.CTkSlider(self.frame_lamp,
                                             from_=0, to=100,
                                             command=lambda value: self.atualiza_valor(value),
-                                            bg_color='transparent',
+                                            bg_color='#EDF4F9',
                                             fg_color='gray',
                                             progress_color='#348faa',
                                             button_color='black',
