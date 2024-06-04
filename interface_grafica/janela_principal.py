@@ -17,7 +17,7 @@ class JanelaPrincipal:
         """
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(660,750))
-        ctk.set_appearance_mode('light')
+        ctk.set_appearance_mode('light') 
         self.janela_principal = ctk.CTk()
         self.janela_principal.title('ConnecThings')
         self.janela_principal.geometry('450x750')

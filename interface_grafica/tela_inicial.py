@@ -63,7 +63,7 @@ class TelaInicial:
         elif self.hora_atual > 11 and self.hora_atual < 18:
             self.cria_texto('Boa tarde!')
         
-        elif self.hora_atual > 17 and self.hora_atual < 23:
+        elif self.hora_atual > 17 and self.hora_atual <= 23:
             self.cria_texto('Boa noite!')
         
         self.frame.place(x = 0, y = 0)
