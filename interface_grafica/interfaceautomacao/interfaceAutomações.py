@@ -31,8 +31,10 @@ class interfaceAutomacoes:
                                     y = 60)
     
     def botaoadicionar(self) -> None:
-        imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
-        botao_adicionar = Botao(janela=self.frame_automacoes, 
+
+        imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),
+                              size=(25,25))
+        self.botao_adicionar = Botao(janela=self.frame_automacoes, 
                                 posx=42, 
                                 posy=184, 
                                 texto='Adicionar\nAutomação', 
@@ -40,5 +42,5 @@ class interfaceAutomacoes:
    
     def executar(self) -> None:
         self.criarframe()
+        # BotaoDinamicoAuto()
         self.botaoadicionar()
-        # self.texto1()
