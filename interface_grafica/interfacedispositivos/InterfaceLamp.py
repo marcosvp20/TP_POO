@@ -131,10 +131,12 @@ class InterfaceLamp:
         """
         Exclui a lâmpada da planilha de objetos.
         """
+        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+
         if self.lampada.excluir():
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_lamp.destroy()
-            self.janela.update()
+            interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         
         else:
             self.mensagem('Falha ao excluir o dispositivo')

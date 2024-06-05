@@ -138,9 +138,12 @@ class InterfaceAC:
         """
         Exclui o ar condicionado.
         """
+        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+
         if self.ar.excluir():
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_ac.destroy() 
+            interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Falha ao excluir o dispositivo')
              

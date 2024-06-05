@@ -2,9 +2,6 @@ import customtkinter as ctk
 from src.planilha import Planilha
 import openpyxl
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
-from interfacedispositivos.InterfaceAC import InterfaceAC
-from interfacedispositivos.InterfaceLamp import InterfaceLamp
-from interfacedispositivos.InterfaceTV import InterfaceTV
 from PIL import Image
 
 class BotaoDinamico:
@@ -62,6 +59,10 @@ class BotaoDinamico:
         self.nome = self.planilha.retorna_nome()
     
     def insere_botao(self) -> None:
+        from interfacedispositivos.InterfaceAC import InterfaceAC
+        from interfacedispositivos.InterfaceLamp import InterfaceLamp
+        from interfacedispositivos.InterfaceTV import InterfaceTV
+        
         self.importar_posicoes()
         self.importa_nomes()
         self.abre_imagens()

@@ -165,10 +165,12 @@ class InterfaceTV:
         """
         Exclui a televisão.
         """
+        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+
         if self.tv.excluir():
             self.mensagem('Dispositivo excluído com sucesso!')
             self.frame_tv.destroy()
-            self.janela.update()
+            interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Erro ao excluir dispositivo!')   
 
