@@ -109,10 +109,17 @@ class Planilha:
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
          if linha[0] == nome:
             self.planilha.delete_rows(linha_a_excluir)
-            self.workbook.save('objetos.xlsx')
+            self.workbook.save(self.nome_planilha)
             return True
          linha_a_excluir += 1
       return False
+   
+   def retorna_coluna(self, coluna:int) -> str:
+      dados = []
+      for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_dispositivos(), values_only=True):
+         dados.append(linha[coluna-1])
       
-# pla = Planilha('objetos.xlsx')
-# print(pla.excluir_dispositivo('Tv da sala'))
+      return dados
+      
+#pla = Planilha('objetos.xlsx')
+#print(pla.retorna_coluna(1))
