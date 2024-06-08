@@ -3,7 +3,7 @@ from PIL import Image
 from interfacedispositivos.botao_disp import Botao
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 import os
-from src.botao_dinamico import BotaoDinamico
+from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.frame import Frame
 
 class interfaceDispositivos:
@@ -25,7 +25,8 @@ class interfaceDispositivos:
         """
         self.criaframe()
         InterfaceNewDisp(self.janela)
-        BotaoDinamico(self.frame_dispositivos)
+        bd = BotaoDinamicoDisp(self.frame_dispositivos)
+        bd.insere_botao_add()
     
     def atualizar(self) -> None:
         """
