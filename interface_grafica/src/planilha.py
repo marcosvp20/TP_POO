@@ -120,6 +120,13 @@ class Planilha:
          dados.append(linha[coluna-1])
       
       return dados
-      
+
+#limpa todos os dados da planilha
+   def limpar_planilha(self) -> None:
+        for linha in self.planilha.iter_rows():
+            for celula in linha:
+                celula.value = None
+
+        self.workbook.save(self.nome_planilha)
 #pla = Planilha('objetos.xlsx')
 #print(pla.retorna_coluna(1))
