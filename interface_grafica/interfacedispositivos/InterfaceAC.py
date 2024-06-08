@@ -3,6 +3,7 @@ import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
 from src.arcondicionado import ArCondicionado
 import time
+from src.frame import Frame
 
 class InterfaceAC:
     """
@@ -22,25 +23,7 @@ class InterfaceAC:
         """
         Cria o frame da interface do ar condicionado.
         """
-        bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), size=(450,750))
-        self.frame_ac = ctk.CTkFrame(self.janela, 
-                                     width=450, 
-                                     height=660, 
-                                     fg_color="transparent")
-        self.frame_ac.place(x=0, y=0)
-        
-        label = ctk.CTkLabel(self.frame_ac, 
-                             width=450, 
-                             height= 660, 
-                             image=bg, 
-                             text='')
-        label.place(x=0, y=0)
-        
-        self.caixa_de_texto1 = ctk.CTkLabel(self.frame_ac, 
-                                            text=f'{self.nome}', 
-                                            font=('League Spartan', 30), 
-                                            fg_color='white')
-        self.caixa_de_texto1.place(x=30, y=40)
+        self.frame_ac = Frame(self.janela, f'{self.nome}', '').frame
         
     def switch(self) -> None:
         """

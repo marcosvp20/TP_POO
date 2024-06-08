@@ -3,6 +3,7 @@ from PIL import Image
 import customtkinter as ctk
 from interfacedispositivos.botao_disp import Botao
 from interfacedispositivos.InterfaceNameDisp import InterfaceNameDisp
+from src.frame import Frame
 
 class InterfaceNewDisp:
     """
@@ -16,38 +17,7 @@ class InterfaceNewDisp:
         """
         Cria o frame da interface para adicionar um novo dispositivo.
         """
-
-        bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
-                          size=(450,750))
-        self.frame_new_disp = ctk.CTkFrame(self.janela, 
-                                           width=800, 
-                                           height=500,
-                                           fg_color= "transparent")
-        self.frame_new_disp.place(x=0, 
-                                 y=0)
-        
-        label = ctk.CTkLabel(self.frame_new_disp, 
-                             width=450, 
-                             height= 660, 
-                             image=bg, 
-                             text='')
-        
-        label.place(x = 0, 
-                    y = 0)
-        
-        self.caixa_de_texto1 = ctk.CTkLabel(self.frame_new_disp,
-                                             text='Qual dispositivo deseja',
-                                             font=('League Spartan', 30),
-                                             fg_color='white')
-        self.caixa_de_texto1.place(x = 10,
-                                    y = 60)
-        
-        self.caixa_de_texto2 = ctk.CTkLabel(self.frame_new_disp,
-                                             text='adicionar?:',
-                                             font=('League Spartan', 30),
-                                             fg_color='white')
-        self.caixa_de_texto2.place(x = 10,
-                                    y = 100)
+        self.frame_new_disp = Frame(self.janela, 'Qual dispositivo deseja', 'adicionar?').frame
         
     def botao_ar (self) -> None:
         """
@@ -68,7 +38,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar uma lâmpada.
         """
-        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada",self.frame_new_disp)
+        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada", self.frame_new_disp)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -99,8 +69,8 @@ class InterfaceNewDisp:
         Executa a interface gráfica.
         """
         self.criaframe()
-        self.frame_new_disp.place(x = 0, 
-                                  y = 0)
+        # self.frame_new_disp.place(x = 0, 
+        #                           y = 0)
         self.botao_ar()
         self.botao_lampada()
         self.botao_tv()
