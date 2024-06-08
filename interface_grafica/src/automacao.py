@@ -1,5 +1,5 @@
-from planilha import  Planilha
-from planilha_auto import PlanilhaAuto
+from src.planilha import Planilha
+from src.planilha_auto import PlanilhaAuto
 
 class Automacao:
     #abre as planilhas e recebe o nome da automação
@@ -50,8 +50,8 @@ class Automacao:
             self.planilha_auto.salvar(dados)
         self.__excluir_temp()
         
-for i in range (0,5):                 
-    auto = Automacao('boa tarde')
-    auto.adicionar_auto_temp(['ar da sala', 23, True])
+# for i in range (0,5):                 
+#     auto = Automacao('boa tarde')
+#     auto.adicionar_auto_temp(['ar da sala', 23, True])
 
-auto.adicionar_auto()
+# auto.adicionar_auto()

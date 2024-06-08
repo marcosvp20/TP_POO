@@ -8,13 +8,13 @@ class InterfaceTV:
     """
     Classe que representa a interface gráfica de uma televisão.
     """
-    def __init__(self, janela:ctk, nome:str) -> None:
+    def __init__(self, janela:ctk, nome:str, planilha:str) -> None:
         """
         Inicializa a classe InterfaceTV.
         """
         self.janela = janela
         self.nome = nome
-        self.tv = Televisao(self.nome)
+        self.tv = Televisao(self.nome, planilha)
         self.volume = self.tv.volume_atual()
         self.ligado = self.tv.esta_ligado()
         self.canal = self.tv.canal_atual()

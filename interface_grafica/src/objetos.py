@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 from src.planilha import Planilha
 
 class Objeto(ABC):
-    def __init__(self, nome) -> None:
+    def __init__(self, nome, planilha) -> None:
         self.nome = nome
-        self.planilha = Planilha('objetos.xlsx')
+        self.planilha = Planilha(planilha)
         self.ligado = False
         
     def salvar(self,dados) -> bool:

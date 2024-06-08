@@ -2,8 +2,8 @@ from src.objetos import Objeto
 
 class Televisao (Objeto):
 
-    def __init__ (self, nome:str) -> None:
-        super().__init__(nome)
+    def __init__ (self, nome:str, planilha:str) -> None:
+        super().__init__(nome, planilha)
         self.canal = 1
         self.volume = 0
         self.ligado = False

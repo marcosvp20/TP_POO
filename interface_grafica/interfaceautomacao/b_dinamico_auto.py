@@ -6,10 +6,6 @@ from src.botao_dinamico import BotaoDinamico
 
 class BotaoDinamicoAuto(BotaoDinamico):
     def __init__(self, janela:ctk) -> None:
-        # self.janela = janela
-        # self.nome = []
-        # self.posicoesx = []
-        # self.posicoesy = []
         super().__init__(janela)
         self.planilha = Planilha('automacoes.xlsx')
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
@@ -33,10 +29,9 @@ class BotaoDinamicoAuto(BotaoDinamico):
         self.abre_imagens()
         if self.quantidade > 0:
             for i in range(0, self.quantidade):
-                
                 self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= None)
-
+                                     texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= None)
+                
     def botao_add (self, posx, posy ) -> None:
         new_auto = interfaceNewAuto(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))

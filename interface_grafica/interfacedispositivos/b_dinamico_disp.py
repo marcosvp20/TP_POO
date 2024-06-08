@@ -5,12 +5,12 @@ from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 
 class BotaoDinamicoDisp(BotaoDinamico):
-    def __init__(self, janela:ctk) -> None:
+    def __init__(self, janela:ctk, planilha) -> None:
         super().__init__(janela)
-        self.planilha = Planilha('objetos.xlsx')
+        self.planilha = Planilha(planilha)
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
         self.tipos = self.planilha.retorna_tipos()
-        self.insere_botoes()
+        self.insere_botoes(planilha)
 
     def configura_botao(self, posx, posy, texto, imagem, comando):
         super().configura_botao(posx, posy, texto, imagem, comando)
@@ -26,7 +26,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
         self.imagem_lamp = ctk.CTkImage(Image.open('imagens/lampada.png'),size=(40,40))
         self.imagem_tv = ctk.CTkImage(Image.open('imagens/tv.png'),size=(40,40))
 
-    def insere_botoes(self) -> None:
+    def insere_botoes(self, planilha) -> None:
         from interfacedispositivos.InterfaceAC import InterfaceAC
         from interfacedispositivos.InterfaceLamp import InterfaceLamp
         from interfacedispositivos.InterfaceTV import InterfaceTV
@@ -39,15 +39,15 @@ class BotaoDinamicoDisp(BotaoDinamico):
                 
                 match(self.tipos[i]):
                     case 'A/C':
-                        interfaceAC = InterfaceAC(self.janela, self.nome[i])
+                        interfaceAC = InterfaceAC(self.janela, self.nome[i], planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
-                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i])
+                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i], planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_lamp, comando= interfaceLamp.executar)
                     case 'Televisor':
-                        interfaceTV = InterfaceTV(self.janela, self.nome[i])
+                        interfaceTV = InterfaceTV(self.janela, self.nome[i], planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
 

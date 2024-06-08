@@ -1,8 +1,8 @@
 from src.objetos import Objeto
 
 class Lampada(Objeto):
-    def __init__(self, nome) -> None:
-        super().__init__(nome)
+    def __init__(self, nome, planilha:str) -> None:
+        super().__init__(nome, planilha)
         self.brilho = 0
         self.tipo = 'Lâmpada'
         self.dados_lampada = [self.nome, self.tipo, self.brilho, self.ligado]

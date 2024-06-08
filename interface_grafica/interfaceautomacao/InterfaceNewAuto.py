@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from PIL import Image
 from src.frame import Frame
-
+from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from src.automacao import Automacao
 
 class interfaceNewAuto:
     def __init__(self, janela) -> None:
@@ -13,5 +13,10 @@ class interfaceNewAuto:
     
     def executar(self) -> None:
         self.cria_frame()
+        auto = Automacao('')
+        auto._Automacao__excluir_temp()
+        auto.planilha_auto_temp = auto.planilha_disp
+        BotaoDinamicoDisp(self.janela, 'automacoestemp.xlsx')
+        
         
         

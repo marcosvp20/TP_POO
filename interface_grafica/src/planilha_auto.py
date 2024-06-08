@@ -1,4 +1,4 @@
-from planilha import Planilha
+from src.planilha import Planilha
 import string
 
 class PlanilhaAuto(Planilha):

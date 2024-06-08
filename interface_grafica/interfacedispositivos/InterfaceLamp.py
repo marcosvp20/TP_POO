@@ -8,10 +8,13 @@ class InterfaceLamp:
     """
     Classe que representa a interface gráfica de uma lâmpada.
     """
-    def __init__(self, janela:ctk, nome:str) -> None:
+    def __init__(self, janela:ctk, nome:str, planilha:str) -> None:
+        """
+        Inicializa a classe InterfaceLamp.
+        """
         self.janela = janela
         self.nome = nome
-        self.lampada = Lampada(self.nome)
+        self.lampada = Lampada(self.nome, planilha)
         self.brilho = self.lampada.brilho_atual()
         self.ligado = self.lampada.esta_ligado()
 

@@ -25,7 +25,7 @@ class interfaceDispositivos:
         """
         self.criaframe()
         InterfaceNewDisp(self.janela)
-        bd = BotaoDinamicoDisp(self.frame_dispositivos)
+        bd = BotaoDinamicoDisp(self.frame_dispositivos, 'objetos.xlsx')
         bd.insere_botao_add()
     
     def atualizar(self) -> None:

@@ -1,6 +1,5 @@
 from PIL import Image
 import customtkinter as ctk
-from interfacedispositivos.botao_disp import Botao
 from src.arcondicionado import ArCondicionado
 import time
 from src.frame import Frame
@@ -9,13 +8,13 @@ class InterfaceAC:
     """
     Classe que representa a interface gráfica de um ar condicionado.
     """
-    def __init__(self, janela, nome):
+    def __init__(self, janela:ctk, nome:str, planilha:str):
         """
         Inicializa a classe InterfaceAC.
         """
         self.janela = janela
         self.nome = nome
-        self.ar = ArCondicionado(self.nome)
+        self.ar = ArCondicionado(self.nome, planilha)
         self.ar.temperatura = self.ar.temperatura_atual()
         self.ar.ligado = self.ar.esta_ligado()
 
