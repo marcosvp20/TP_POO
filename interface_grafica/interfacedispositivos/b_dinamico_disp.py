@@ -5,6 +5,7 @@ from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 
 class BotaoDinamicoDisp(BotaoDinamico):
+    
     """Classe que representa um botão dinâmico para dispositivos."""
 
     def __init__(self, janela:ctk, planilha) -> None:

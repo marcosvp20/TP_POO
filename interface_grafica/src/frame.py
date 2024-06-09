@@ -4,7 +4,17 @@ from PIL import Image
 class Frame:
     def __init__(self, janela, texto1, texto2) -> None:
         """
-        Cria um frame com jnaela e textos passados como parâmetros: um texto por linha.
+        Classe que representa um frame na interface gráfica.
+
+        Args:
+            janela (objeto): Objeto da janela onde o frame será exibido.
+            texto1 (str): Texto a ser exibido na primeira caixa de texto.
+            texto2 (str): Texto a ser exibido na segunda caixa de texto.
+
+        Attributes:
+            frame (objeto): Objeto do frame.
+            caixa_de_texto1 (objeto): Objeto da primeira caixa de texto.
+            caixa_de_texto2 (objeto): Objeto da segunda caixa de texto (opcional).
         """
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
