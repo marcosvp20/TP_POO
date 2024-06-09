@@ -5,7 +5,12 @@ from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 
 class BotaoDinamicoDisp(BotaoDinamico):
+    """Classe que representa um botão dinâmico para dispositivos."""
+
     def __init__(self, janela:ctk, planilha) -> None:
+        """
+        Inicializa a classe BotaoDinamicoDisp.
+        """
         super().__init__(janela)
         self.planilha = Planilha(planilha)
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
@@ -13,20 +18,35 @@ class BotaoDinamicoDisp(BotaoDinamico):
         self.insere_botoes(planilha)
 
     def configura_botao(self, posx, posy, texto, imagem, comando):
+        """
+        Configura um botão dinâmico.
+        """
         super().configura_botao(posx, posy, texto, imagem, comando)
 
     def importar_posicoes(self) -> None:
+        """
+        Importa as posições dos botões.
+        """
         super().importar_posicoes()
 
     def importa_nomes(self) -> None:
+        """
+        Importa os nomes dos dispositivos.
+        """
         super().importa_nomes()
     
     def abre_imagens(self) -> None:
+        """
+        Abre as imagens dos dispositivos.
+        """
         self.imagem_ac = ctk.CTkImage(Image.open('imagens/arcondicionado.png'),size=(40,40))
         self.imagem_lamp = ctk.CTkImage(Image.open('imagens/lampada.png'),size=(40,40))
         self.imagem_tv = ctk.CTkImage(Image.open('imagens/tv.png'),size=(40,40))
 
     def insere_botoes(self, planilha) -> None:
+        """
+        Insere os botões na interface.
+        """
         from interfacedispositivos.InterfaceAC import InterfaceAC
         from interfacedispositivos.InterfaceLamp import InterfaceLamp
         from interfacedispositivos.InterfaceTV import InterfaceTV
@@ -52,6 +72,9 @@ class BotaoDinamicoDisp(BotaoDinamico):
                         texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
 
     def botao_add (self, posx, posy ) -> None:
+        """
+        Adiciona um botão para adicionar um novo dispositivo.
+        """
         new_disp = InterfaceNewDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botao_add = self.botao = ctk.CTkButton(master=self.janela, 
@@ -69,5 +92,8 @@ class BotaoDinamicoDisp(BotaoDinamico):
                              y = posy) 
 
     def insere_botao_add(self) -> None:
+        """
+        Insere o botão para adicionar um novo dispositivo.
+        """
         if self.quantidade < 6:
             self.botao_add(self.posicoesx[self.quantidade], self.posicoesy[self.quantidade])
