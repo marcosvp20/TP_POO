@@ -13,7 +13,7 @@ class Planilha:
       Args:
          nome_planilha (str): O nome do arquivo da planilha.
       """
-      self.nome_planilha = 'objetos.xlsx'
+      self.nome_planilha = nome_planilha
       self.workbook = openpyxl.load_workbook(self.nome_planilha)
       self.planilha = self.workbook['Sheet1']
       self.proxima_linha = self.planilha.max_row + 1

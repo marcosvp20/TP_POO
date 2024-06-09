@@ -13,7 +13,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         Inicializa a classe BotaoDinamicoAuto.
         """
         super().__init__(janela)
-        self.planilha = Planilha('automacoes.xlsx')
+        self.planilha = Planilha('planilhas/automacoes.xlsx')
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
         self.insere_botoes()
     

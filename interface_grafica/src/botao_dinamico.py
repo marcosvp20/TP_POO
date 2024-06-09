@@ -51,7 +51,7 @@ class BotaoDinamico(ABC):
         """
         Importa as posições dos botões a partir de um arquivo Excel.
         """
-        self.workbook = openpyxl.load_workbook('posicoes.xlsx')
+        self.workbook = openpyxl.load_workbook('planilhas/posicoes.xlsx')
         self.planilha_1 = self.workbook['Sheet1']
         
         for linha in self.planilha_1.iter_rows(min_row=1, values_only=True):
