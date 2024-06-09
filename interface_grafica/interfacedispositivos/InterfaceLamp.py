@@ -128,7 +128,7 @@ class InterfaceLamp:
         """
         self.texto = ctk.CTkLabel(master=self.frame_lamp, text=mensagem,
                              font=('League Spartan', 20), fg_color='#CEE2EF')
-        self.texto.place(x = 100, y = 620)
+        self.texto.place(x = 85, y = 620)
         self.frame_lamp.update()
         time.sleep(1)
         

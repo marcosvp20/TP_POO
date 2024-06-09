@@ -160,7 +160,7 @@ class InterfaceTV:
                                      text=texto, 
                                      font=('League Spartan', 20), 
                                      fg_color='#CEE2EF')
-        self.mensagem.place(x=100, y=620)
+        self.mensagem.place(x=85, y=620)
         self.frame_tv.update()
         time.sleep(2)
         

@@ -60,37 +60,33 @@ class InterfaceNameDisp:
         self.frame_name_disp.update()
         if self.tipo:
             self.new_name = self.txtbox_name_disp.get().strip()
-            print(self.new_name)
             if self.new_name:
                 match(self.tipo):
                     case "A/C":
                         if ArCondicionado(self.new_name,self.planilha).salvar():
-                            print("AC adicionado")
-                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
-                        else:
-                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')
+                        elif self.planilha.verifica_se_objeto_existe(self.new_name):
+                            self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
-                            self.frame_name_disp.update()                            
+                            self.frame_name_disp.update()
                     case "Lâmpada":
                         if Lampada(self.new_name,self.planilha).salvar():
-                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
-                            print("Lamp adicionada")
-                        else:
-                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')
+                        elif self.planilha.verifica_se_objeto_existe(self.new_name):
+                            self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()
                     case "Televisor":
                         if Televisao(self.new_name,self.planilha).salvar():
-                            self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
+                            self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
-                            print("TV adicionada")
-                        else:
-                            self.mensagem_confirmacao('O dispositivo não pode ser adicionado')  
+                        elif self.planilha.verifica_se_objeto_existe(self.new_name):
+                            self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()
                             
@@ -102,7 +98,7 @@ class InterfaceNameDisp:
                                   text=mensagem,
                                     font=('League Spartan', 20), 
                                     fg_color='#ECF4F9')
-        self.texto.place(x = 75, y = 400)
+        self.texto.place(x = 50, y = 400)
         self.frame_name_disp.update()
         time.sleep(1)
         
