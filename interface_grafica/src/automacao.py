@@ -9,9 +9,9 @@ class Automacao:
         Args:
             nome_auto (str): O nome da automação.
         """
-        self.planilha_disp = Planilha('objetos.xlsx')
-        self.planilha_auto = PlanilhaAuto('automacoes.xlsx')
-        self.planilha_auto_temp = PlanilhaAuto('automacoestemp.xlsx')
+        self.planilha_disp = Planilha('planilhas/objetos.xlsx')
+        self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
+        self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
     
     def __salvar(self,dados:list,planilha:PlanilhaAuto) -> None:

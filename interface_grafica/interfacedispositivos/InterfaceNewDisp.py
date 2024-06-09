@@ -69,8 +69,6 @@ class InterfaceNewDisp:
         Executa a interface gráfica.
         """
         self.criaframe()
-        # self.frame_new_disp.place(x = 0, 
-        #                           y = 0)
         self.botao_ar()
         self.botao_lampada()
         self.botao_tv()

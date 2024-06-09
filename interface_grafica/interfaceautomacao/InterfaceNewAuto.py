@@ -25,7 +25,7 @@ class interfaceNewAuto:
         auto = Automacao('')
         auto._Automacao__excluir_temp()
         auto.planilha_auto_temp = auto.planilha_disp
-        BotaoDinamicoDisp(self.janela, 'automacoestemp.xlsx')
+        BotaoDinamicoDisp(self.janela, 'planilhas/automacoestemp.xlsx')
         
         
         
