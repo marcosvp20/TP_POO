@@ -17,7 +17,7 @@ class InterfaceNameDisp:
         self.frame_anterior = frame_anterior
         self.janela = janela
         self.tipo = tipo
-        self.planilha = Planilha('objetos.xlsx')
+        self.planilha = Planilha('planilhas/objetos.xlsx')
 
     def criaframe(self) -> None:
         """
@@ -63,7 +63,7 @@ class InterfaceNameDisp:
             if self.new_name:
                 match(self.tipo):
                     case "A/C":
-                        if ArCondicionado(self.new_name,self.planilha).salvar():
+                        if ArCondicionado(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
@@ -72,7 +72,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()
                     case "Lâmpada":
-                        if Lampada(self.new_name,self.planilha).salvar():
+                        if Lampada(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
@@ -81,7 +81,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()
                     case "Televisor":
-                        if Televisao(self.new_name,self.planilha).salvar():
+                        if Televisao(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
@@ -110,9 +110,12 @@ class InterfaceNameDisp:
         
     def parar_execucao(self) -> None:
         """
-        Para a execução da interface.
+        Para a execução da interface e retorna para o menu de dispositivos.
         """
+        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+
         self.frame_name_disp.destroy()
+        interfaceDispositivos(self.janela).executar()
         
     def executar(self) -> None:
         """
