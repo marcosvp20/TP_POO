@@ -64,7 +64,7 @@ class InterfaceNameDisp:
             if self.new_name:
                 match(self.tipo):
                     case "A/C":
-                        if ArCondicionado(self.new_name).salvar():
+                        if ArCondicionado(self.new_name,self.planilha).salvar():
                             print("AC adicionado")
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
                             self.parar_execucao()
@@ -74,7 +74,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()                            
                     case "Lâmpada":
-                        if Lampada(self.new_name).salvar():
+                        if Lampada(self.new_name,self.planilha).salvar():
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
@@ -84,7 +84,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.frame_name_disp.update()
                     case "Televisor":
-                        if Televisao(self.new_name).salvar():
+                        if Televisao(self.new_name,self.planilha).salvar():
                             self.mensagem_confirmacao('Dispositivo adicionado com sucesso!!')
                             self.parar_execucao()
                             self.frame_name_disp.update()
