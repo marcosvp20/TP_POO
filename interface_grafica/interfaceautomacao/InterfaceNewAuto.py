@@ -4,6 +4,7 @@ from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.automacao import Automacao
 from src.planilha_auto import PlanilhaAuto
 from src.planilha import Planilha
+from interfaceautomacao.InterfaceNameAuto import InterfaceNameAuto
 
 class interfaceNewAuto:
     def __init__(self, janela) -> None:
@@ -31,7 +32,7 @@ class interfaceNewAuto:
         auto._excluir_temp()
     
     def botaoProximo(self):
-
+        nome_auto = InterfaceNameAuto(self.janela)
         self.botao_proximo = ctk.CTkButton(master=self.frame_new_auto, 
                                            width=170, 
                                            height=50, 
@@ -40,7 +41,7 @@ class interfaceNewAuto:
                                            corner_radius=0, 
                                            text='Próximo', 
                                            text_color='black', 
-                                           command=None)
+                                           command=nome_auto.executar)
         self.botao_proximo.place(x=140, y=560)
         
     def executar(self) -> None:

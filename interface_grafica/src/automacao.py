@@ -13,7 +13,6 @@ class Automacao:
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
-        self._excluir_temp()
     
     def __salvar(self,dados:list,planilha:PlanilhaAuto) -> None:
         """
@@ -26,7 +25,7 @@ class Automacao:
         self.__planilha = planilha
         self.__planilha.salvar(dados)
         
-    def adicionar_auto_temp(self, dados:list) -> None:
+    def adicionar_auto_temp(self) -> None:
         """
         Adiciona as automações à planilha temporária.
 
@@ -34,10 +33,12 @@ class Automacao:
             dados (list): Os dados das automações a serem adicionadas.
         """
         self.qnt_disp_auto = self.planilha_disp.retorna_quantidade_dispositivos()
-        self.dados_auto = dados
-        self.dados_auto.insert(0,self.nome_auto)
-        self.dados_auto.insert(1,self.qnt_disp_auto)
-        self.__salvar(dados= dados, planilha=self.planilha_auto_temp)
+        for i in range(1,self.qnt_disp_auto+1):
+            self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
+            self.dados_auto.insert(0,self.nome_auto)
+            print(self.dados_auto)
+            #self.dados_auto.insert(1,self.qnt_disp_auto)
+            self.__salvar(dados= self.dados_auto, planilha=self.planilha_auto)
 
     def excluir_auto(self,nome:str) -> bool:
         """
@@ -82,5 +83,27 @@ class Automacao:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
         """
-        self.planilha_auto.copia_planilha(planilha_origem = 'planilhas/automacoestemp.xlsx')
+        self.adicionar_auto_temp()
+        #self.__exclui_dispositivos()
+        #self.planilha_auto.copia_planilha(planilha_origem = 'planilhas/automacoestemp.xlsx')
         self._excluir_temp()
+        
+    
+    def __exclui_dispositivos(self) -> None:
+        """
+        Exclui os dispositivos importados para a planilha de automações temporária
+        """
+        self.__nome_dispositivos = self.planilha_disp.retorna_coluna(1)
+        for i in range(0, len(self.__nome_dispositivos)):
+            self.planilha_auto_temp.excluir_dispositivo(self.__nome_dispositivos[i])
+    
+
+            
+    def retorna_nomes_auto(self) -> list:
+        """
+        Retorna uma lista com os nomes das automações sem repetição
+        """
+        self.__nomes_auto_temp = self.planilha_auto.retorna_coluna(1)
+        self.__nomes_auto = list(set(self.__nomes_auto_temp))
+        
+        return self.__nomes_auto

@@ -41,7 +41,7 @@ class PlanilhaAuto(Planilha):
 
         return valores_linha
     
-    def copia_planilha(self, planilha_origem) -> None:
+    def copia_planilha(self, planilha_origem:str) -> None:
         """
         Copia o conteúdo de uma planilha de origem para a planilha atual.
 
@@ -57,3 +57,4 @@ class PlanilhaAuto(Planilha):
                 self.planilha.append(row)
             
             self.workbook.save(self.nome_planilha)
+    
