@@ -3,6 +3,7 @@ import customtkinter as ctk
 from src.frame import Frame
 from src.automacao import Automacao
 from PIL import Image
+from time import sleep
 
 class InterfaceNameAuto:
     def __init__(self, janela:ctk) -> None:
@@ -54,6 +55,8 @@ class InterfaceNameAuto:
         self.__nome_auto = self.txtbox_name_auto.get().strip()
         auto = Automacao(self.__nome_auto)
         auto.adicionar_auto()
+        sleep(2)
+        self.frame_name_auto.destroy()
         
     def executar(self) -> None:
         """

@@ -58,3 +58,4 @@ class PlanilhaAuto(Planilha):
             
             self.workbook.save(self.nome_planilha)
     
+    

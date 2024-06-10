@@ -215,3 +215,25 @@ class Planilha:
             celula.value = None
 
       self.workbook.save(self.nome_planilha)
+   
+   def excluir_linha(self, nome:str, coluna:int):
+      """
+      Exclui a linha em que o parâmetro passado esta.
+
+      Args:
+         nome (str): O nome do dispositivo a ser excluído.
+         coluna (int): coluna na qual o nome está
+
+      Returns:
+         bool: True se o dispositivo foi excluído com sucesso, False caso contrário.
+      """
+      linha_a_excluir = 1
+      for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         if linha[coluna] == nome:
+            self.planilha.delete_rows(linha_a_excluir)
+            self.workbook.save(self.nome_planilha)
+            return True
+         linha_a_excluir += 1
+      return False
+
+

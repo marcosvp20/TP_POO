@@ -13,6 +13,7 @@ class Automacao:
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
+        print('Aqui',len(self.planilha_auto.retorna_coluna(1)))
     
     def __salvar(self,dados:list,planilha:PlanilhaAuto) -> None:
         """
@@ -34,7 +35,7 @@ class Automacao:
         """
         pass
 
-    def excluir_auto(self,nome:str) -> bool:
+    def excluir_auto(self,nome:str,coluna = None) -> bool:
         """
         Exclui uma automação de acordo com o nome.
 
@@ -44,12 +45,17 @@ class Automacao:
         Returns:
             bool: True se a automação foi excluída com sucesso, False caso contrário.
         """
-        if self.planilha_auto.verifica_se_objeto_existe(nome):
-            for i in range(0,self.__quantidade_automacoes(nome)):
-                self.planilha_auto.excluir_dispositivo(nome)
-            return True
-        return False
-    
+        if coluna == None:
+            if self.planilha_auto.verifica_se_objeto_existe(nome):
+                for i in range(0,self.__quantidade_automacoes(nome)):
+                    self.planilha_auto.excluir_dispositivo(nome)
+                return True
+            return False
+        else:
+            for i in range(0,len(self.planilha_auto.retorna_coluna(1))):
+                print('2')
+                self.planilha_auto.excluir_linha(nome, coluna)
+
     def _excluir_temp(self) -> None:
         """
         Exclui a planilha temporária.
@@ -96,3 +102,6 @@ class Automacao:
         self.__nomes_auto = list(set(self.__nomes_auto_temp))
         
         return self.__nomes_auto
+
+# auto = Automacao(None)
+# print(auto.excluir_auto('C', 2))

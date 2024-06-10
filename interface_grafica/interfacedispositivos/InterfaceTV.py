@@ -3,7 +3,7 @@ import customtkinter as ctk
 from src.televisao import Televisao
 import time
 from src.frame import Frame
-
+from src.automacao import Automacao
 class InterfaceTV:
     """
     Classe que representa a interface gráfica de uma televisão.
@@ -159,8 +159,11 @@ class InterfaceTV:
         Exclui a televisão.
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+        auto = Automacao(None)
 
         if self.tv.excluir():
+            print(self.nome)
+            auto.excluir_auto(self.nome, 1)
             self.mensagem('Dispositivo excluído com sucesso!')
             self.frame_tv.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
