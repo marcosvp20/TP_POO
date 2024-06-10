@@ -23,7 +23,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar um ar condicionado.
         """
-        new_ar = InterfaceNameDisp(self.janela, "A/C",self.frame_new_disp)
+        new_ar = InterfaceNameDisp(self.janela, "A/C")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -38,7 +38,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar uma lâmpada.
         """
-        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada", self.frame_new_disp)
+        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 
@@ -53,7 +53,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar uma TV.
         """
-        new_tv = InterfaceNameDisp(self.janela, "Televisor",self.frame_new_disp)
+        new_tv = InterfaceNameDisp(self.janela, "Televisor")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
         self.botao_adicionar = Botao(janela=self.frame_new_disp, 
                                  posx=135, 

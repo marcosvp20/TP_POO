@@ -54,9 +54,26 @@ class InterfaceNameAuto:
         """
         self.__nome_auto = self.txtbox_name_auto.get().strip()
         auto = Automacao(self.__nome_auto)
-        auto.adicionar_auto()
-        sleep(2)
-        self.frame_name_auto.destroy()
+        if auto.adicionar_auto():
+            self.__mensagem_confirmacao('     Automação adicionada com sucesso!!')
+        else:
+            self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
+        
+        from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
+        IA = interfaceAutomacoes(self.janela)
+        IA.executar()
+    
+    def __mensagem_confirmacao(self,mensagem:str) -> None:
+        """
+        Exibe uma mensagem de confirmação na interface.
+        """
+        self.texto = ctk.CTkLabel(master=self.frame_name_auto, 
+                                  text=mensagem,
+                                    font=('League Spartan', 20), 
+                                    fg_color='#ECF4F9', anchor='center')
+        self.texto.place(x = 50, y = 400)
+        self.frame_name_auto.update()
+        sleep(1)
         
     def executar(self) -> None:
         """

@@ -13,28 +13,7 @@ class Automacao:
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
-        print('Aqui',len(self.planilha_auto.retorna_coluna(1)))
     
-    def __salvar(self,dados:list,planilha:PlanilhaAuto) -> None:
-        """
-        Salva os dados na planilha especificada.
-
-        Args:
-            dados (list): Os dados a serem salvos.
-            planilha (PlanilhaAuto): A planilha onde os dados serão salvos.
-        """
-        self.__planilha = planilha
-        self.__planilha.salvar(dados)
-        
-    def adicionar_auto_temp(self) -> None:
-        """
-        Adiciona as automações à planilha temporária.
-
-        Args:
-            dados (list): Os dados das automações a serem adicionadas.
-        """
-        pass
-
     def excluir_auto(self,nome:str,coluna = None) -> bool:
         """
         Exclui uma automação de acordo com o nome.
@@ -79,19 +58,24 @@ class Automacao:
                 self.__quantidade += 1
         return self.__quantidade
     
-    def adicionar_auto(self) -> None:
+    def adicionar_auto(self) -> bool:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
         """
-        self.qnt_disp_auto = self.planilha_disp.retorna_quantidade_dispositivos()
-        for i in range(1,self.qnt_disp_auto+1):
-            self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
-            self.dados_auto.insert(0,self.nome_auto)
-            print(self.dados_auto)
-            self.planilha_auto.salvar(self.dados_auto)
-            #self.dados_auto.insert(1,self.qnt_disp_auto)
-            #self.__salvar(dados= self.dados_auto, planilha=self.planilha_auto)
-        self._excluir_temp()
+        self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_dispositivos() #retorna a quantidade de linhas da planilha
+        
+        if not self.planilha_auto.verifica_se_objeto_existe(self.nome_auto):
+            for i in range(1,self.qnt_linhas_auto+1):
+                self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
+                self.dados_auto.insert(0,self.nome_auto)
+                print(self.dados_auto)
+                self.planilha_auto.salvar(self.dados_auto)
+                #self.dados_auto.insert(1,self.qnt_disp_auto)
+            self._excluir_temp()
+            
+            return True
+        else:
+            return False
 
             
     def retorna_nomes_auto(self) -> list:
@@ -102,6 +86,17 @@ class Automacao:
         self.__nomes_auto = list(set(self.__nomes_auto_temp))
         
         return self.__nomes_auto
+
+    def executar_automacao(self, nome_auto:str) -> None:
+        
+        for i in range(0, self.qnt_linhas_auto):
+            linha = self.planilha_auto.retorna_linha(i+1)
+            if linha[i] == nome_auto:
+                for j in range(1,len(linha)):
+                    
+            
+            
+        
 
 # auto = Automacao(None)
 # print(auto.excluir_auto('C', 2))
