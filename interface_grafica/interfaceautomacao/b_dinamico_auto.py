@@ -3,6 +3,7 @@ from src.planilha import Planilha
 from interfaceautomacao.InterfaceNewAuto import interfaceNewAuto
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
+from src.automacao import Automacao
 
 class BotaoDinamicoAuto(BotaoDinamico):
 
@@ -14,7 +15,8 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         super().__init__(janela)
         self.planilha = Planilha('planilhas/automacoes.xlsx')
-        self.quantidade = self.planilha.retorna_quantidade_dispositivos()
+        self.importa_nomes()
+        self.quantidade = len(self.nome)
         self.insere_botoes()
     
     def configura_botao(self, posx, posy, texto, imagem, comando):
@@ -33,7 +35,10 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Importa os nomes dos botões a partir de um arquivo.
         """
-        super().importa_nomes()
+        auto = Automacao(None)
+        self.nome = auto.retorna_nomes_auto()
+        
+        #super().importa_nomes()
     
     def abre_imagens(self) -> None:
         """
@@ -46,7 +51,6 @@ class BotaoDinamicoAuto(BotaoDinamico):
         Insere os botões no frame.
         """
         self.importar_posicoes()
-        self.importa_nomes()
         self.abre_imagens()
         if self.quantidade > 0:
             for i in range(0, self.quantidade):
