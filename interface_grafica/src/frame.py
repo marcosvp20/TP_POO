@@ -2,7 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 
 class Frame:
-    def __init__(self, janela, texto1, texto2) -> None:
+    def __init__(self, janela, texto1, texto2='') -> None:
         """
         Classe que representa um frame na interface gráfica.
 

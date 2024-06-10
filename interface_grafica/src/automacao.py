@@ -32,13 +32,7 @@ class Automacao:
         Args:
             dados (list): Os dados das automações a serem adicionadas.
         """
-        self.qnt_disp_auto = self.planilha_disp.retorna_quantidade_dispositivos()
-        for i in range(1,self.qnt_disp_auto+1):
-            self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
-            self.dados_auto.insert(0,self.nome_auto)
-            print(self.dados_auto)
-            #self.dados_auto.insert(1,self.qnt_disp_auto)
-            self.__salvar(dados= self.dados_auto, planilha=self.planilha_auto)
+        pass
 
     def excluir_auto(self,nome:str) -> bool:
         """
@@ -83,20 +77,15 @@ class Automacao:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
         """
-        self.adicionar_auto_temp()
-        #self.__exclui_dispositivos()
-        #self.planilha_auto.copia_planilha(planilha_origem = 'planilhas/automacoestemp.xlsx')
+        self.qnt_disp_auto = self.planilha_disp.retorna_quantidade_dispositivos()
+        for i in range(1,self.qnt_disp_auto+1):
+            self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
+            self.dados_auto.insert(0,self.nome_auto)
+            print(self.dados_auto)
+            self.planilha_auto.salvar(self.dados_auto)
+            #self.dados_auto.insert(1,self.qnt_disp_auto)
+            #self.__salvar(dados= self.dados_auto, planilha=self.planilha_auto)
         self._excluir_temp()
-        
-    
-    def __exclui_dispositivos(self) -> None:
-        """
-        Exclui os dispositivos importados para a planilha de automações temporária
-        """
-        self.__nome_dispositivos = self.planilha_disp.retorna_coluna(1)
-        for i in range(0, len(self.__nome_dispositivos)):
-            self.planilha_auto_temp.excluir_dispositivo(self.__nome_dispositivos[i])
-    
 
             
     def retorna_nomes_auto(self) -> list:

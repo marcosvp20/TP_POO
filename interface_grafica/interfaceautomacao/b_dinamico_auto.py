@@ -17,6 +17,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         self.planilha = Planilha('planilhas/automacoes.xlsx')
         self.importa_nomes()
         self.quantidade = len(self.nome)
+        print(self.quantidade)
         self.insere_botoes()
     
     def configura_botao(self, posx, posy, texto, imagem, comando):
@@ -52,10 +53,13 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         self.importar_posicoes()
         self.abre_imagens()
-        if self.quantidade > 0:
-            for i in range(0, self.quantidade):
-                self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                     texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= None)
+        if not self.planilha.verifica_se_esta_vazio():
+
+            if self.quantidade > 0:
+                for i in range(0, self.quantidade):
+                    self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
+                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= None)
+            
                 
     def botao_add (self, posx, posy ) -> None:
         """
@@ -82,5 +86,8 @@ class BotaoDinamicoAuto(BotaoDinamico):
         Insere o botão de adicionar dispositivo no frame.
         """
         if self.quantidade < 6:
-            self.botao_add(self.posicoesx[self.quantidade], self.posicoesy[self.quantidade])
+            if self.planilha.verifica_se_esta_vazio():
+                self.botao_add(self.posicoesx[0], self.posicoesy[0])
+            else:
+                self.botao_add(self.posicoesx[self.quantidade], self.posicoesy[self.quantidade])
     

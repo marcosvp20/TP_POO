@@ -18,11 +18,11 @@ class interfaceNewAuto:
         self.janela = janela
         pass
     
-    def cria_frame(self) -> None:
+    def cria_frame(self,mensagem:str) -> None:
         """
         Cria o frame para adicionar uma nova automação.
         """
-        self.frame_new_auto = Frame(self.janela, 'Adicionar automação: ', '').frame
+        self.frame_new_auto = Frame(self.janela,mensagem).frame
         
     
     def insere_botoes(self) -> None:
@@ -48,12 +48,15 @@ class interfaceNewAuto:
         """
         Executa a interface para adicionar uma nova automação.
         """
-        self.cria_frame()
-        # auto = Automacao('')
-        # auto._Automacao__excluir_temp()
-        # auto.planilha_auto_temp = auto.planilha_disp
-        # BotaoDinamicoDisp(self.janela, 'planilhas/automacoestemp.xlsx')
-        self.insere_botoes()
-        self.botaoProximo()
+        if not self.__planilha_disp.verifica_se_esta_vazio():
+            self.cria_frame('Adicionar automação: ')
+            # auto = Automacao('')
+            # auto._Automacao__excluir_temp()
+            # auto.planilha_auto_temp = auto.planilha_disp
+            # BotaoDinamicoDisp(self.janela, 'planilhas/automacoestemp.xlsx')
+            self.insere_botoes()
+            self.botaoProximo()
+        else:
+            self.cria_frame('Adicione dispositivos\npara criar automações')
         
         

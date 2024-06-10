@@ -90,7 +90,7 @@ class InterfaceTV:
         slider_volume.place(x=90, y=450)
 
 
-    def botao_excluir(self) -> None:
+    def botaoExcluir(self) -> None:
         """
         Cria o botão de excluir a televisão.
         """
@@ -192,7 +192,7 @@ class InterfaceTV:
         """
         self.criaframe()
         self.switch()
-        self.botao_excluir()
+        self.botaoExcluir()
         self.slider()
         self.botoes_mudar_canal()
         self.botaoVoltar()
