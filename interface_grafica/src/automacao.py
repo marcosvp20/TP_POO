@@ -13,6 +13,7 @@ class Automacao:
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
+        self._excluir_temp()
     
     def __salvar(self,dados:list,planilha:PlanilhaAuto) -> None:
         """
@@ -54,7 +55,7 @@ class Automacao:
             return True
         return False
     
-    def __excluir_temp(self) -> None:
+    def _excluir_temp(self) -> None:
         """
         Exclui a planilha temporária.
         """
@@ -81,5 +82,5 @@ class Automacao:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
         """
-        self.planilha_auto.copia_planilha(planilha_origem = 'automacoestemp.xlsx')
-        self.__excluir_temp()
+        self.planilha_auto.copia_planilha(planilha_origem = 'planilhas/automacoestemp.xlsx')
+        self._excluir_temp()

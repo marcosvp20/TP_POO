@@ -93,13 +93,28 @@ class InterfaceLamp:
                                              command = self.excluir,
                                              image=image
                                              )
-        self.botao_excluir.place(x = 140, y = 560)
+        self.botao_excluir.place(x = 140, y = 500)
 
     def ligar_desligar(self) -> None:
         """
         Liga ou desliga a lâmpada.
         """
         self.lampada.ligar()
+    
+    def botaoVoltar(self) -> None:
+        """
+        Cria o botão de exclusão do ar condicionado.
+        """
+        self.botao_voltar = ctk.CTkButton(master=self.frame_lamp, 
+                                           width=170, 
+                                           height=50, 
+                                           font=('League Spartan bold',17), 
+                                           fg_color='#f5e0df', 
+                                           corner_radius=0, 
+                                           text='Voltar', 
+                                           text_color='black', 
+                                           command=self.frame_lamp.destroy)
+        self.botao_voltar.place(x=140, y=560)
 
     def atualiza_valor(self, value) -> None:
         """
@@ -141,5 +156,6 @@ class InterfaceLamp:
         self.switch()
         self.slider()
         self.botao_excluir()
+        self.botaoVoltar()
 
 

@@ -75,7 +75,7 @@ class InterfaceTV:
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
                                           fg_color='#E5F0F7',)
-        self.label_volume.place(x=140, y=430)
+        self.label_volume.place(x=140, y=380)
 
         slider_volume = ctk.CTkSlider(self.frame_tv,
                                             from_=0, to=100,
@@ -87,7 +87,7 @@ class InterfaceTV:
                                             width = 270,
                                             height = 20)
         slider_volume.set(self.tv.volume_atual())
-        slider_volume.place(x=90, y=500)
+        slider_volume.place(x=90, y=450)
 
 
     def botao_excluir(self) -> None:
@@ -100,7 +100,22 @@ class InterfaceTV:
                                         corner_radius=0, text='Excluir dispositivo', text_color='black',
                                         command = self.excluir,
                                         image=image)
-        self.botao_excluir.place(x=140, y=560)
+        self.botao_excluir.place(x=140, y=500)
+    
+    def botaoVoltar(self) -> None:
+        """
+        Cria o botão de exclusão do ar condicionado.
+        """
+        self.botao_voltar = ctk.CTkButton(master=self.frame_tv, 
+                                           width=170, 
+                                           height=50, 
+                                           font=('League Spartan bold',17), 
+                                           fg_color='#f5e0df', 
+                                           corner_radius=0, 
+                                           text='Voltar', 
+                                           text_color='black', 
+                                           command=self.frame_tv.destroy)
+        self.botao_voltar.place(x=140, y=560)
     
     def botoes_mudar_canal(self):
         imagem_mais = ctk.CTkImage(light_image=Image.open('imagens/adicionar.png'), size=(30,30))
@@ -180,3 +195,4 @@ class InterfaceTV:
         self.botao_excluir()
         self.slider()
         self.botoes_mudar_canal()
+        self.botaoVoltar()

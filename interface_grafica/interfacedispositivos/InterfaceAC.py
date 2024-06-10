@@ -23,6 +23,9 @@ class InterfaceAC:
         Cria o frame da interface do ar condicionado.
         """
         self.frame_ac = Frame(self.janela, f'{self.nome}', '').frame
+    
+    def destroy_frame(self) -> None:
+        self.frame_ac.destroy()
         
     def switch(self) -> None:
         """
@@ -83,7 +86,7 @@ class InterfaceAC:
         slider_temperatura.set(self.ar.temperatura_atual())
         slider_temperatura.place(x=90, y=400)
         
-    def botao_excluir(self) -> None:
+    def botaoExcluir(self) -> None:
         """
         Cria o botão de exclusão do ar condicionado.
         """
@@ -98,7 +101,22 @@ class InterfaceAC:
                                            text_color='black', 
                                            command=self.excluir,
                                            image=image)
-        self.botao_excluir.place(x=140, y=560)
+        self.botao_excluir.place(x=140, y=500)
+        
+    def botaoVoltar(self) -> None:
+        """
+        Cria o botão de exclusão do ar condicionado.
+        """
+        self.botao_voltar = ctk.CTkButton(master=self.frame_ac, 
+                                           width=170, 
+                                           height=50, 
+                                           font=('League Spartan bold',17), 
+                                           fg_color='#f5e0df', 
+                                           corner_radius=0, 
+                                           text='Voltar', 
+                                           text_color='black', 
+                                           command=self.frame_ac.destroy)
+        self.botao_voltar.place(x=140, y=560)
 
     def ligar_desligar(self) -> None:
         """
@@ -148,5 +166,6 @@ class InterfaceAC:
         self.criaframe()
         self.switch()
         self.slider()
-        self.botao_excluir()
+        self.botaoExcluir()
+        self.botaoVoltar()
 
