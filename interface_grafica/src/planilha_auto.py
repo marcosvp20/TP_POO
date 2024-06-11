@@ -57,5 +57,18 @@ class PlanilhaAuto(Planilha):
                 self.planilha.append(row)
             
             self.workbook.save(self.nome_planilha)
+            
+    def adicionar_nome_primeira_celula(self,nome:str)->None:
+        # Abra a planilha existente
+
+        # Adicione self.nome no início da primeira célula de cada linha existente
+        self.planilha.insert_cols(1)
+
+        # Adicionar self.nome na nova primeira coluna de cada linha existente
+        for linha in range(1, self.planilha.max_row + 1):
+            self.planilha.cell(row=linha, column=1, value=nome)
+
+        # Salve a planilha modificada
+        self.workbook.save(self.nome_planilha)
     
     

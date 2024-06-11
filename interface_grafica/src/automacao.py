@@ -65,12 +65,15 @@ class Automacao:
         self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_dispositivos() #retorna a quantidade de linhas da planilha
         
         if not self.planilha_auto.verifica_se_objeto_existe(self.nome_auto):
-            for i in range(1,self.qnt_linhas_auto+1):
-                self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
-                self.dados_auto.insert(0,self.nome_auto)
-                print(self.dados_auto)
-                self.planilha_auto.salvar(self.dados_auto)
-                #self.dados_auto.insert(1,self.qnt_disp_auto)
+            # for i in range(1,self.qnt_linhas_auto+1):
+            #     self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
+            #     self.dados_auto.insert(0,self.nome_auto)
+            #     print(self.dados_auto)
+            #     self.planilha_auto.salvar(self.dados_auto)
+            # self._excluir_temp()
+            
+            self.planilha_auto_temp.adicionar_nome_primeira_celula(self.nome_auto)
+            self.planilha_auto.copia_planilha('planilhas/automacoestemp.xlsx')
             self._excluir_temp()
             
             return True
@@ -88,6 +91,11 @@ class Automacao:
         return self.__nomes_auto
 
     def executar_automacao(self, nome_auto:str) -> None:
+        """
+        executa a automação informada, alterando os parâmetros do objeto na planilha dispositivos
+        
+        args:
+        nome_auto (str): nome da automação a ser executada"""
         
         for i in range(0, self.qnt_linhas_auto):
             linha = self.planilha_auto.retorna_linha(i+1)
@@ -98,4 +106,5 @@ class Automacao:
             
             
         
-
+a = Automacao(None)
+a.excluir_auto('t')

@@ -17,6 +17,8 @@ class Planilha:
       self.workbook = openpyxl.load_workbook(self.nome_planilha)
       self.planilha = self.workbook['Sheet1']
       self.proxima_linha = self.planilha.max_row + 1
+      if not self.verifica_se_esta_vazio():
+         self.exclui_linha_vazia()
 
    def salvar(self, dados):
       """
