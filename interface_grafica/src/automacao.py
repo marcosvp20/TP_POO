@@ -14,7 +14,7 @@ class Automacao:
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
         self.qnt_linhas_auto = len(self.planilha_auto.retorna_linha(1))
-    def excluir_auto(self,nome:str,coluna = None) -> bool:
+    def excluir_auto(self,coluna = None) -> bool:
         """
         Exclui uma automação de acordo com o nome.
 
@@ -25,15 +25,15 @@ class Automacao:
             bool: True se a automação foi excluída com sucesso, False caso contrário.
         """
         if coluna == None:
-            if self.planilha_auto.verifica_se_objeto_existe(nome):
-                for i in range(0,self.__quantidade_automacoes(nome)):
-                    self.planilha_auto.excluir_dispositivo(nome)
+            if self.planilha_auto.verifica_se_objeto_existe(self.nome_auto):
+                for i in range(0,self.__quantidade_automacoes(self.nome_auto)):
+                    self.planilha_auto.excluir_dispositivo(self.nome_auto)
                 return True
             return False
         else:
             for i in range(0,len(self.planilha_auto.retorna_coluna(1))):
                 print('2')
-                self.planilha_auto.excluir_linha(nome, coluna)
+                self.planilha_auto.excluir_linha(self.nome_auto, coluna)
 
     def _excluir_temp(self) -> None:
         """
@@ -99,12 +99,11 @@ class Automacao:
         
         for i in range(0, self.qnt_linhas_auto):
             linha = self.planilha_auto.retorna_linha(i+1)
-            if linha[i] == self.nome_auto:
+            if linha[0] == self.nome_auto:
                 linha.pop(0)
                 for j in range(1,len(linha)):
                     self.planilha_disp.editar(linha, j)
             
-            
+# a = Automacao('a')
+# a.executar_automacao()
         
-a = Automacao(None)
-a.excluir_auto('t')
