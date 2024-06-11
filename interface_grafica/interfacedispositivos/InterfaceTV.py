@@ -160,11 +160,11 @@ class InterfaceTV:
         Exclui a televisão.
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
-        auto = Automacao(None)
+        auto = Automacao(self.nome)
 
         if self.tv.excluir():
             print(self.nome)
-            auto.excluir_auto(self.nome, 1)
+            auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
             self.frame_tv.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.

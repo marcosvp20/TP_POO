@@ -3,6 +3,7 @@ import customtkinter as ctk
 from src.arcondicionado import ArCondicionado
 import time
 from src.frame import Frame
+from src.automacao import Automacao
 
 class InterfaceAC:
     """
@@ -140,8 +141,9 @@ class InterfaceAC:
         Exclui o ar condicionado.
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
-
+        auto = Automacao(self.nome)
         if self.ar.excluir():
+            auto.excluir_auto(1)
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_ac.destroy() 
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.

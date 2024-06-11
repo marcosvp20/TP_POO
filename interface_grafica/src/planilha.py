@@ -231,6 +231,7 @@ class Planilha:
       """
       linha_a_excluir = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+         print(coluna)
          if linha[coluna] == nome:
             self.planilha.delete_rows(linha_a_excluir)
             self.workbook.save(self.nome_planilha)

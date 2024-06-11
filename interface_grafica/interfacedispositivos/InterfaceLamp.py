@@ -3,6 +3,7 @@ import customtkinter as ctk
 from src.lampada import Lampada
 import time
 from src.frame import Frame
+from src.automacao import Automacao
 
 class InterfaceLamp:
     """
@@ -129,8 +130,9 @@ class InterfaceLamp:
         Exclui a lâmpada da planilha de objetos.
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
-
+        auto = Automacao(self.nome)
         if self.lampada.excluir():
+            auto.excluir_auto(1)
             self.mensagem('Dispositivo excluido com sucesso!')
             self.frame_lamp.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
