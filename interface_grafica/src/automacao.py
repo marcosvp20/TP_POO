@@ -90,7 +90,7 @@ class Automacao:
         
         return self.__nomes_auto
 
-    def executar_automacao(self, nome_auto:str) -> None:
+    def executar_automacao(self) -> None:
         """
         executa a automação informada, alterando os parâmetros do objeto na planilha dispositivos
         
@@ -99,7 +99,7 @@ class Automacao:
         
         for i in range(0, self.qnt_linhas_auto):
             linha = self.planilha_auto.retorna_linha(i+1)
-            if linha[i] == nome_auto:
+            if linha[i] == self.nome_auto:
                 linha.pop(0)
                 for j in range(1,len(linha)):
                     self.planilha_disp.editar(linha, j)

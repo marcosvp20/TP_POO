@@ -51,14 +51,15 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Insere os botões no frame.
         """
+        from interfaceautomacao.interfaceAutomação import interfaceAutomacao
+
         self.importar_posicoes()
         self.abre_imagens()
         if not self.planilha.verifica_se_esta_vazio():
-
             if self.quantidade > 0:
                 for i in range(0, self.quantidade):
                     self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= None)
+                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= interfaceAutomacao(self.janela, self.nome[i]).executar)
             
                 
     def botao_add (self, posx, posy ) -> None:
