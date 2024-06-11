@@ -14,6 +14,7 @@ class InterfaceLamp:
         """
         self.janela = janela
         self.nome = nome
+        self.planilha = planilha
         self.lampada = Lampada(self.nome, planilha)
         self.brilho = self.lampada.brilho_atual()
         self.ligado = self.lampada.esta_ligado()
@@ -155,7 +156,9 @@ class InterfaceLamp:
         self.criaframe()
         self.switch()
         self.slider()
-        self.botao_excluir()
         self.botaoVoltar()
+        if self.planilha == 'planilhas/objetos.xlsx':
+            self.botao_excluir()
+
 
 

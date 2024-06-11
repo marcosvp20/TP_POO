@@ -14,6 +14,7 @@ class InterfaceAC:
         """
         self.janela = janela
         self.nome = nome
+        self.planilha = planilha
         self.ar = ArCondicionado(self.nome, planilha)
         self.ar.temperatura = self.ar.temperatura_atual()
         self.ar.ligado = self.ar.esta_ligado()
@@ -166,6 +167,8 @@ class InterfaceAC:
         self.criaframe()
         self.switch()
         self.slider()
-        self.botaoExcluir()
         self.botaoVoltar()
+        if self.planilha == 'planilhas/objetos.xlsx':
+            self.botaoExcluir()
+        
 

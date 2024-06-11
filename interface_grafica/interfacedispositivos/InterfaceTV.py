@@ -14,6 +14,7 @@ class InterfaceTV:
         """
         self.janela = janela
         self.nome = nome
+        self.planilha = planilha
         self.tv = Televisao(self.nome, planilha)
         self.volume = self.tv.volume_atual()
         self.ligado = self.tv.esta_ligado()
@@ -195,7 +196,8 @@ class InterfaceTV:
         """
         self.criaframe()
         self.switch()
-        self.botaoExcluir()
         self.slider()
         self.botoes_mudar_canal()
         self.botaoVoltar()
+        if self.planilha == 'planilhas/objetos.xlsx':
+            self.botaoExcluir()
