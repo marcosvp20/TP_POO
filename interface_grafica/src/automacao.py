@@ -13,7 +13,7 @@ class Automacao:
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
-    
+        self.qnt_linhas_auto = len(self.planilha_auto.retorna_linha(1))
     def excluir_auto(self,nome:str,coluna = None) -> bool:
         """
         Exclui uma automação de acordo com o nome.
@@ -92,11 +92,10 @@ class Automacao:
         for i in range(0, self.qnt_linhas_auto):
             linha = self.planilha_auto.retorna_linha(i+1)
             if linha[i] == nome_auto:
+                linha.pop(0)
                 for j in range(1,len(linha)):
-                    
+                    self.planilha_disp.editar(linha, j)
             
             
         
 
-# auto = Automacao(None)
-# print(auto.excluir_auto('C', 2))
