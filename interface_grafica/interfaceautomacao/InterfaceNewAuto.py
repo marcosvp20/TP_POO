@@ -12,11 +12,13 @@ class interfaceNewAuto:
         self.__planilha_auto = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.__caminho_plan_disp = 'planilhas/objetos.xlsx'
         self.__caminho_plan_autotemp = 'planilhas/automacoestemp.xlsx'
+        # auto = Automacao('')
+        # self.__planilha_auto.copia_planilha(self.__caminho_plan_disp) #garantir que não seja chamado duas vezes
         """
         Inicializa a classe interfaceNewAuto.
         """
         self.janela = janela
-        pass
+        
     
     def cria_frame(self,mensagem:str) -> None:
         """
@@ -26,10 +28,8 @@ class interfaceNewAuto:
         
     
     def insere_botoes(self) -> None:
-        auto = Automacao('')
-        self.__planilha_auto.copia_planilha(self.__caminho_plan_disp)
         BotaoDinamicoDisp(self.janela, self.__caminho_plan_autotemp)
-        auto._excluir_temp()
+        # auto._excluir_temp()
     
     def botaoProximo(self):
         nome_auto = InterfaceNameAuto(self.janela)

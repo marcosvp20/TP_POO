@@ -54,7 +54,6 @@ class InterfaceNameAuto:
         """
         self.__nome_auto = self.txtbox_name_auto.get().strip()
         auto = Automacao(self.__nome_auto)
-        auto.planilha_auto_temp.comparar_e_apagar_linhas('planilhas/objetos.xlsx')
         if auto.adicionar_auto():
             self.__mensagem_confirmacao('Automação adicionada com sucesso!!')
         else:

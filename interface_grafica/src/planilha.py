@@ -207,6 +207,23 @@ class Planilha:
          dados.append(linha[coluna-1])
 
       return dados
+       
+   def retorna_linha(self, numero_linha) -> list:
+        """
+        Retorna os valores de uma linha específica da planilha.
+
+        Args:
+            numero_linha (int): O número da linha a ser retornada.
+
+        Returns:
+            list: Uma lista contendo os valores das células da linha.
+        """
+        linha = self.planilha[numero_linha]
+
+        # Extrair os valores das células na linha
+        valores_linha = [celula.value for celula in linha]
+
+        return valores_linha
 
    def limpar_planilha(self):
       """
@@ -239,40 +256,40 @@ class Planilha:
          linha_a_excluir += 1
       return False
 
-   def comparar_e_apagar_linhas(self, outra_planilha):
-        """
-        Compara as linhas desta planilha com as linhas de outra planilha.
-        Se uma linha for toda igual à linha correspondente da outra planilha, apaga a linha DESTA planilha.
+   # def comparar_e_apagar_linhas(self, outra_planilha):
+   #      """
+   #      Compara as linhas desta planilha com as linhas de outra planilha.
+   #      Se uma linha for toda igual à linha correspondente da outra planilha, apaga a linha DESTA planilha.
 
-        Args:
-            outra_planilha (str): O caminho para a outra planilha para comparação.
-        """
-        outro_workbook = openpyxl.load_workbook(outra_planilha)
-        outra_sheet = outro_workbook['Sheet1']
+   #      Args:
+   #          outra_planilha (str): O caminho para a outra planilha para comparação.
+   #      """
+   #      outro_workbook = openpyxl.load_workbook(outra_planilha)
+   #      outra_sheet = outro_workbook['Sheet1']
 
-        try:
-            # Verifica se ambas as planilhas têm o mesmo número de linhas e colunas
-            if self.planilha.max_row != outra_sheet.max_row or self.planilha.max_column != outra_sheet.max_column:
-                raise ValueError("As planilhas devem ter o mesmo número de linhas e colunas para comparação.")
-        except ValueError as e:
-            print(e)
-            return
+   #      try:
+   #          # Verifica se ambas as planilhas têm o mesmo número de linhas e colunas
+   #          if self.planilha.max_row != outra_sheet.max_row or self.planilha.max_column != outra_sheet.max_column:
+   #              raise ValueError("As planilhas devem ter o mesmo número de linhas e colunas para comparação.")
+   #      except ValueError as e:
+   #          print(e)
+   #          return
 
-        linhas_para_apagar = []
+   #      linhas_para_apagar = []
 
-        # Itera sobre cada linha e coluna para comparação
-        for linha in range(1, self.planilha.max_row + 1):
-            igual = True
-            for coluna in range(1, self.planilha.max_column + 1):
-                if self.planilha.cell(row=linha, column=coluna).value != outra_sheet.cell(row=linha, column=coluna).value:
-                    igual = False
-                    break
-            if igual:
-                linhas_para_apagar.append(linha)
+   #      # Itera sobre cada linha e coluna para comparação
+   #      for linha in range(1, self.planilha.max_row + 1):
+   #          igual = True
+   #          for coluna in range(1, self.planilha.max_column + 1):
+   #              if self.planilha.cell(row=linha, column=coluna).value != outra_sheet.cell(row=linha, column=coluna).value:
+   #                  igual = False
+   #                  break
+   #          if igual:
+   #              linhas_para_apagar.append(linha)
 
-        # Apaga as linhas da planilha que são iguais
-        for linha in reversed(linhas_para_apagar):  # Reverte a ordem para não bagunçar os índices das linhas ao apagar
-            self.planilha.delete_rows(linha)
+   #      # Apaga as linhas da planilha que são iguais
+   #      for linha in reversed(linhas_para_apagar):  # Reverte a ordem para não bagunçar os índices das linhas ao apagar
+   #          self.planilha.delete_rows(linha)
 
-        # Salva a planilha com as alterações
-        self.workbook.save(self.nome_planilha)
+   #      # Salva a planilha com as alterações
+   #      self.workbook.save(self.nome_planilha)

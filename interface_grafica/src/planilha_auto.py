@@ -23,23 +23,7 @@ class PlanilhaAuto(Planilha):
             self.planilha[f'{string.ascii_uppercase[i]}{self.proxima_linha}'] = dados[i]
         self.workbook.save(self.nome_planilha)
         self.exclui_linha_vazia()
-    
-    def retorna_linha(self, numero_linha) -> list:
-        """
-        Retorna os valores de uma linha específica da planilha.
 
-        Args:
-            numero_linha (int): O número da linha a ser retornada.
-
-        Returns:
-            list: Uma lista contendo os valores das células da linha.
-        """
-        linha = self.planilha[numero_linha]
-
-        # Extrair os valores das células na linha
-        valores_linha = [celula.value for celula in linha]
-
-        return valores_linha
     
     def copia_planilha(self, planilha_origem:str) -> None:
         """

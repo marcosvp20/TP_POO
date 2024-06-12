@@ -51,7 +51,10 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Insere os botões no frame.
         """
-        from interfaceautomacao.interfaceAutomação import interfaceAutomacao
+        from interfaceautomacao.InterfaceExecutarAutomacoes import interfaceAutomacao
+        from src.planilha_auto import PlanilhaAuto
+        p = PlanilhaAuto('planilhas/automacoestemp.xlsx')
+        p.copia_planilha('planilhas/objetos.xlsx')
 
         self.importar_posicoes()
         self.abre_imagens()
