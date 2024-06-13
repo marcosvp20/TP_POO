@@ -26,20 +26,21 @@ class InterfaceTV:
         """
         Cria o frame da interface da televisão.
         """
-        self.frame_tv = Frame(self.janela, f'{self.nome}', '').frame
+        self.__frame =  Frame(self.janela, f'{self.nome}', '')
+        self.__frame_tv = self.__frame.retorna_frame()
 
     def switch(self) -> None:
         """
         Cria o switch de ligar/desligar da televisão.
         """
-        off_label = ctk.CTkLabel(self.frame_tv,
+        off_label = ctk.CTkLabel(self.__frame_tv,
                                  text="OFF",
                                  font=('League Spartan', 30),
                                  fg_color='white',
                                  bg_color='transparent')
         off_label.place(x=100, y=190)
         
-        switch = ctk.CTkSwitch(self.frame_tv,
+        switch = ctk.CTkSwitch(self.__frame_tv,
                                 text="",
                                 command=self.ligar_desligar,
                                 width=85,
@@ -53,7 +54,7 @@ class InterfaceTV:
                                 switch_width=85)
         switch.place(x=183, y=195)
         
-        on_label = ctk.CTkLabel(self.frame_tv,
+        on_label = ctk.CTkLabel(self.__frame_tv,
                                 text="ON",
                                 font=('League Spartan', 30),
                                 fg_color='white',
@@ -73,14 +74,14 @@ class InterfaceTV:
         """
         Cria o slider de controle do volume da tv.
         """
-        self.label_volume = ctk.CTkLabel(self.frame_tv,
+        self.label_volume = ctk.CTkLabel(self.__frame_tv,
                                           text=f"Volume: {self.tv.volume_atual()} %",
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
                                           fg_color='#E5F0F7',)
         self.label_volume.place(x=140, y=380)
 
-        slider_volume = ctk.CTkSlider(self.frame_tv,
+        slider_volume = ctk.CTkSlider(self.__frame_tv,
                                             from_=0, to=100,
                                             command=lambda value: self.atualiza_valor(value),
                                             bg_color='#DFECF4',
@@ -98,7 +99,7 @@ class InterfaceTV:
         Cria o botão de excluir a televisão.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botao_excluir = ctk.CTkButton(master=self.frame_tv, width=170, height=50,
+        self.botao_excluir = ctk.CTkButton(master=self.__frame_tv, width=170, height=50,
                                         font=('League Spartan bold',17),fg_color='#f5e0df',
                                         corner_radius=0, text='Excluir dispositivo', text_color='black',
                                         command = self.excluir,
@@ -109,7 +110,7 @@ class InterfaceTV:
         """
         Cria o botão de exclusão do ar condicionado.
         """
-        self.botao_voltar = ctk.CTkButton(master=self.frame_tv, 
+        self.botao_voltar = ctk.CTkButton(master=self.__frame_tv, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 
@@ -117,26 +118,26 @@ class InterfaceTV:
                                            corner_radius=0, 
                                            text='Voltar', 
                                            text_color='black', 
-                                           command=self.frame_tv.destroy)
+                                           command=self.__frame_tv.destroy)
         self.botao_voltar.place(x=140, y=560)
     
     def botoes_mudar_canal(self):
         imagem_mais = ctk.CTkImage(light_image=Image.open('imagens/adicionar.png'), size=(30,30))
         imagem_menos = ctk.CTkImage(light_image=Image.open('imagens/menos.png'), size=(30,30))
         
-        self.botao_menos = ctk.CTkButton(master=self.frame_tv, width=60, height=30,
+        self.botao_menos = ctk.CTkButton(master=self.__frame_tv, width=60, height=30,
                                         image=imagem_menos, corner_radius=30,font=('League Spartan',30),
                                         bg_color='#F8FBFD', fg_color='#F3F8FB', text=None, hover_color='light gray',
                                         border_width=4, border_color='#348FAA', command=self.click_botao_menos)
         self.botao_menos.place(x = 70, y = 320)
     
-        self.botao_mais = ctk.CTkButton(master=self.frame_tv, width=60, height=30,
+        self.botao_mais = ctk.CTkButton(master=self.__frame_tv, width=60, height=30,
                                         image=imagem_mais, corner_radius=30,font=('League Spartan',30),
                                         bg_color='#F8FBFD', fg_color='#F3F8FB', text=None, hover_color='light gray',
                                         border_width=4, border_color='#348FAA', command=self.click_botao_mais)
         self.botao_mais.place(x = 325, y = 320)
         
-        self.label_ch = ctk.CTkLabel(master=self.frame_tv, text=f'CH {self.tv.canal_atual()}', font=('League Spartan bold',30),
+        self.label_ch = ctk.CTkLabel(master=self.__frame_tv, text=f'CH {self.tv.canal_atual()}', font=('League Spartan bold',30),
                                      bg_color='#F8FBFD')
         self.label_ch.place(x = 200, y = 315)
         
@@ -168,7 +169,7 @@ class InterfaceTV:
             print(self.nome)
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
-            self.frame_tv.destroy()
+            self.__frame_tv.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Erro ao excluir dispositivo!')   
@@ -177,12 +178,12 @@ class InterfaceTV:
         """
         Exibe uma mensagem na tela.
         """
-        self.mensagem = ctk.CTkLabel(self.frame_tv, 
+        self.mensagem = ctk.CTkLabel(self.__frame_tv, 
                                      text=texto, 
                                      font=('League Spartan', 20), 
                                      fg_color='#CEE2EF')
         self.mensagem.place(x=85, y=620)
-        self.frame_tv.update()
+        self.__frame_tv.update()
         time.sleep(2)
         
     def atualiza_valor(self, value) -> None:

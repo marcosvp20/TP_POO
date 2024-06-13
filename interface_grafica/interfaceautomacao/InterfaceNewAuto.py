@@ -24,7 +24,8 @@ class interfaceNewAuto:
         """
         Cria o frame para adicionar uma nova automação.
         """
-        self.frame_new_auto = Frame(self.janela,mensagem).frame
+        self.__frame = Frame(self.janela,mensagem)
+        self.__frame_new_auto = self.__frame.retorna_frame()
         
     
     def insere_botoes(self) -> None:
@@ -33,7 +34,7 @@ class interfaceNewAuto:
     
     def botaoProximo(self):
         nome_auto = InterfaceNameAuto(self.janela)
-        self.botao_proximo = ctk.CTkButton(master=self.frame_new_auto, 
+        self.botao_proximo = ctk.CTkButton(master=self.__frame_new_auto, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 

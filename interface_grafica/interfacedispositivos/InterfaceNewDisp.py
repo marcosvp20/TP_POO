@@ -17,7 +17,8 @@ class InterfaceNewDisp:
         """
         Cria o frame da interface para adicionar um novo dispositivo.
         """
-        self.frame_new_disp = Frame(self.janela, 'Qual dispositivo deseja', 'adicionar?').frame
+        self.__frame = Frame(self.janela, 'Qual dispositivo deseja', 'adicionar?')
+        self.__frame_new_disp = self.__frame.retorna_frame()
         
     def botao_ar (self) -> None:
         """
@@ -25,7 +26,7 @@ class InterfaceNewDisp:
         """
         new_ar = InterfaceNameDisp(self.janela, "A/C")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
-        self.botao_adicionar = Botao(janela=self.frame_new_disp, 
+        self.botao_adicionar = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
                                  posy=184, 
                                  texto='Ar\nCondicionado', 
@@ -40,7 +41,7 @@ class InterfaceNewDisp:
         """
         new_lamp = InterfaceNameDisp(self.janela, "Lâmpada")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
-        self.botao_adicionar = Botao(janela=self.frame_new_disp, 
+        self.botao_adicionar = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
                                  posy=280, 
                                  texto='Lâmpada', 
@@ -55,7 +56,7 @@ class InterfaceNewDisp:
         """
         new_tv = InterfaceNameDisp(self.janela, "Televisor")
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
-        self.botao_adicionar = Botao(janela=self.frame_new_disp, 
+        self.botao_adicionar = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
                                  posy=376,
                                  texto='TV', 

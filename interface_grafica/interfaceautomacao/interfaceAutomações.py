@@ -15,12 +15,13 @@ class interfaceAutomacoes:
         """
         Cria o frame para exibir as automações.
         """
-        self.frame_automacoes = Frame(self.janela, 'Automações: ', '').frame
+        self.__frame = Frame(self.janela, 'Automações: ', '')
+        self.__frame_automacoes = self.__frame.retorna_frame()
    
     def executar(self) -> None:
         """
         Executa a interface gráfica de automações.
         """
         self.criarframe()
-        bd = BotaoDinamicoAuto(self.frame_automacoes)
+        bd = BotaoDinamicoAuto(self.__frame_automacoes)
         bd.insere_botao_add()

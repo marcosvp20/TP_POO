@@ -12,11 +12,12 @@ class interfaceAutomacao:
         """
         Cria o frame para exibir ações da automação.
         """
-        self.frame_automacoes = Frame(self.janela, self.nome, '').frame 
+        self.frame = Frame(self.janela, self.nome, '')
+        self.__frame_automacoes = self.frame.retorna_frame()
     
     def botaoAtivar(self):
         auto = Automacao(self.nome)
-        self.botao_ativar = ctk.CTkButton(master=self.frame_automacoes, 
+        self.botao_ativar = ctk.CTkButton(master=self.__frame_automacoes, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 
@@ -33,7 +34,7 @@ class interfaceAutomacao:
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
         auto = Automacao(self.nome)
-        self.botao_excluir = ctk.CTkButton(master=self.frame_automacoes, 
+        self.botao_excluir = ctk.CTkButton(master=self.__frame_automacoes, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 
@@ -41,10 +42,21 @@ class interfaceAutomacao:
                                            corner_radius=0, 
                                            text='Excluir automação', 
                                            text_color='black', 
-                                           command=auto.excluir_auto,
+                                           command=self.__click_excluir,
                                            image=image)
         self.botao_excluir.place(x=140, y=500)
 
+    def __click_excluir(self) -> None:
+        auto = Automacao(self.nome)
+        if auto.excluir_auto():
+            self.frame.mensagem('O dispositivo foi excluído com sucesso!')
+            self.frame.destroy()
+            from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
+            auto = interfaceAutomacoes(self.janela)
+            auto.executar()
+        else:
+            self.frame.mensagem('Falha ao excluir o dispositivo')
+        
     def executar(self) -> None:
         self.criarframe()
         self.botaoAtivar()

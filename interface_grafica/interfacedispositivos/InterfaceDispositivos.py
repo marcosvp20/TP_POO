@@ -17,7 +17,8 @@ class interfaceDispositivos:
         """
         Cria o frame da interface de dispositivos.
         """
-        self.frame_dispositivos = Frame(self.janela, 'Dispositivos: ', '').frame
+        self.__frame = Frame(self.janela, 'Dispositivos: ', '')
+        self.__frame_dispositivos = self.__frame.retorna_frame()
         
     def executar(self) -> None:
         """
@@ -25,12 +26,12 @@ class interfaceDispositivos:
         """
         self.criaframe()
         InterfaceNewDisp(self.janela)
-        bd = BotaoDinamicoDisp(self.frame_dispositivos, 'planilhas/objetos.xlsx')
+        bd = BotaoDinamicoDisp(self.__frame_dispositivos, 'planilhas/objetos.xlsx')
         bd.insere_botao_add()
     
     def atualizar(self) -> None:
         """
         Atualiza a interface de dispositivos.
         """
-        self.frame_dispositivos.update()
+        self.__frame_dispositivos.update()
         

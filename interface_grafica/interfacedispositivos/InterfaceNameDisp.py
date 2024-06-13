@@ -22,10 +22,10 @@ class InterfaceNameDisp:
         """
         Cria o frame da interface para adicionar um novo dispositivo.
         """
-
-        self.frame_name_disp = Frame(self.janela, 'Qual será o nome', 'do dispositivo?').frame
+        self.__frame = Frame(self.janela, 'Qual será o nome', 'do dispositivo?')
+        self.__frame_name_disp = self.__frame.retorna_frame()
         
-        self.txtbox_name_disp = ctk.CTkEntry(self.frame_name_disp, 
+        self.txtbox_name_disp = ctk.CTkEntry(self.__frame_name_disp, 
                                              width=180, height= 40,
                                              font=('League Spartan', 17),
                                              placeholder_text="Nome do dispositivo",
@@ -40,7 +40,7 @@ class InterfaceNameDisp:
         Cria o botão de confirmação para adicionar o dispositivo.
         """
         image = ctk.CTkImage(light_image= Image.open('imagens/check.png'),size=(25,25))
-        self.botao_adicionar = ctk.CTkButton(master=self.frame_name_disp, 
+        self.botao_adicionar = ctk.CTkButton(master=self.__frame_name_disp, 
                                              width=170, 
                                              height=50,
                                              font=('League Spartan bold',17),
@@ -56,7 +56,7 @@ class InterfaceNameDisp:
         """
         Adiciona o dispositivo à planilha de objetos.
         """
-        self.frame_name_disp.update()
+        self.__frame_name_disp.update()
         if self.tipo:
             self.new_name = self.txtbox_name_disp.get().strip()
             if self.new_name:
@@ -65,40 +65,40 @@ class InterfaceNameDisp:
                         if ArCondicionado(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                         elif self.planilha.verifica_se_objeto_existe(self.new_name):
                             self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                     case "Lâmpada":
                         if Lampada(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                         elif self.planilha.verifica_se_objeto_existe(self.new_name):
                             self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                     case "Televisor":
                         if Televisao(self.new_name, 'planilhas/objetos.xlsx').salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                         elif self.planilha.verifica_se_objeto_existe(self.new_name):
                             self.mensagem_confirmacao('Um dispositivo com esse apelido já existe!')
                             self.apagar_mensagem_confirmacao()
-                            self.frame_name_disp.update()
+                            self.__frame_name_disp.update()
                             
     def mensagem_confirmacao(self,mensagem) -> None:
         """
         Exibe uma mensagem de confirmação na interface.
         """
-        self.texto = ctk.CTkLabel(master=self.frame_name_disp, 
+        self.texto = ctk.CTkLabel(master=self.__frame_name_disp, 
                                   text=mensagem,
                                     font=('League Spartan', 20), 
                                     fg_color='#ECF4F9')
         self.texto.place(x = 50, y = 400)
-        self.frame_name_disp.update()
+        self.__frame_name_disp.update()
         time.sleep(1)
         
     def apagar_mensagem_confirmacao(self) -> None:
@@ -113,7 +113,7 @@ class InterfaceNameDisp:
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
 
-        self.frame_name_disp.destroy()
+        self.__frame_name_disp.destroy()
         interfaceDispositivos(self.janela).executar()
         
     def executar(self) -> None:

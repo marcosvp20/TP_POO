@@ -25,10 +25,8 @@ class InterfaceAC:
         """
         Cria o frame da interface do ar condicionado.
         """
-        self.frame_ac = Frame(self.janela, f'{self.nome}', '').frame
-    
-    def destroy_frame(self) -> None:
-        self.frame_ac.destroy()
+        self.__frame = Frame(self.janela, f'{self.nome}', '')
+        self.frame_ac = self.__frame.retorna_frame()
         
     def switch(self) -> None:
         """
@@ -146,7 +144,7 @@ class InterfaceAC:
         if self.ar.excluir():
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluido com sucesso!')
-            self.frame_ac.destroy() 
+            self.__frame.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Falha ao excluir o dispositivo')
