@@ -49,13 +49,13 @@ class interfaceAutomacao:
     def __click_excluir(self) -> None:
         auto = Automacao(self.nome)
         if auto.excluir_auto():
-            self.frame.mensagem('O dispositivo foi excluído com sucesso!')
+            self.frame.mensagem('A automação foi excluída com sucesso!')
             self.frame.destroy()
             from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
             auto = interfaceAutomacoes(self.janela)
             auto.executar()
         else:
-            self.frame.mensagem('Falha ao excluir o dispositivo')
+            self.frame.mensagem('Falha ao excluir a automação')
         
     def executar(self) -> None:
         self.criarframe()

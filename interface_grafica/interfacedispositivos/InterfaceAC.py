@@ -116,7 +116,7 @@ class InterfaceAC:
                                            corner_radius=0, 
                                            text='Voltar', 
                                            text_color='black', 
-                                           command=self.frame_ac.destroy)
+                                           command=self.__frame.destroy)
         self.botao_voltar.place(x=140, y=560)
 
     def ligar_desligar(self) -> None:

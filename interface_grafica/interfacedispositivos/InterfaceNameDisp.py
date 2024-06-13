@@ -113,7 +113,7 @@ class InterfaceNameDisp:
         """
         from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
 
-        self.__frame_name_disp.destroy()
+        self.__frame.destroy()
         interfaceDispositivos(self.janela).executar()
         
     def executar(self) -> None:

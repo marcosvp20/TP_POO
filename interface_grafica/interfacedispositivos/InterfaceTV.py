@@ -118,7 +118,7 @@ class InterfaceTV:
                                            corner_radius=0, 
                                            text='Voltar', 
                                            text_color='black', 
-                                           command=self.__frame_tv.destroy)
+                                           command=self.__frame.destroy)
         self.botao_voltar.place(x=140, y=560)
     
     def botoes_mudar_canal(self):
@@ -169,7 +169,7 @@ class InterfaceTV:
             print(self.nome)
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
-            self.__frame_tv.destroy()
+            self.__frame.destroy()
             interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Erro ao excluir dispositivo!')   
