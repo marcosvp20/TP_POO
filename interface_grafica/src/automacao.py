@@ -14,7 +14,7 @@ class Automacao:
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
         self.qnt_linhas_auto = len(self.planilha_auto.retorna_linha(1))
-        self._excluir_temp()
+        #self._excluir_temp()
         
     def excluir_auto(self,coluna = None) -> bool:
         """
@@ -77,7 +77,7 @@ class Automacao:
             self.compara_planilhas()
             self.planilha_auto_temp.adicionar_nome_primeira_celula(self.nome_auto)
             self.planilha_auto.copia_planilha('planilhas/automacoestemp.xlsx')
-            self._excluir_temp()
+            self._excluir_temp() # Garantir que a planilha temporária é limpada.
             
             return True
         else:

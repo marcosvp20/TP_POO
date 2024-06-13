@@ -43,17 +43,22 @@ class interfaceNewAuto:
                                            text_color='black', 
                                            command=nome_auto.executar)
         self.botao_proximo.place(x=140, y=560)
-        
+
+    def atualiza_temp(self) -> None:
+        """
+        Limpa a planilha temporária e a atualiza copiando da planilha de dispositivos atuais.
+        """
+        auto = Automacao(None)
+        auto._excluir_temp()
+        auto.planilha_auto_temp.copia_planilha('planilhas/objetos.xlsx')
+
     def executar(self) -> None:
         """
         Executa a interface para adicionar uma nova automação.
         """
         if not self.__planilha_disp.verifica_se_esta_vazio():
+            self.atualiza_temp()
             self.cria_frame('Adicionar automação: ')
-            # auto = Automacao('')
-            # auto._Automacao__excluir_temp()
-            # auto.planilha_auto_temp = auto.planilha_disp
-            # BotaoDinamicoDisp(self.janela, 'planilhas/automacoestemp.xlsx')
             self.insere_botoes()
             self.botaoProximo()
         else:

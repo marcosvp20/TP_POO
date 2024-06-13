@@ -58,7 +58,7 @@ class InterfaceNameAuto:
             self.__mensagem_confirmacao('Automação adicionada com sucesso!!')
         else:
             self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
-        
+
         from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
         IA = interfaceAutomacoes(self.janela)
         IA.executar()

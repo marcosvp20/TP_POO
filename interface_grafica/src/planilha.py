@@ -232,7 +232,8 @@ class Planilha:
       for linha in self.planilha.iter_rows():
          for celula in linha:
             celula.value = None
-
+      self.planilha.delete_cols(1, self.planilha.max_column)
+      self.planilha.delete_rows(1, self.planilha.max_row)
       self.workbook.save(self.nome_planilha)
    
    def excluir_linha(self, nome:str, coluna:int):
