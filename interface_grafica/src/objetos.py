@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from src.planilha import Planilha
 
 class Objeto(ABC):
-    def __init__(self, nome, planilha) -> None:
+    def __init__(self, nome:str, planilha:Planilha) -> None:
         """
         Inicializa um objeto com um nome e uma planilha.
 
@@ -11,7 +11,7 @@ class Objeto(ABC):
             planilha (str): O caminho para a planilha associada ao objeto.
         """
         self.nome = nome
-        self.planilha = Planilha(planilha)
+        self.planilha = planilha
         self.ligado = False
         
     def salvar(self,dados) -> bool:

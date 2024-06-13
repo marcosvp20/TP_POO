@@ -8,7 +8,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
     
     """Classe que representa um botão dinâmico para dispositivos."""
 
-    def __init__(self, janela:ctk, planilha) -> None:
+    def __init__(self, janela:ctk, planilha:str) -> None:
         """
         Inicializa a classe BotaoDinamicoDisp.
         """
@@ -60,15 +60,15 @@ class BotaoDinamicoDisp(BotaoDinamico):
                 
                 match(self.tipos[i]):
                     case 'A/C':
-                        interfaceAC = InterfaceAC(self.janela, self.nome[i], planilha)
+                        interfaceAC = InterfaceAC(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
-                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i], planilha)
+                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_lamp, comando= interfaceLamp.executar)
                     case 'Televisor':
-                        interfaceTV = InterfaceTV(self.janela, self.nome[i], planilha)
+                        interfaceTV = InterfaceTV(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
 

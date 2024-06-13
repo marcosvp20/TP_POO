@@ -1,4 +1,5 @@
 from src.objetos import Objeto
+from src.planilha import Planilha
 
 class ArCondicionado(Objeto):
     """
@@ -23,7 +24,7 @@ class ArCondicionado(Objeto):
         excluir: Exclui o ar condicionado da planilha.
     """
 
-    def __init__(self, nome, planilha:str) -> None:
+    def __init__(self, nome, planilha:Planilha) -> None:
         super().__init__(nome, planilha)
         self.temperatura = 23
         self.tipo = 'A/C'

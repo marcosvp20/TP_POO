@@ -1,4 +1,5 @@
 from src.objetos import Objeto
+from src.planilha import Planilha
 
 class Televisao (Objeto):
     """
@@ -25,7 +26,7 @@ class Televisao (Objeto):
     - excluir(self): Exclui a televisão da planilha.
     """
 
-    def __init__ (self, nome:str, planilha:str) -> None:
+    def __init__ (self, nome:str, planilha:Planilha) -> None:
         super().__init__(nome, planilha)
         self.canal = 1
         self.volume = 0

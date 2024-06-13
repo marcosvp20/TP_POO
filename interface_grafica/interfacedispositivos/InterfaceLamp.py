@@ -4,12 +4,13 @@ from src.lampada import Lampada
 import time
 from src.frame import Frame
 from src.automacao import Automacao
+from src.planilha import Planilha
 
 class InterfaceLamp:
     """
     Classe que representa a interface gráfica de uma lâmpada.
     """
-    def __init__(self, janela:ctk, nome:str, planilha:str) -> None:
+    def __init__(self, janela:ctk, nome:str, planilha:Planilha) -> None:
         """
         Inicializa a classe InterfaceLamp.
         """
@@ -159,7 +160,7 @@ class InterfaceLamp:
         self.switch()
         self.slider()
         self.botaoVoltar()
-        if self.planilha == 'planilhas/objetos.xlsx':
+        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botao_excluir()
 
 

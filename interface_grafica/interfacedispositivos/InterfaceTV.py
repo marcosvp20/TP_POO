@@ -4,11 +4,13 @@ from src.televisao import Televisao
 import time
 from src.frame import Frame
 from src.automacao import Automacao
+from src.planilha import Planilha
+
 class InterfaceTV:
     """
     Classe que representa a interface gráfica de uma televisão.
     """
-    def __init__(self, janela:ctk, nome:str, planilha:str) -> None:
+    def __init__(self, janela:ctk, nome:str, planilha:Planilha) -> None:
         """
         Inicializa a classe InterfaceTV.
         """
@@ -199,5 +201,5 @@ class InterfaceTV:
         self.slider()
         self.botoes_mudar_canal()
         self.botaoVoltar()
-        if self.planilha == 'planilhas/objetos.xlsx':
+        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botaoExcluir()

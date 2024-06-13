@@ -4,12 +4,13 @@ from src.arcondicionado import ArCondicionado
 import time
 from src.frame import Frame
 from src.automacao import Automacao
+from src.planilha import Planilha
 
 class InterfaceAC:
     """
     Classe que representa a interface gráfica de um ar condicionado.
     """
-    def __init__(self, janela:ctk, nome:str, planilha:str):
+    def __init__(self, janela:ctk, nome:str, planilha:Planilha):
         """
         Inicializa a classe InterfaceAC.
         """
@@ -170,7 +171,7 @@ class InterfaceAC:
         self.switch()
         self.slider()
         self.botaoVoltar()
-        if self.planilha == 'planilhas/objetos.xlsx':
+        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botaoExcluir()
         
 

@@ -1,7 +1,8 @@
 from src.objetos import Objeto
+from src.planilha import Planilha
 
 class Lampada(Objeto):
-    def __init__(self, nome, planilha:str) -> None:
+    def __init__(self, nome, planilha:Planilha) -> None:
         """
         Inicializa uma instância da classe Lampada.
 
