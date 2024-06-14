@@ -4,6 +4,7 @@ from interfaceautomacao.InterfaceNewAuto import interfaceNewAuto
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 from src.automacao import Automacao
+from src.botao import Botao
 
 class BotaoDinamicoAuto(BotaoDinamico):
 
@@ -20,9 +21,16 @@ class BotaoDinamicoAuto(BotaoDinamico):
         print(self.quantidade)
         self.insere_botoes()
     
-    def configura_botao(self, posx, posy, texto, imagem, comando):
+    def configura_botao(self, posx:int, posy:int, texto:str, imagem:ctk, comando:object) -> None:
         """
         Configura um botão dinâmico.
+        
+        Args:
+        posx (int): Posição horizontal do botão na janela.
+        posy (int): Posição vertical do botão na janela.
+        texto (str): Texto exibido no botão.
+        imagem (objeto): Imagem exibida no botão.
+        comando (função, opcional): Função a ser executada quando o botão for clicado.
         """
         super().configura_botao(posx, posy, texto, imagem, comando)
             
@@ -52,9 +60,6 @@ class BotaoDinamicoAuto(BotaoDinamico):
         Insere os botões no frame.
         """
         from interfaceautomacao.InterfaceExecutarAutomacoes import interfaceAutomacao
-        # from src.planilha_auto import PlanilhaAuto
-        # p = PlanilhaAuto('planilhas/automacoestemp.xlsx')
-        # p.copia_planilha('planilhas/objetos.xlsx')
 
         self.importar_posicoes()
         self.abre_imagens()
@@ -65,25 +70,28 @@ class BotaoDinamicoAuto(BotaoDinamico):
                                         texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= interfaceAutomacao(self.janela, self.nome[i]).executar)
             
                 
-    def botao_add (self, posx, posy ) -> None:
+    def botao_add (self, posx:int, posy:int) -> None:
         """
         Adiciona um novo botão de adicionar dispositivo.
         """
         new_auto = interfaceNewAuto(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
-        self.botao_add = self.botao = ctk.CTkButton(master=self.janela, 
-                                   width= 187, 
-                                   height=82, 
-                                   text='Adicionar\nAutomação', 
-                                   font=('League Spartan bold',15),
-                                   image= imagem, 
-                                   compound='left', 
-                                   fg_color='#d7ebf8', 
-                                   text_color='black', 
-                                   corner_radius=0,
-                                   command=new_auto.executar)
-        self.botao_add.place(x = posx, 
-                             y = posy) 
+        self.botaoAdd = Botao(janela=self.janela, posx=posx, posy=posy, texto='Adicionar\nAutomação',
+                              imagem=imagem, comando=new_auto.executar)
+        self.botaoAdd.botao_padrao()
+        # self.botao_add = self.botao = ctk.CTkButton(master=self.janela, 
+        #                            width= 187, 
+        #                            height=82, 
+        #                            text='Adicionar\nAutomação', 
+        #                            font=('League Spartan bold',15),
+        #                            image= imagem, 
+        #                            compound='left', 
+        #                            fg_color='#d7ebf8', 
+        #                            text_color='black', 
+        #                            corner_radius=0,
+        #                            command=new_auto.executar)
+        # self.botao_add.place(x = posx, 
+        #                      y = posy) 
 
     def insere_botao_add(self) -> None:
         """

@@ -62,7 +62,7 @@ class InterfaceNameDisp:
             if self.new_name:
                 match(self.tipo):
                     case "A/C":
-                        if ArCondicionado(self.new_name, 'planilhas/objetos.xlsx').salvar():
+                        if ArCondicionado(self.new_name, self.planilha).salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.__frame_name_disp.update()
@@ -71,7 +71,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.__frame_name_disp.update()
                     case "Lâmpada":
-                        if Lampada(self.new_name, 'planilhas/objetos.xlsx').salvar():
+                        if Lampada(self.new_name, self.planilha).salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.__frame_name_disp.update()
@@ -80,7 +80,7 @@ class InterfaceNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.__frame_name_disp.update()
                     case "Televisor":
-                        if Televisao(self.new_name, 'planilhas/objetos.xlsx').salvar():
+                        if Televisao(self.new_name, self.planilha).salvar():
                             self.mensagem_confirmacao('O dispositivo foi adicionado com sucesso!!')
                             self.parar_execucao()
                             self.__frame_name_disp.update()

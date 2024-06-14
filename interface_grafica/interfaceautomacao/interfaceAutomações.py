@@ -5,9 +5,12 @@ from interfaceautomacao.b_dinamico_auto import BotaoDinamicoAuto
 from src.frame import Frame
 
 class interfaceAutomacoes:
-    def __init__(self, janela) -> None:
+    def __init__(self, janela:ctk) -> None:
         """
         Classe responsável por criar a interface gráfica para automações.
+        
+        Args:
+        janela(ctk): a janela na qual será fixado frame das automações
         """
         self.janela = janela
     

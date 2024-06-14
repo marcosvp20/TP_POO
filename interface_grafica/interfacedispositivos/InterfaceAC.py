@@ -16,7 +16,7 @@ class InterfaceAC:
         """
         self.janela = janela
         self.nome = nome
-        self.planilha = planilha
+        self.__planilha = planilha
         self.ar = ArCondicionado(self.nome, planilha)
         self.ar.temperatura = self.ar.temperatura_atual()
         self.ar.ligado = self.ar.esta_ligado()
@@ -26,20 +26,20 @@ class InterfaceAC:
         Cria o frame da interface do ar condicionado.
         """
         self.__frame = Frame(self.janela, f'{self.nome}', '')
-        self.frame_ac = self.__frame.retorna_frame()
+        self.__frame_ac = self.__frame.retorna_frame()
         
     def switch(self) -> None:
         """
         Cria o switch de ligar/desligar do ar condicionado.
         """
-        off_label = ctk.CTkLabel(self.frame_ac, 
+        off_label = ctk.CTkLabel(self.__frame_ac, 
                                  text="OFF", 
                                  font=('League Spartan', 30), 
                                  fg_color='white', 
                                  bg_color='transparent')
         off_label.place(x=100, y=190)
         
-        switch = ctk.CTkSwitch(self.frame_ac, 
+        switch = ctk.CTkSwitch(self.__frame_ac, 
                                text="", 
                                command=self.ligar_desligar, 
                                width=85, 
@@ -53,7 +53,7 @@ class InterfaceAC:
                                switch_width=85)
         switch.place(x=183, y=195)
                 
-        on_label = ctk.CTkLabel(self.frame_ac, 
+        on_label = ctk.CTkLabel(self.__frame_ac, 
                                 text="ON", 
                                 font=('League Spartan', 30), 
                                 fg_color="white", 
@@ -67,14 +67,14 @@ class InterfaceAC:
         """
         Cria o slider de controle de temperatura do ar condicionado.
         """
-        self.temperatura_label = ctk.CTkLabel(self.frame_ac, 
+        self.temperatura_label = ctk.CTkLabel(self.__frame_ac, 
                                               text=f"Temperatura: {self.ar.temperatura_atual()} °C", 
                                               font=('League Spartan', 30), 
                                               bg_color='#F5F9FC', 
                                               fg_color='white',)
         self.temperatura_label.place(x=100, y=330)
 
-        slider_temperatura = ctk.CTkSlider(self.frame_ac, 
+        slider_temperatura = ctk.CTkSlider(self.__frame_ac, 
                                            from_=16, 
                                            to=30, 
                                            command=lambda value: self.atualiza_valor(value), 
@@ -92,7 +92,7 @@ class InterfaceAC:
         Cria o botão de exclusão do ar condicionado.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botao_excluir = ctk.CTkButton(master=self.frame_ac, 
+        self.botao_excluir = ctk.CTkButton(master=self.__frame_ac, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 
@@ -108,7 +108,7 @@ class InterfaceAC:
         """
         Cria o botão de exclusão do ar condicionado.
         """
-        self.botao_voltar = ctk.CTkButton(master=self.frame_ac, 
+        self.botao_voltar = ctk.CTkButton(master=self.__frame_ac, 
                                            width=170, 
                                            height=50, 
                                            font=('League Spartan bold',17), 
@@ -153,12 +153,12 @@ class InterfaceAC:
         """
         Exibe uma mensagem na interface do ar condicionado.
         """
-        self.texto = ctk.CTkLabel(master=self.frame_ac, 
+        self.texto = ctk.CTkLabel(master=self.__frame_ac, 
                                   text=mensagem, 
                                   font=('League Spartan', 20), 
                                   fg_color='#CEE2EF')
         self.texto.place(x=85, y=620)
-        self.frame_ac.update()
+        self.__frame_ac.update()
         time.sleep(1)
         
     def executar(self) -> None:
@@ -169,7 +169,7 @@ class InterfaceAC:
         self.switch()
         self.slider()
         self.botaoVoltar()
-        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
+        if self.__planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botaoExcluir()
         
 

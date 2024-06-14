@@ -78,7 +78,7 @@ class InterfaceTV:
                                           text=f"Volume: {self.tv.volume_atual()} %",
                                           font=('League Spartan', 30),
                                           bg_color='transparent',
-                                          fg_color='#E5F0F7',)
+                                          fg_color='#F0F6FA',)
         self.label_volume.place(x=140, y=380)
 
         slider_volume = ctk.CTkSlider(self.__frame_tv,

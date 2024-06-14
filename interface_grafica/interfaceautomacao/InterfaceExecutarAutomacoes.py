@@ -2,6 +2,7 @@ from PIL import Image
 import customtkinter as ctk
 from src.automacao import Automacao
 from src.frame import Frame
+from src.botao import Botao
 
 class interfaceAutomacao:
     def __init__(self, janela:ctk, nome:str) -> None:
@@ -12,39 +13,53 @@ class interfaceAutomacao:
         """
         Cria o frame para exibir ações da automação.
         """
-        self.frame = Frame(self.janela, self.nome, '')
-        self.__frame_automacoes = self.frame.retorna_frame()
+        self.__frame = Frame(self.janela, self.nome, '')
+        self.__frame_automacoes = self.__frame.retorna_frame()
     
-    def botaoAtivar(self):
+    def botaoAtivar(self) -> None:
+        self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=260,
+                                  texto='Ativar', comando=self.__click_ativar)
+        self.botao_ativar.botao_menor('#f5e0df')
+        # self.botao_ativar = ctk.CTkButton(master=self.__frame_automacoes, 
+        #                                    width=170, 
+        #                                    height=50, 
+        #                                    font=('League Spartan bold',17), 
+        #                                    fg_color='#f5e0df', 
+        #                                    corner_radius=0, 
+        #                                    text='Ativar', 
+        #                                    text_color='black', 
+        #                                    command=self.__click_ativar)
+        # self.botao_ativar.place(x=140, y=260)
+    
+    def __click_ativar(self) -> None:
         auto = Automacao(self.nome)
-        self.botao_ativar = ctk.CTkButton(master=self.__frame_automacoes, 
-                                           width=170, 
-                                           height=50, 
-                                           font=('League Spartan bold',17), 
-                                           fg_color='#f5e0df', 
-                                           corner_radius=0, 
-                                           text='Ativar', 
-                                           text_color='black', 
-                                           command=auto.executar_automacao)
-        self.botao_ativar.place(x=140, y=260)
+        auto.executar_automacao()
+        self.__frame.mensagem('Automação ativada com sucesso!')
+        self.__frame.destroy()
+        from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
+        auto = interfaceAutomacoes(self.janela)
+        auto.executar()
+        
 
     def botaoExcluir(self) -> None:
         """
         Cria o botão de exclusão da automação.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        auto = Automacao(self.nome)
-        self.botao_excluir = ctk.CTkButton(master=self.__frame_automacoes, 
-                                           width=170, 
-                                           height=50, 
-                                           font=('League Spartan bold',17), 
-                                           fg_color='#f5e0df', 
-                                           corner_radius=0, 
-                                           text='Excluir automação', 
-                                           text_color='black', 
-                                           command=self.__click_excluir,
-                                           image=image)
-        self.botao_excluir.place(x=140, y=500)
+        self.botao_excluir = Botao(janela=self.__frame_automacoes, posx=140, posy=500,
+                                  texto='Excluir automação', comando=self.__click_excluir, imagem=image)
+        self.botao_excluir.botao_menor('#f5e0df')
+        # self.botao_excluir = ctk.CTkButton(master=self.__frame_automacoes, 
+        #                                    width=170, 
+        #                                    height=50, 
+        #                                    font=('League Spartan bold',17), 
+        #                                    fg_color='#f5e0df', 
+        #                                    corner_radius=0, 
+        #                                    text='Excluir automação', 
+        #                                    text_color='black', 
+        #                                    command=self.__click_excluir,
+        #                                    image=image)
+        # self.botao_excluir.place(x=140, y=500)
 
     def __click_excluir(self) -> None:
         auto = Automacao(self.nome)
