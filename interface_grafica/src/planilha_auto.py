@@ -55,4 +55,21 @@ class PlanilhaAuto(Planilha):
         # Salve a planilha modificada
         self.workbook.save(self.nome_planilha)
     
+    def adiciona_coluna_de_selecao(self) -> None:
+        """
+        Adiciona uma coluna de seleção para confirmar a adição da configuração à automação.
+        """
+        if self.nome_planilha == 'planilhas/automacoestemp.xlsx':
+            for row in range(1, self.planilha.max_row + 1):
+                self.planilha.cell(row=row, column=6, value=False)
+        
+        self.workbook.save(self.nome_planilha)
+
+    def excluir_coluna_de_selecao(self) -> None:
+        """
+        Exclui a coluna de seleção.
+        """
+        self.planilha.delete_cols(6)
+        self.workbook.save(self.nome_planilha)
+
     

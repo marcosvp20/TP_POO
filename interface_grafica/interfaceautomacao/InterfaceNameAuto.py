@@ -7,7 +7,7 @@ from time import sleep
 from src.botao import Botao
 
 class InterfaceNameAuto:
-    def __init__(self, janela:ctk) -> None:
+    def __init__(self, janela:ctk, auto:Automacao) -> None:
         """
         Classe responsável por criar a interface para adicionar uma nova automação
 
@@ -15,6 +15,7 @@ class InterfaceNameAuto:
             janela(ctk): Janela onde o frame da interface será fixado
         """
         self.janela = janela
+        self.auto = auto
 
     def criaframe(self) -> None:
         """
@@ -22,7 +23,11 @@ class InterfaceNameAuto:
         """
         self.__frame = Frame(self.janela, 'Qual será o nome', 'da automação?')
         self.__frame_name_auto = self.__frame.retorna_frame()
-        
+    
+    def criar_entry(self) -> None:
+        """
+        Cria a entry para coletar o nome da automação.
+        """
         self.txtbox_name_auto = ctk.CTkEntry(self.__frame_name_auto, 
                                              width=180, height= 40,
                                              font=('League Spartan', 17),
@@ -32,6 +37,7 @@ class InterfaceNameAuto:
         self.txtbox_name_auto.configure(justify = 'center')
         self.txtbox_name_auto.place(x=135,   
                                     y=200)
+        
     def botao_confirmar (self) -> None:
         """
         Cria o botão de confirmação para adicionar a automação.
@@ -46,8 +52,8 @@ class InterfaceNameAuto:
         Adiciona uma nova automação a planilha principal de automações.
         """
         self.__nome_auto = self.txtbox_name_auto.get().strip()
-        auto = Automacao(self.__nome_auto)
-        if auto.adicionar_auto():
+        self.auto.nome_auto = self.__nome_auto
+        if self.auto.adicionar_auto():
             self.__mensagem_confirmacao('      Automação adicionada com sucesso!!')
         else:
             self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
@@ -73,6 +79,7 @@ class InterfaceNameAuto:
         Coloca o frame na tela.
         """
         self.criaframe()
+        self.criar_entry()
         self.botao_confirmar()
         
         

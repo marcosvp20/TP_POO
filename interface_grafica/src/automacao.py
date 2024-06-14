@@ -74,7 +74,8 @@ class Automacao:
             #     print(self.dados_auto)
             #     self.planilha_auto.salvar(self.dados_auto)
             # self._excluir_temp()
-            self.compara_planilhas()
+            self.verifica_alteracoes()
+            self.planilha_auto_temp.excluir_coluna_de_selecao()
             self.planilha_auto_temp.adicionar_nome_primeira_celula(self.nome_auto)
             self.planilha_auto.copia_planilha('planilhas/automacoestemp.xlsx')
             self._excluir_temp() # Garantir que a planilha temporária é limpada.
@@ -107,27 +108,44 @@ class Automacao:
                 for j in range(1,len(linha)):
                     self.planilha_disp.editar(linha, j)
     
-    def compara_planilhas(self) -> None:
-        '''
-        Compara as linhas da planilha de automações temporárias com a de dispositivos, 
-        se não houveram alterações nos parametros a linha da planilha de auto temp é apagada
-        '''
+    def verifica_alteracoes(self) -> None:
+        # '''
+        # Compara as linhas da planilha de automações temporárias com a de dispositivos, 
+        # se não houveram alterações nos parametros a linha da planilha de auto temp é apagada
+        # '''
+        # linha_a_excluir = []
+        # for i in range(1, len(self.planilha_auto_temp.retorna_coluna(1))+1):
+        #     diferentes = 0
+        #     linha_auto_temp = self.planilha_auto_temp.retorna_linha(i)
+        #     linha_disp = self.planilha_disp.retorna_linha(i)
+        #     for j in range(1, len(linha_auto_temp)):
+        #         if linha_auto_temp[j] != linha_disp[j]:
+        #             diferentes += 1
+        #         else:
+        #             pass
+        #     if diferentes == 0:
+        #         linha_a_excluir.append(linha_auto_temp[0])
+        # for i in range(0,len(linha_a_excluir)):
+        #     self.planilha_auto_temp.excluir_linha(linha_a_excluir[i],0)
+            
+        # for i in range(0,len(self.planilha_auto_temp.retorna_coluna(1))):
+        #     linha = self.planilha_auto_temp.retorna_linha(i+1)
+        #     print(linha)
+        """
+        Verifica quais linhas da planilha de automações temporárias não foram selecionadas e as excluem.
+        """
         linha_a_excluir = []
         for i in range(1, len(self.planilha_auto_temp.retorna_coluna(1))+1):
-            diferentes = 0
             linha_auto_temp = self.planilha_auto_temp.retorna_linha(i)
-            linha_disp = self.planilha_disp.retorna_linha(i)
-            for j in range(1, len(linha_auto_temp)):
-                if linha_auto_temp[j] != linha_disp[j]:
-                    diferentes += 1
-                else:
-                    pass
-            if diferentes == 0:
+
+            # Verifica se a 6ª coluna está definida como False
+            if linha_auto_temp[5] == False:
                 linha_a_excluir.append(linha_auto_temp[0])
-        for i in range(0,len(linha_a_excluir)):
-            self.planilha_auto_temp.excluir_linha(linha_a_excluir[i],0)
-            
-        for i in range(0,len(self.planilha_auto_temp.retorna_coluna(1))):
+
+        for id_linha in linha_a_excluir:
+            self.planilha_auto_temp.excluir_linha(id_linha, 0)
+
+        for i in range(len(self.planilha_auto_temp.retorna_coluna(1))):
             linha = self.planilha_auto_temp.retorna_linha(i+1)
             print(linha)
 

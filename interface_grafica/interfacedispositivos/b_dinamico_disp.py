@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from src.planilha import Planilha
+from src.planilha_auto import PlanilhaAuto
 from interfacedispositivos.InterfaceDispositivos import InterfaceNewDisp
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
@@ -9,15 +10,23 @@ class BotaoDinamicoDisp(BotaoDinamico):
     
     """Classe que representa um botão dinâmico para dispositivos."""
 
-    def __init__(self, janela:ctk, planilha:str) -> None:
+    def __init__(self, janela:ctk, planilha:Planilha) -> None:
         """
         Inicializa a classe BotaoDinamicoDisp.
         """
         super().__init__(janela)
-        self.planilha = Planilha(planilha)
+        # if planilha == 'planilhas/automacoestemp.xlsx':
+        #     self.planilha = PlanilhaAuto(planilha)
+        #     self.planilha.adiciona_coluna_de_selecao()
+        # else:
+        #     self.planilha = Planilha(planilha)
+        self.planilha = planilha
+        # if planilha.nome_planilha == 'planilhas/automacoestemp.xlsx':
+        #     self.planilha.adiciona_coluna_de_selecao()
+        
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
         self.tipos = self.planilha.retorna_tipos()
-        self.insere_botoes(planilha)
+        self.insere_botoes()
 
     def configura_botao(self, posx, posy, texto, imagem, comando):
         """
@@ -45,7 +54,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
         self.imagem_lamp = ctk.CTkImage(Image.open('imagens/lampada.png'),size=(40,40))
         self.imagem_tv = ctk.CTkImage(Image.open('imagens/tv.png'),size=(40,40))
 
-    def insere_botoes(self, planilha) -> None:
+    def insere_botoes(self) -> None:
         """
         Insere os botões na interface.
         """

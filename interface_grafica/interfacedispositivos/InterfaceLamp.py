@@ -17,7 +17,7 @@ class InterfaceLamp:
         """
         self.janela = janela
         self.nome = nome
-        self.planilha = planilha
+        self.__planilha = planilha
         self.lampada = Lampada(self.nome, planilha)
         self.brilho = self.lampada.brilho_atual()
         self.ligado = self.lampada.esta_ligado()
@@ -142,7 +142,22 @@ class InterfaceLamp:
         self.texto.place(x = 85, y = 620)
         self.__frame_lamp.update()
         time.sleep(1)
+
+    def botaoConfirmar(self) -> None:
+        """
+        Cria o botão de seleção do ar condicionado para adicionar à uma automação.
+        """
+        image = ctk.CTkImage(light_image=Image.open('imagens/check.png'), size=(20,20))
         
+        self.botao_confirmar = Botao(janela=self.__frame_lamp, posx=140, posy=500, imagem=image,
+                                   comando=self.confirmar, texto='Confirmar')
+        self.botao_confirmar.botao_menor('#f5e0df')
+
+    def confirmar(self) -> None:
+        """
+        Seleciona o dispositivo para ser adicionado à uma automação.
+        """
+        self.__planilha.selecionar(self.nome)
 
     def executar(self) -> None:
         """
@@ -152,8 +167,10 @@ class InterfaceLamp:
         self.switch()
         self.slider()
         self.botaoVoltar()
-        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
+        if self.__planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botao_excluir()
+        elif self.__planilha.nome_planilha == 'planilhas/automacoestemp.xlsx':
+            self.botaoConfirmar()
 
 
 

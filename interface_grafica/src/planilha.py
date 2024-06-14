@@ -256,6 +256,18 @@ class Planilha:
             return True
          linha_a_excluir += 1
       return False
+   
+   def selecionar(self, objeto_id:str) -> None:
+        """
+        Seleciona um objeto para ser adicionado à uma automação.
+        """
+        for row in self.planilha.iter_rows(min_row=1, max_row=self.planilha.max_row, min_col=1, max_col=1):
+            for cell in row:
+                if cell.value == objeto_id:
+                    self.planilha.cell(row=cell.row, column=6).value = True
+                    self.workbook.save(self.nome_planilha)
+                    print(f'Alterações confirmadas!')
+                    break
 
    # def comparar_e_apagar_linhas(self, outra_planilha):
    #      """

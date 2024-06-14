@@ -149,6 +149,22 @@ class InterfaceAC:
         self.texto.place(x=85, y=620)
         self.__frame_ac.update()
         time.sleep(1)
+
+    def botaoConfirmar(self) -> None:
+        """
+        Cria o botão de seleção do ar condicionado para adicionar à uma automação.
+        """
+        image = ctk.CTkImage(light_image=Image.open('imagens/check.png'), size=(20,20))
+        
+        self.botao_confirmar = Botao(janela=self.__frame_ac, posx=140, posy=500, imagem=image,
+                                   comando=self.confirmar, texto='Confirmar')
+        self.botao_confirmar.botao_menor('#f5e0df')
+
+    def confirmar(self) -> None:
+        """
+        Seleciona o dispositivo para ser adicionado à uma automação.
+        """
+        self.__planilha.selecionar(self.nome)
         
     def executar(self) -> None:
         """
@@ -160,5 +176,7 @@ class InterfaceAC:
         self.botaoVoltar()
         if self.__planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botaoExcluir()
+        elif self.__planilha.nome_planilha == 'planilhas/automacoestemp.xlsx':
+            self.botaoConfirmar()
         
 

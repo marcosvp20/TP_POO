@@ -17,7 +17,7 @@ class InterfaceTV:
         """
         self.janela = janela
         self.nome = nome
-        self.planilha = planilha
+        self.__planilha = planilha
         self.tv = Televisao(self.nome, planilha)
         self.volume = self.tv.volume_atual()
         self.ligado = self.tv.esta_ligado()
@@ -184,6 +184,22 @@ class InterfaceTV:
         self.label_volume.configure(text=f"Volume: {int(value)}%")
         self.tv.mudar_volume(int(value))
 
+    def botaoConfirmar(self) -> None:
+        """
+        Cria o botão de seleção do ar condicionado para adicionar à uma automação.
+        """
+        image = ctk.CTkImage(light_image=Image.open('imagens/check.png'), size=(20,20))
+        
+        self.botao_confirmar = Botao(janela=self.__frame_tv, posx=140, posy=500, imagem=image,
+                                   comando=self.confirmar, texto='Confirmar')
+        self.botao_confirmar.botao_menor('#f5e0df')
+
+    def confirmar(self) -> None:
+        """
+        Seleciona o dispositivo para ser adicionado à uma automação.
+        """
+        self.__planilha.selecionar(self.nome)
+
     def executar(self) -> None:
         """
         Executa a interface da televisão.
@@ -193,5 +209,7 @@ class InterfaceTV:
         self.slider()
         self.botoes_mudar_canal()
         self.botaoVoltar()
-        if self.planilha.nome_planilha == 'planilhas/objetos.xlsx':
+        if self.__planilha.nome_planilha == 'planilhas/objetos.xlsx':
             self.botaoExcluir()
+        elif self.__planilha.nome_planilha == 'planilhas/automacoestemp.xlsx':
+            self.botaoConfirmar()
