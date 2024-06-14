@@ -9,7 +9,7 @@ class FrameInferior:
     Esse arquivo contém a classe FrameInferior, que é responsável por criar e gerenciar o frame inferior da interface gráfica.
     O frame inferior contém botões para acessar as funcionalidades de Dispositivos e Automações.
     """
-    def __init__(self, janela) -> None:
+    def __init__(self, janela:ctk) -> None:
         self.janela = janela
     
     def criaframe(self) -> None:

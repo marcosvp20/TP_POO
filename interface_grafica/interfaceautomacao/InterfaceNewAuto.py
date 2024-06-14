@@ -5,6 +5,7 @@ from src.automacao import Automacao
 from src.planilha_auto import PlanilhaAuto
 from src.planilha import Planilha
 from interfaceautomacao.InterfaceNameAuto import InterfaceNameAuto
+from src.botao import Botao
 
 class interfaceNewAuto:
     def __init__(self, janela) -> None:
@@ -12,8 +13,7 @@ class interfaceNewAuto:
         self.__planilha_auto = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.__caminho_plan_disp = 'planilhas/objetos.xlsx'
         self.__caminho_plan_autotemp = 'planilhas/automacoestemp.xlsx'
-        # auto = Automacao('')
-        # self.__planilha_auto.copia_planilha(self.__caminho_plan_disp) #garantir que não seja chamado duas vezes
+
         """
         Inicializa a classe interfaceNewAuto.
         """
@@ -30,20 +30,12 @@ class interfaceNewAuto:
     
     def insere_botoes(self) -> None:
         BotaoDinamicoDisp(self.janela, self.__caminho_plan_autotemp)
-        # auto._excluir_temp()
     
     def botaoProximo(self):
         nome_auto = InterfaceNameAuto(self.janela)
-        self.botao_proximo = ctk.CTkButton(master=self.__frame_new_auto, 
-                                           width=170, 
-                                           height=50, 
-                                           font=('League Spartan bold',17), 
-                                           fg_color='#f5e0df', 
-                                           corner_radius=0, 
-                                           text='Próximo', 
-                                           text_color='black', 
-                                           command=nome_auto.executar)
-        self.botao_proximo.place(x=140, y=560)
+        self.botao_proximo = Botao(janela=self.__frame_new_auto, posx=140, posy=560, texto='Próximo',
+                                   comando=nome_auto.executar)
+        self.botao_proximo.botao_menor('#f5e0df')
 
     def atualiza_temp(self) -> None:
         """

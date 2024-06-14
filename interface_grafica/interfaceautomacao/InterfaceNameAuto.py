@@ -37,19 +37,9 @@ class InterfaceNameAuto:
         Cria o botão de confirmação para adicionar a automação.
         """
         image = ctk.CTkImage(light_image= Image.open('imagens/check.png'),size=(25,25))
-        self.botao_adicionar = Botao(janela=self.__frame_name_auto,posx=140, posy = 320, texto='Concluir',
+        self.botaoConfirmar = Botao(janela=self.__frame_name_auto,posx=140, posy = 320, texto='Concluir',
                                      imagem=image, comando=self.__adicionar)
-        # self.botao_adicionar = ctk.CTkButton(master=self.__frame_name_auto, 
-        #                                      width=170, 
-        #                                      height=50,
-        #                                      font=('League Spartan bold',17),
-        #                                      fg_color='#d7ebf8',
-        #                                      corner_radius=0, 
-        #                                      text='Concluir', 
-        #                                      text_color='black',
-        #                                      command = self.__adicionar,
-        #                                      image=image)
-        # self.botao_adicionar.place(x = 140, y = 320)
+        self.botaoConfirmar.botao_menor('#d7ebf8')
     
     def __adicionar(self) -> None:
         """

@@ -5,6 +5,7 @@ import time
 from src.frame import Frame
 from src.automacao import Automacao
 from src.planilha import Planilha
+from src.botao import Botao
 
 class InterfaceTV:
     """
@@ -99,27 +100,17 @@ class InterfaceTV:
         Cria o botão de excluir a televisão.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botao_excluir = ctk.CTkButton(master=self.__frame_tv, width=170, height=50,
-                                        font=('League Spartan bold',17),fg_color='#f5e0df',
-                                        corner_radius=0, text='Excluir dispositivo', text_color='black',
-                                        command = self.excluir,
-                                        image=image)
-        self.botao_excluir.place(x=140, y=500)
+        self.botao_excluir = Botao(janela=self.__frame_tv, posx=140, posy=500, imagem=image,
+                                   comando=self.excluir, texto='Excluir dispositivo')
+        self.botao_excluir.botao_menor('#f5e0df')
     
     def botaoVoltar(self) -> None:
         """
         Cria o botão de exclusão do ar condicionado.
         """
-        self.botao_voltar = ctk.CTkButton(master=self.__frame_tv, 
-                                           width=170, 
-                                           height=50, 
-                                           font=('League Spartan bold',17), 
-                                           fg_color='#f5e0df', 
-                                           corner_radius=0, 
-                                           text='Voltar', 
-                                           text_color='black', 
-                                           command=self.__frame.destroy)
-        self.botao_voltar.place(x=140, y=560)
+        self.botao_voltar = Botao(self.__frame_tv, posx=140, posy=560, texto='Voltar',
+                                  comando=self.__frame.destroy)
+        self.botao_voltar.botao_menor('#f5e0df')
     
     def botoes_mudar_canal(self):
         imagem_mais = ctk.CTkImage(light_image=Image.open('imagens/adicionar.png'), size=(30,30))

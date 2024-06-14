@@ -79,19 +79,6 @@ class BotaoDinamicoAuto(BotaoDinamico):
         self.botaoAdd = Botao(janela=self.janela, posx=posx, posy=posy, texto='Adicionar\nAutomação',
                               imagem=imagem, comando=new_auto.executar)
         self.botaoAdd.botao_padrao()
-        # self.botao_add = self.botao = ctk.CTkButton(master=self.janela, 
-        #                            width= 187, 
-        #                            height=82, 
-        #                            text='Adicionar\nAutomação', 
-        #                            font=('League Spartan bold',15),
-        #                            image= imagem, 
-        #                            compound='left', 
-        #                            fg_color='#d7ebf8', 
-        #                            text_color='black', 
-        #                            corner_radius=0,
-        #                            command=new_auto.executar)
-        # self.botao_add.place(x = posx, 
-        #                      y = posy) 
 
     def insere_botao_add(self) -> None:
         """

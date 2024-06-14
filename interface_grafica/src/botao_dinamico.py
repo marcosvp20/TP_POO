@@ -4,6 +4,7 @@ import openpyxl
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
 from PIL import Image
 from abc import ABC, abstractmethod
+from src.botao import Botao
 
 class BotaoDinamico(ABC):
     """
@@ -34,18 +35,9 @@ class BotaoDinamico(ABC):
             imagem (PIL.Image): A imagem exibida no botão.
             comando (function): A função a ser executada quando o botão for clicado.
         """
-        self.botao = ctk.CTkButton(master=self.janela,
-                                   width= 187, 
-                                   height=82, 
-                                   text=texto, 
-                                   font=('League Spartan bold',15),
-                                   image= imagem, 
-                                   compound='left', 
-                                   fg_color='#d7ebf8', 
-                                   text_color='black', 
-                                   corner_radius=0,
-                                   command= comando)
-        self.botao.place(x = posx, y = posy)
+        self.botao = Botao(janela=self.janela, posx=posx, posy=posy, texto=texto,
+                           imagem=imagem, comando=comando)
+        self.botao.botao_padrao()
         
     def importar_posicoes(self) -> None:
         """

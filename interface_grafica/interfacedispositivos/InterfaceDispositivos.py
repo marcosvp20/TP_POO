@@ -1,8 +1,4 @@
-import customtkinter as ctk
-from PIL import Image
-from interfacedispositivos.botao_disp import Botao
 from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
-import os
 from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.frame import Frame
 

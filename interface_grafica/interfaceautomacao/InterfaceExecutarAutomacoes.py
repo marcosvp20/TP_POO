@@ -20,16 +20,6 @@ class interfaceAutomacao:
         self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=260,
                                   texto='Ativar', comando=self.__click_ativar)
         self.botao_ativar.botao_menor('#f5e0df')
-        # self.botao_ativar = ctk.CTkButton(master=self.__frame_automacoes, 
-        #                                    width=170, 
-        #                                    height=50, 
-        #                                    font=('League Spartan bold',17), 
-        #                                    fg_color='#f5e0df', 
-        #                                    corner_radius=0, 
-        #                                    text='Ativar', 
-        #                                    text_color='black', 
-        #                                    command=self.__click_ativar)
-        # self.botao_ativar.place(x=140, y=260)
     
     def __click_ativar(self) -> None:
         auto = Automacao(self.nome)
@@ -49,23 +39,12 @@ class interfaceAutomacao:
         self.botao_excluir = Botao(janela=self.__frame_automacoes, posx=140, posy=500,
                                   texto='Excluir automação', comando=self.__click_excluir, imagem=image)
         self.botao_excluir.botao_menor('#f5e0df')
-        # self.botao_excluir = ctk.CTkButton(master=self.__frame_automacoes, 
-        #                                    width=170, 
-        #                                    height=50, 
-        #                                    font=('League Spartan bold',17), 
-        #                                    fg_color='#f5e0df', 
-        #                                    corner_radius=0, 
-        #                                    text='Excluir automação', 
-        #                                    text_color='black', 
-        #                                    command=self.__click_excluir,
-        #                                    image=image)
-        # self.botao_excluir.place(x=140, y=500)
 
     def __click_excluir(self) -> None:
         auto = Automacao(self.nome)
         if auto.excluir_auto():
-            self.frame.mensagem('A automação foi excluída com sucesso!')
-            self.frame.destroy()
+            self.__frame.mensagem('A automação foi excluída com sucesso!')
+            self.__frame.destroy()
             from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
             auto = interfaceAutomacoes(self.janela)
             auto.executar()

@@ -5,6 +5,7 @@ import time
 from src.frame import Frame
 from src.automacao import Automacao
 from src.planilha import Planilha
+from src.botao import Botao
 
 class InterfaceLamp:
     """
@@ -90,13 +91,9 @@ class InterfaceLamp:
         Cria o botão de exclusão da lâmpada.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botao_excluir = ctk.CTkButton(master=self.__frame_lamp, width=170, height=50,
-                                             font=('League Spartan bold',17),fg_color='#f5e0df',
-                                             corner_radius=0, text='Excluir dispositivo', text_color='black',
-                                             command = self.excluir,
-                                             image=image
-                                             )
-        self.botao_excluir.place(x = 140, y = 500)
+        self.botaoExcluir = Botao(self.__frame_lamp, posx=140, posy=500,
+                                  texto='Excluir dispositivo',imagem=image, comando=self.excluir)
+        self.botaoExcluir.botao_menor('#f5e0df')
 
     def ligar_desligar(self) -> None:
         """
@@ -108,16 +105,11 @@ class InterfaceLamp:
         """
         Cria o botão de exclusão do ar condicionado.
         """
-        self.botao_voltar = ctk.CTkButton(master=self.__frame_lamp, 
-                                           width=170, 
-                                           height=50, 
-                                           font=('League Spartan bold',17), 
-                                           fg_color='#f5e0df', 
-                                           corner_radius=0, 
-                                           text='Voltar', 
-                                           text_color='black', 
-                                           command=self.__frame.destroy)
-        self.botao_voltar.place(x=140, y=560)
+        
+        self.botao_voltar = Botao(self.__frame_lamp, posx=140, posy=560, texto='Voltar',
+                                  comando=self.__frame.destroy)
+        self.botao_voltar.botao_menor('#f5e0df')
+        
 
     def atualiza_valor(self, value) -> None:
         """

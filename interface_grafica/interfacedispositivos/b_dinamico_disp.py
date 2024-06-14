@@ -3,6 +3,7 @@ from src.planilha import Planilha
 from interfacedispositivos.InterfaceDispositivos import InterfaceNewDisp
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
+from src.botao import Botao
 
 class BotaoDinamicoDisp(BotaoDinamico):
     
@@ -78,19 +79,10 @@ class BotaoDinamicoDisp(BotaoDinamico):
         """
         new_disp = InterfaceNewDisp(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
-        self.botao_add = self.botao = ctk.CTkButton(master=self.janela, 
-                                   width= 187, 
-                                   height=82, 
-                                   text='Adicionar\nDispositivo', 
-                                   font=('League Spartan bold',15),
-                                   image= imagem, 
-                                   compound='left', 
-                                   fg_color='#d7ebf8', 
-                                   text_color='black', 
-                                   corner_radius=0,
-                                   command=new_disp.executar)
-        self.botao_add.place(x = posx, 
-                             y = posy) 
+        self.botaoAdd = Botao(janela=self.janela,  posx=posx, posy=posy, texto='Adicionar\nDispositivo',
+                              imagem=imagem, comando=new_disp.executar)
+        self.botaoAdd.botao_padrao()
+        
 
     def insere_botao_add(self) -> None:
         """

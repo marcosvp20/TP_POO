@@ -1,13 +1,13 @@
 from tkinter import *
 from PIL import Image
 import customtkinter as ctk
-from interfacedispositivos.botao_disp import Botao
 import time
 from src.planilha import Planilha
 from src.arcondicionado import ArCondicionado
 from src.lampada import Lampada
 from src.televisao import Televisao
 from src.frame import Frame
+from src.botao import Botao
 
 class InterfaceNameDisp:
     def __init__(self, janela, tipo) -> None:
@@ -40,17 +40,9 @@ class InterfaceNameDisp:
         Cria o botão de confirmação para adicionar o dispositivo.
         """
         image = ctk.CTkImage(light_image= Image.open('imagens/check.png'),size=(25,25))
-        self.botao_adicionar = ctk.CTkButton(master=self.__frame_name_disp, 
-                                             width=170, 
-                                             height=50,
-                                             font=('League Spartan bold',17),
-                                             fg_color='#d7ebf8',
-                                             corner_radius=0, 
-                                             text='Concluir', 
-                                             text_color='black',
-                                             command = self.adicionar,
-                                             image=image)
-        self.botao_adicionar.place(x = 140, y = 320)
+        self.botao_adicionar = Botao(self.__frame_name_disp, posx=140, posy=320, texto='Concluir',
+                                     imagem=image, comando=self.adicionar)
+        self.botao_adicionar.botao_menor('#d7ebf8')
         
     def adicionar(self) -> None:
         """
