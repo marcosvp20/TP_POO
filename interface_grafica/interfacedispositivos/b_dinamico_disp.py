@@ -82,11 +82,11 @@ class BotaoDinamicoDisp(BotaoDinamico):
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
 
-    def botao_add (self, posx, posy ) -> None:
+    def botao_add (self, posx, posy) -> None:
         """
         Adiciona um botão para adicionar um novo dispositivo.
         """
-        new_disp = InterfaceNewDisp(self.janela)
+        new_disp = InterfaceNewDisp(self.janela, self.planilha)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botaoAdd = Botao(janela=self.janela,  posx=posx, posy=posy, texto='Adicionar\nDispositivo',
                               imagem=imagem, comando=new_disp.executar)

@@ -9,7 +9,6 @@ class interfaceDispositivos:
         Classe responsável por criar a interface de dispositivos.
         """
         self.janela = janela
-        self.planilha = Planilha('planilhas/objetos.xlsx')
         
     def criaframe(self) -> None:
         """
@@ -22,8 +21,9 @@ class interfaceDispositivos:
         """
         Executa a interface de dispositivos.
         """
+        self.planilha = Planilha('planilhas/objetos.xlsx')
         self.criaframe()
-        InterfaceNewDisp(self.janela)
+        #InterfaceNewDisp(self.janela)
         # bd = BotaoDinamicoDisp(self.__frame_dispositivos, 'planilhas/objetos.xlsx')
         bd = BotaoDinamicoDisp(self.__frame_dispositivos, self.planilha)
         bd.insere_botao_add()

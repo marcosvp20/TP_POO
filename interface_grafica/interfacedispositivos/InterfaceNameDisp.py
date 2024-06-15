@@ -9,14 +9,15 @@ from src.televisao import Televisao
 from src.frame import Frame
 from src.botao import Botao
 
+
 class InterfaceNameDisp:
-    def __init__(self, janela, tipo) -> None:
+    def __init__(self, janela, tipo, planilha:Planilha) -> None:
         """
         Classe responsável por criar a interface para adicionar um novo dispositivo.
         """
         self.janela = janela
         self.tipo = tipo
-        self.planilha = Planilha('planilhas/objetos.xlsx')
+        self.planilha = planilha
 
     def criaframe(self) -> None:
         """

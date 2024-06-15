@@ -4,14 +4,16 @@ import customtkinter as ctk
 from interfacedispositivos.InterfaceNameDisp import InterfaceNameDisp
 from src.frame import Frame
 from src.botao import Botao
+from src.planilha import Planilha
 
 class InterfaceNewDisp:
     """
     Classe responsável por criar a interface gráfica para adicionar novos dispositivos.
     """
 
-    def __init__(self, janela) -> None:
+    def __init__(self, janela, planilha:Planilha) -> None:
         self.janela = janela
+        self.planilha = planilha
         
     def criaframe(self) -> None:
         """
@@ -24,7 +26,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar um ar condicionado.
         """
-        new_ar = InterfaceNameDisp(self.janela, "A/C")
+        new_ar = InterfaceNameDisp(self.janela, "A/C", self.planilha)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/arcondicionado.png'),size=(25,25))
         self.botaoAr = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
@@ -38,7 +40,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar uma lâmpada.
         """
-        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada")
+        new_lamp = InterfaceNameDisp(self.janela, "Lâmpada", self.planilha)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/lampada.png'),size=(25,25))
         self.botaoLamp = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
@@ -52,7 +54,7 @@ class InterfaceNewDisp:
         """
         Cria o botão para adicionar uma TV.
         """
-        new_tv = InterfaceNameDisp(self.janela, "Televisor")
+        new_tv = InterfaceNameDisp(self.janela, "Televisor", self.planilha)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/tv.png'),size=(25,25))
         self.botaoTv = Botao(janela=self.__frame_new_disp, 
                                  posx=135, 
