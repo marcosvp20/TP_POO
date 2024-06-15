@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from src.planilha import Planilha
 from src.planilha_auto import PlanilhaAuto
-from interfacedispositivos.InterfaceDispositivos import InterfaceNewDisp
+from menudispositivos.MenuDispositivos import MenuNewDisp
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 from src.botao import Botao
@@ -58,9 +58,9 @@ class BotaoDinamicoDisp(BotaoDinamico):
         """
         Insere os botões na interface.
         """
-        from interfacedispositivos.InterfaceAC import InterfaceAC
-        from interfacedispositivos.InterfaceLamp import InterfaceLamp
-        from interfacedispositivos.InterfaceTV import InterfaceTV
+        from menudispositivos.MenuAC import MenuAC
+        from menudispositivos.MenuLamp import MenuLamp
+        from menudispositivos.MenuTV import MenuTV
         
         self.importar_posicoes()
         self.importa_nomes()
@@ -70,23 +70,23 @@ class BotaoDinamicoDisp(BotaoDinamico):
                 
                 match(self.tipos[i]):
                     case 'A/C':
-                        interfaceAC = InterfaceAC(self.janela, self.nome[i], self.planilha)
+                        interfaceAC = MenuAC(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_ac, comando= interfaceAC.executar)
                     case 'Lâmpada':
-                        interfaceLamp = InterfaceLamp(self.janela, self.nome[i], self.planilha)
+                        interfaceLamp = MenuLamp(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
                         texto=self.nome[i], imagem=self.imagem_lamp, comando= interfaceLamp.executar)
                     case 'Televisor':
-                        interfaceTV = InterfaceTV(self.janela, self.nome[i], self.planilha)
+                        menuTV = MenuTV(self.janela, self.nome[i], self.planilha)
                         self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                        texto=self.nome[i], imagem=self.imagem_tv, comando= interfaceTV.executar)
+                        texto=self.nome[i], imagem=self.imagem_tv, comando= menuTV.executar)
 
     def botao_add (self, posx, posy) -> None:
         """
         Adiciona um botão para adicionar um novo dispositivo.
         """
-        new_disp = InterfaceNewDisp(self.janela, self.planilha)
+        new_disp = MenuNewDisp(self.janela, self.planilha)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botaoAdd = Botao(janela=self.janela,  posx=posx, posy=posy, texto='Adicionar\nDispositivo',
                               imagem=imagem, comando=new_disp.executar)

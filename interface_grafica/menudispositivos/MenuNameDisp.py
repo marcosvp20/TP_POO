@@ -10,7 +10,7 @@ from src.frame import Frame
 from src.botao import Botao
 
 
-class InterfaceNameDisp:
+class MenuNameDisp:
     def __init__(self, janela, tipo, planilha:Planilha) -> None:
         """
         Classe responsável por criar a interface para adicionar um novo dispositivo.
@@ -104,10 +104,10 @@ class InterfaceNameDisp:
         """
         Para a execução da interface e retorna para o menu de dispositivos.
         """
-        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+        from menudispositivos.MenuDispositivos import MenuDispositivos
 
         self.__frame.destroy()
-        interfaceDispositivos(self.janela).executar()
+        MenuDispositivos(self.janela).executar()
         
     def executar(self) -> None:
         """

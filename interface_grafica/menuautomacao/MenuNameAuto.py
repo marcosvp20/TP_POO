@@ -6,7 +6,7 @@ from PIL import Image
 from time import sleep
 from src.botao import Botao
 
-class InterfaceNameAuto:
+class MenuNameAuto:
     def __init__(self, janela:ctk, auto:Automacao) -> None:
         """
         Classe responsável por criar a interface para adicionar uma nova automação
@@ -58,8 +58,8 @@ class InterfaceNameAuto:
         else:
             self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
 
-        from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
-        IA = interfaceAutomacoes(self.janela)
+        from menuautomacao.MenuAutomações import MenuAutomacoes
+        IA = MenuAutomacoes(self.janela)
         IA.executar()
     
     def __mensagem_confirmacao(self,mensagem:str) -> None:

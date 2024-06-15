@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from src.planilha import Planilha
 import openpyxl
-from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
+from menudispositivos.MenuNewDisp import MenuNewDisp
 from PIL import Image
 from abc import ABC, abstractmethod
 from src.botao import Botao

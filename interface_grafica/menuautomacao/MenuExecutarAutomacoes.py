@@ -4,7 +4,7 @@ from src.automacao import Automacao
 from src.frame import Frame
 from src.botao import Botao
 
-class interfaceAutomacao:
+class MenuAutomacao:
     def __init__(self, janela:ctk, nome:str) -> None:
         self.janela = janela
         self.nome = nome
@@ -26,8 +26,8 @@ class interfaceAutomacao:
         auto.executar_automacao()
         self.__frame.mensagem('Automação ativada com sucesso!')
         self.__frame.destroy()
-        from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
-        auto = interfaceAutomacoes(self.janela)
+        from menuautomacao.MenuAutomações import MenuAutomacoes
+        auto = MenuAutomacoes(self.janela)
         auto.executar()
         
 
@@ -45,8 +45,8 @@ class interfaceAutomacao:
         if auto.excluir_auto():
             self.__frame.mensagem('A automação foi excluída com sucesso!')
             self.__frame.destroy()
-            from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
-            auto = interfaceAutomacoes(self.janela)
+            from menuautomacao.MenuAutomações import MenuAutomacoes
+            auto = MenuAutomacoes(self.janela)
             auto.executar()
         else:
             self.frame.mensagem('Falha ao excluir a automação')

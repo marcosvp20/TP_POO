@@ -7,13 +7,13 @@ from src.automacao import Automacao
 from src.planilha import Planilha
 from src.botao import Botao
 
-class InterfaceAC:
+class MenuAC:
     """
     Classe que representa a interface gráfica de um ar condicionado.
     """
     def __init__(self, janela:ctk, nome:str, planilha:Planilha):
         """
-        Inicializa a classe InterfaceAC.
+        Inicializa a classe MenuAC.
         """
         self.janela = janela
         self.nome = nome
@@ -128,13 +128,13 @@ class InterfaceAC:
         """
         Exclui o ar condicionado.
         """
-        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+        from menudispositivos.MenuDispositivos import MenuDispositivos
         auto = Automacao(self.nome)
         if self.ar.excluir():
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluido com sucesso!')
             self.__frame.destroy()
-            interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
+            MenuDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Falha ao excluir o dispositivo')
              

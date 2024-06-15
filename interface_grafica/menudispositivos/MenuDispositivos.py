@@ -1,9 +1,9 @@
-from interfacedispositivos.InterfaceNewDisp import InterfaceNewDisp
-from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from menudispositivos.MenuNewDisp import MenuNewDisp
+from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.frame import Frame
 from src.planilha import Planilha
 
-class interfaceDispositivos:
+class MenuDispositivos:
     def __init__(self, janela) -> None:
         """
         Classe responsável por criar a interface de dispositivos.

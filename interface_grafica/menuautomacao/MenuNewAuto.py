@@ -1,13 +1,13 @@
 import customtkinter as ctk
 from src.frame import Frame
-from interfacedispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.automacao import Automacao
 from src.planilha_auto import PlanilhaAuto
 from src.planilha import Planilha
-from interfaceautomacao.InterfaceNameAuto import InterfaceNameAuto
+from menuautomacao.MenuNameAuto import MenuNameAuto
 from src.botao import Botao
 
-class interfaceNewAuto:
+class MenuNewAuto:
     def __init__(self, janela) -> None:
         # self.__planilha_disp = Planilha('planilhas/objetos.xlsx')
         # self.__planilha_auto = PlanilhaAuto('planilhas/automacoestemp.xlsx')
@@ -34,7 +34,7 @@ class interfaceNewAuto:
         BotaoDinamicoDisp(self.janela, self.auto.planilha_auto_temp)
     
     def botaoProximo(self):
-        nome_auto = InterfaceNameAuto(self.janela, self.auto)
+        nome_auto = MenuNameAuto(self.janela, self.auto)
         self.botao_proximo = Botao(janela=self.__frame_new_auto, posx=140, posy=560, texto='Próximo',
                                    comando=nome_auto.executar)
         self.botao_proximo.botao_menor('#f5e0df')

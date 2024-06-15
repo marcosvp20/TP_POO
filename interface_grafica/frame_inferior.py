@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
-from interfaceautomacao.interfaceAutomações import interfaceAutomacoes
+from menudispositivos.MenuDispositivos import MenuDispositivos
+from menuautomacao.MenuAutomações import MenuAutomacoes
 from PIL import Image
 from tela_inicial import TelaInicial
 
@@ -27,7 +27,7 @@ class FrameInferior:
         """
         Cria o botão de Dispositivos no frame inferior.
         """
-        interface_dispositivos = interfaceDispositivos(self.janela)
+        interface_dispositivos = MenuDispositivos(self.janela)
         imagem_dispositivos = ctk.CTkImage(light_image=Image.open('imagens/dispositivos.png'), 
                                            size=(40,40))
         self.botao_dispositivos = ctk.CTkButton(master=self.frame_inferior, 
@@ -47,7 +47,7 @@ class FrameInferior:
         """
         Cria o botão de Automações no frame inferior.
         """
-        interface_automacoes = interfaceAutomacoes(self.janela)
+        interface_automacoes = MenuAutomacoes(self.janela)
         imagem_automacao = ctk.CTkImage(light_image=Image.open('imagens/automacao.png'),
                                         size=(40,40))
         self.botao_automacao = ctk.CTkButton(master=self.frame_inferior, 

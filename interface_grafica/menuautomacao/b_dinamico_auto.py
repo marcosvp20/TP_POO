@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from src.planilha import Planilha
-from interfaceautomacao.InterfaceNewAuto import interfaceNewAuto
+from menuautomacao.MenuNewAuto import MenuNewAuto
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 from src.automacao import Automacao
@@ -59,7 +59,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Insere os botões no frame.
         """
-        from interfaceautomacao.InterfaceExecutarAutomacoes import interfaceAutomacao
+        from menuautomacao.MenuExecutarAutomacoes import MenuAutomacao
 
         self.importar_posicoes()
         self.abre_imagens()
@@ -67,14 +67,14 @@ class BotaoDinamicoAuto(BotaoDinamico):
             if self.quantidade > 0:
                 for i in range(0, self.quantidade):
                     self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= interfaceAutomacao(self.janela, self.nome[i]).executar)
+                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= MenuAutomacao(self.janela, self.nome[i]).executar)
             
                 
     def botao_add (self, posx:int, posy:int) -> None:
         """
         Adiciona um novo botão de adicionar dispositivo.
         """
-        new_auto = interfaceNewAuto(self.janela)
+        new_auto = MenuNewAuto(self.janela)
         imagem = ctk.CTkImage(light_image= Image.open('imagens/plus.png'),size=(25,25))
         self.botaoAdd = Botao(janela=self.janela, posx=posx, posy=posy, texto='Adicionar\nAutomação',
                               imagem=imagem, comando=new_auto.executar)

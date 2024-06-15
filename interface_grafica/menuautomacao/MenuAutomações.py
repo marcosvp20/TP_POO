@@ -1,8 +1,8 @@
 import customtkinter as ctk
-from interfaceautomacao.b_dinamico_auto import BotaoDinamicoAuto
+from menuautomacao.b_dinamico_auto import BotaoDinamicoAuto
 from src.frame import Frame
 
-class interfaceAutomacoes:
+class MenuAutomacoes:
     def __init__(self, janela:ctk) -> None:
         """
         Classe responsável por criar a interface gráfica para automações.

@@ -7,13 +7,13 @@ from src.automacao import Automacao
 from src.planilha import Planilha
 from src.botao import Botao
 
-class InterfaceTV:
+class MenuTV:
     """
     Classe que representa a interface gráfica de uma televisão.
     """
     def __init__(self, janela:ctk, nome:str, planilha:Planilha) -> None:
         """
-        Inicializa a classe InterfaceTV.
+        Inicializa a classe MenuTV.
         """
         self.janela = janela
         self.nome = nome
@@ -153,7 +153,7 @@ class InterfaceTV:
         """
         Exclui a televisão.
         """
-        from interfacedispositivos.InterfaceDispositivos import interfaceDispositivos
+        from menudispositivos.MenuDispositivos import MenuDispositivos
         auto = Automacao(self.nome)
 
         if self.tv.excluir():
@@ -161,7 +161,7 @@ class InterfaceTV:
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
             self.__frame.destroy()
-            interfaceDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
+            MenuDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
         else:
             self.mensagem('Erro ao excluir dispositivo!')   
 
