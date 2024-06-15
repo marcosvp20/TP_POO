@@ -14,7 +14,6 @@ class Automacao:
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
         self.qnt_linhas_auto = len(self.planilha_auto.retorna_linha(1))
-        #self._excluir_temp()
         
     def excluir_auto(self,coluna = None) -> bool:
         """
@@ -68,12 +67,6 @@ class Automacao:
         self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_dispositivos() #retorna a quantidade de linhas da planilha
         
         if not self.planilha_auto.verifica_se_objeto_existe(self.nome_auto):
-            # for i in range(1,self.qnt_linhas_auto+1):
-            #     self.dados_auto = self.planilha_auto_temp.retorna_linha(i)
-            #     self.dados_auto.insert(0,self.nome_auto)
-            #     print(self.dados_auto)
-            #     self.planilha_auto.salvar(self.dados_auto)
-            # self._excluir_temp()
             self.verifica_alteracoes()
             self.planilha_auto_temp.excluir_coluna_de_selecao()
             self.planilha_auto_temp.adicionar_nome_primeira_celula(self.nome_auto)
@@ -96,10 +89,11 @@ class Automacao:
 
     def executar_automacao(self) -> None:
         """
-        executa a automação informada, alterando os parâmetros do objeto na planilha dispositivos
+        Executa a automação informada, alterando os parâmetros do objeto na planilha dispositivos
         
-        args:
-        nome_auto (str): nome da automação a ser executada"""
+        Argumentos:
+            nome_auto (str): Nome da automação a ser executada
+        """
         
         for i in range(0, self.qnt_linhas_auto):
             linha = self.planilha_auto.retorna_linha(i+1)
@@ -109,28 +103,6 @@ class Automacao:
                     self.planilha_disp.editar(linha, j)
     
     def verifica_alteracoes(self) -> None:
-        # '''
-        # Compara as linhas da planilha de automações temporárias com a de dispositivos, 
-        # se não houveram alterações nos parametros a linha da planilha de auto temp é apagada
-        # '''
-        # linha_a_excluir = []
-        # for i in range(1, len(self.planilha_auto_temp.retorna_coluna(1))+1):
-        #     diferentes = 0
-        #     linha_auto_temp = self.planilha_auto_temp.retorna_linha(i)
-        #     linha_disp = self.planilha_disp.retorna_linha(i)
-        #     for j in range(1, len(linha_auto_temp)):
-        #         if linha_auto_temp[j] != linha_disp[j]:
-        #             diferentes += 1
-        #         else:
-        #             pass
-        #     if diferentes == 0:
-        #         linha_a_excluir.append(linha_auto_temp[0])
-        # for i in range(0,len(linha_a_excluir)):
-        #     self.planilha_auto_temp.excluir_linha(linha_a_excluir[i],0)
-            
-        # for i in range(0,len(self.planilha_auto_temp.retorna_coluna(1))):
-        #     linha = self.planilha_auto_temp.retorna_linha(i+1)
-        #     print(linha)
         """
         Verifica quais linhas da planilha de automações temporárias não foram selecionadas e as excluem.
         """
@@ -144,10 +116,3 @@ class Automacao:
 
         for id_linha in linha_a_excluir:
             self.planilha_auto_temp.excluir_linha(id_linha, 0)
-
-        for i in range(len(self.planilha_auto_temp.retorna_coluna(1))):
-            linha = self.planilha_auto_temp.retorna_linha(i+1)
-            print(linha)
-
-# a = Automacao('a')
-# a.compara_planilhas()

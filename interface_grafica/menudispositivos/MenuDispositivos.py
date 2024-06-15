@@ -1,13 +1,18 @@
-from menudispositivos.MenuNewDisp import MenuNewDisp
 from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.frame import Frame
 from src.planilha import Planilha
 
 class MenuDispositivos:
+    """
+    Classe responsável por criar a interface de dispositivos.
+    """
     def __init__(self, janela) -> None:
         """
-        Classe responsável por criar a interface de dispositivos.
-        """
+        Inicializa o menu de dispositivos.
+
+        Argumentos:
+            janela(ctk): Janela referência à inicialização do menu.
+        """    
         self.janela = janela
         
     def criaframe(self) -> None:
@@ -23,8 +28,6 @@ class MenuDispositivos:
         """
         self.planilha = Planilha('planilhas/objetos.xlsx')
         self.criaframe()
-        #InterfaceNewDisp(self.janela)
-        # bd = BotaoDinamicoDisp(self.__frame_dispositivos, 'planilhas/objetos.xlsx')
         bd = BotaoDinamicoDisp(self.__frame_dispositivos, self.planilha)
         bd.insere_botao_add()
     

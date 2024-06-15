@@ -3,12 +3,15 @@ from menuautomacao.b_dinamico_auto import BotaoDinamicoAuto
 from src.frame import Frame
 
 class MenuAutomacoes:
+    """
+    Classe responsável por criar a interface gráfica para automações.
+    """
     def __init__(self, janela:ctk) -> None:
         """
-        Classe responsável por criar a interface gráfica para automações.
+        Inicializa o menu das automações.
         
-        Args:
-        janela(ctk): a janela na qual será fixado frame das automações
+        Argumentos:
+            janela(ctk): a janela na qual será fixado frame das automações.
         """
         self.janela = janela
     

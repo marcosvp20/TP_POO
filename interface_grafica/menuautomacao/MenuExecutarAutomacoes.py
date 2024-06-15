@@ -5,7 +5,17 @@ from src.frame import Frame
 from src.botao import Botao
 
 class MenuAutomacao:
+    """
+    Classe que representa um menu de uma automação.
+    """
     def __init__(self, janela:ctk, nome:str) -> None:
+        """
+        Inicializa o menu da automação.
+
+        Argumentos:
+            janela(ctk): a janela na qual será fixado frame da automação.
+            nome(str): Nome da automação.
+        """
         self.janela = janela
         self.nome = nome
 
@@ -17,11 +27,17 @@ class MenuAutomacao:
         self.__frame_automacoes = self.__frame.retorna_frame()
     
     def botaoAtivar(self) -> None:
+        """
+        Cria o botão de ativação da automação.
+        """
         self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=260,
                                   texto='Ativar', comando=self.__click_ativar)
         self.botao_ativar.botao_menor('#f5e0df')
     
     def __click_ativar(self) -> None:
+        """
+        Define o comando de ativação da automação.
+        """
         auto = Automacao(self.nome)
         auto.executar_automacao()
         self.__frame.mensagem('Automação ativada com sucesso!')
@@ -30,7 +46,6 @@ class MenuAutomacao:
         auto = MenuAutomacoes(self.janela)
         auto.executar()
         
-
     def botaoExcluir(self) -> None:
         """
         Cria o botão de exclusão da automação.
@@ -41,6 +56,9 @@ class MenuAutomacao:
         self.botao_excluir.botao_menor('#f5e0df')
 
     def __click_excluir(self) -> None:
+        """
+        Exclui a automação.
+        """
         auto = Automacao(self.nome)
         if auto.excluir_auto():
             self.__frame.mensagem('A automação foi excluída com sucesso!')

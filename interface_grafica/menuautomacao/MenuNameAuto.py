@@ -7,12 +7,16 @@ from time import sleep
 from src.botao import Botao
 
 class MenuNameAuto:
+    """
+    Classe que representa o menu para adicionar nome à automação.
+    """
     def __init__(self, janela:ctk, auto:Automacao) -> None:
         """
-        Classe responsável por criar a interface para adicionar uma nova automação
+        Inicializa o menu para a definição do nome da automação.
 
-        Args:
-            janela(ctk): Janela onde o frame da interface será fixado
+        Argumentos:
+            janela(ctk): Janela onde o frame da interface será fixado.
+            auto(Automacao): Automação a ser adicionada.
         """
         self.janela = janela
         self.auto = auto
@@ -62,14 +66,17 @@ class MenuNameAuto:
         IA = MenuAutomacoes(self.janela)
         IA.executar()
     
-    def __mensagem_confirmacao(self,mensagem:str) -> None:
+    def __mensagem_confirmacao(self, mensagem:str) -> None:
         """
         Exibe uma mensagem de confirmação na interface.
+
+        Args:
+            mensagem(str): Texto a ser exibido na mensagem.
         """
         self.texto = ctk.CTkLabel(master=self.__frame_name_auto, 
                                   text=mensagem,
-                                    font=('League Spartan', 20), 
-                                    fg_color='#ECF4F9', anchor='center')
+                                  font=('League Spartan', 20), 
+                                  fg_color='#ECF4F9', anchor='center')
         self.texto.place(x = 50, y = 400)
         self.__frame_name_auto.update()
         sleep(1)

@@ -3,18 +3,20 @@ from PIL import Image
 from time import sleep
 
 class Frame:
+    """
+    Classe que representa um frame na interface gráfica.
+    """
     def __init__(self, janela, texto1, texto2='') -> None:
+        """
+        Inicializa o frame.
+        """
         self.__janela = janela
         self.__texto1 = texto1
         self.__texto2 = texto2
-        """
-        Classe que representa um frame na interface gráfica.
-        """
 
-       
     def retorna_frame(self) -> ctk:
         """
-     Args:
+        Args:
             janela (objeto): Objeto da janela onde o frame será exibido.
             texto1 (str): Texto a ser exibido na primeira caixa de texto.
             texto2 (str): Texto a ser exibido na segunda caixa de texto.
@@ -59,8 +61,6 @@ class Frame:
                                        y = 100)
     
         return self.__frame
-        
-        
 
     def mensagem(self, mensagem:str) -> None:
         """

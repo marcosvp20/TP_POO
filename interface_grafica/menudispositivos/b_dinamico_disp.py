@@ -1,29 +1,25 @@
 import customtkinter as ctk
 from src.planilha import Planilha
-from src.planilha_auto import PlanilhaAuto
-from menudispositivos.MenuDispositivos import MenuNewDisp
+from menudispositivos.MenuNewDisp import MenuNewDisp
 from PIL import Image
 from src.botao_dinamico import BotaoDinamico
 from src.botao import Botao
 
 class BotaoDinamicoDisp(BotaoDinamico):
-    
-    """Classe que representa um botão dinâmico para dispositivos."""
+    """
+    Classe que representa um botão dinâmico para dispositivos.
+    """
 
     def __init__(self, janela:ctk, planilha:Planilha) -> None:
         """
         Inicializa a classe BotaoDinamicoDisp.
+
+        Argumentos:
+            janela(ctk): Janela referência para posicionamento dos botões.
+            planilha(Planilha): Planilha com os dados a serem utilizados.
         """
         super().__init__(janela)
-        # if planilha == 'planilhas/automacoestemp.xlsx':
-        #     self.planilha = PlanilhaAuto(planilha)
-        #     self.planilha.adiciona_coluna_de_selecao()
-        # else:
-        #     self.planilha = Planilha(planilha)
-        self.planilha = planilha
-        # if planilha.nome_planilha == 'planilhas/automacoestemp.xlsx':
-        #     self.planilha.adiciona_coluna_de_selecao()
-        
+        self.planilha = planilha  
         self.quantidade = self.planilha.retorna_quantidade_dispositivos()
         self.tipos = self.planilha.retorna_tipos()
         self.insere_botoes()
@@ -56,7 +52,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
 
     def insere_botoes(self) -> None:
         """
-        Insere os botões na interface.
+        Insere os botões referentes aos dispositivos disponíveis na interface.
         """
         from menudispositivos.MenuAC import MenuAC
         from menudispositivos.MenuLamp import MenuLamp
@@ -67,7 +63,6 @@ class BotaoDinamicoDisp(BotaoDinamico):
         self.abre_imagens()
         if self.quantidade > 0:
             for i in range(0, self.quantidade):
-                
                 match(self.tipos[i]):
                     case 'A/C':
                         interfaceAC = MenuAC(self.janela, self.nome[i], self.planilha)

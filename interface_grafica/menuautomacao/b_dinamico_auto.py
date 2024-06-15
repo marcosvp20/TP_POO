@@ -7,18 +7,20 @@ from src.automacao import Automacao
 from src.botao import Botao
 
 class BotaoDinamicoAuto(BotaoDinamico):
-
-    """Classe que representa um botão dinâmico para as automações."""
-
+    """
+    Classe que representa um botão dinâmico para as automações.
+    """
     def __init__(self, janela:ctk) -> None:
         """
         Inicializa a classe BotaoDinamicoAuto.
+
+        Argumentos:
+            janela(ctk): Janela referência na adição dos botões.
         """
         super().__init__(janela)
         self.planilha = Planilha('planilhas/automacoes.xlsx')
         self.importa_nomes()
         self.quantidade = len(self.nome)
-        print(self.quantidade)
         self.insere_botoes()
     
     def configura_botao(self, posx:int, posy:int, texto:str, imagem:ctk, comando:object) -> None:
@@ -46,8 +48,6 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         auto = Automacao(None)
         self.nome = auto.retorna_nomes_auto()
-        
-        #super().importa_nomes()
     
     def abre_imagens(self) -> None:
         """

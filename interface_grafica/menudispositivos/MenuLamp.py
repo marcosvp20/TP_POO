@@ -14,6 +14,11 @@ class MenuLamp:
     def __init__(self, janela:ctk, nome:str, planilha:Planilha) -> None:
         """
         Inicializa a classe MenuLamp.
+
+        Argumentos:
+            janela(ctk): Janela referência à inicialização do menu.
+            nome(str): ID do objeto em questão.
+            planilha(Planilha): Planilha que contém os dados a serem utilizados.
         """
         self.janela = janela
         self.nome = nome
@@ -28,6 +33,7 @@ class MenuLamp:
         """
         self.__frame = Frame(self.janela, f'{self.nome}', '')
         self.__frame_lamp = self.__frame.retorna_frame()
+
     def switch(self) -> None:
         """
         Cria o switch de ligar/desligar da lâmpada.
@@ -110,10 +116,12 @@ class MenuLamp:
                                   comando=self.__frame.destroy)
         self.botao_voltar.botao_menor('#f5e0df')
         
-
     def atualiza_valor(self, value) -> None:
         """
         Atualiza o valor do brilho da lâmpada.
+
+        Argumentos:
+            value: Valor atualizado.
         """
         self.brilho_label.configure(text=f"Brilho: {int(value)}%")
         self.lampada.mudar_brilho(int(value))
@@ -123,19 +131,22 @@ class MenuLamp:
         Exclui a lâmpada da planilha de objetos.
         """
         from menudispositivos.MenuDispositivos import MenuDispositivos
+
         auto = Automacao(self.nome)
         if self.lampada.excluir():
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluido com sucesso!')
             self.__frame.destroy()
             MenuDispositivos(self.janela).executar() # Atualiza o frame dos dispositivos.
-        
         else:
             self.mensagem('Falha ao excluir o dispositivo')
     
     def mensagem(self, mensagem:str) -> None:
         """
         Cria uma mensagem na tela.
+
+        Argumentos:
+            mensagem(str): Texto a ser exibido.
         """
         self.texto = ctk.CTkLabel(master=self.__frame_lamp, text=mensagem,
                              font=('League Spartan', 20), fg_color='#CEE2EF')

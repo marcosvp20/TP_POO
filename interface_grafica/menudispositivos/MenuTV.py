@@ -14,6 +14,11 @@ class MenuTV:
     def __init__(self, janela:ctk, nome:str, planilha:Planilha) -> None:
         """
         Inicializa a classe MenuTV.
+
+        Argumentos:
+            janela(ctk): Janela referência à inicialização do menu.
+            nome(str): ID do objeto em questão.
+            planilha(Planilha): Planilha que contém os dados a serem utilizados.
         """
         self.janela = janela
         self.nome = nome
@@ -113,6 +118,9 @@ class MenuTV:
         self.botao_voltar.botao_menor('#f5e0df')
     
     def botoes_mudar_canal(self):
+        """
+        Cria os botões de alteração de canal da TV.
+        """
         imagem_mais = ctk.CTkImage(light_image=Image.open('imagens/adicionar.png'), size=(30,30))
         imagem_menos = ctk.CTkImage(light_image=Image.open('imagens/menos.png'), size=(30,30))
         
@@ -133,11 +141,17 @@ class MenuTV:
         self.label_ch.place(x = 200, y = 315)
         
     def click_botao_mais(self) -> None:
+        """
+        Passa para o próximo canal.
+        """
         canal = self.tv.canal_atual()
         canal += 1
         self.alterar_canal(canal)
     
     def click_botao_menos(self) -> None:
+        """
+        Passa para o canal anterior.
+        """
         canal = self.tv.canal_atual()
         if canal == 1:
             return
@@ -146,6 +160,12 @@ class MenuTV:
         self.alterar_canal(canal)
         
     def alterar_canal(self, canal:int):
+        """
+        Muda o canal da TV para um especificado.
+
+        Argumentos:
+            canal(int): Número do canal.
+        """
         self.tv.mudar_canal(canal)
         self.label_ch.configure(text = f'CH {int(canal)}')
     
@@ -168,6 +188,9 @@ class MenuTV:
     def mensagem(self, texto:str) -> None:
         """
         Exibe uma mensagem na tela.
+
+        Argumentos:
+            texto(str): Texto a ser exibido.
         """
         self.mensagem = ctk.CTkLabel(self.__frame_tv, 
                                      text=texto, 
@@ -180,6 +203,9 @@ class MenuTV:
     def atualiza_valor(self, value) -> None:
         """
         Atualiza o valor do volume da tv.
+
+        Argumentos:
+            value: Valor atualizado.
         """
         self.label_volume.configure(text=f"Volume: {int(value)}%")
         self.tv.mudar_volume(int(value))

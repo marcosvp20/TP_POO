@@ -11,9 +11,17 @@ from src.botao import Botao
 
 
 class MenuNameDisp:
-    def __init__(self, janela, tipo, planilha:Planilha) -> None:
+    """
+    Classe responsável por criar a interface para adicionar um nome ao novo dispositivo.
+    """
+    def __init__(self, janela:ctk, tipo:str, planilha:Planilha) -> None:
         """
-        Classe responsável por criar a interface para adicionar um novo dispositivo.
+        Inicializa o menu de definição de nome do dispositivo.
+
+        Argumentos:
+            janela(ctk): Janela referência à inicialização do menu.
+            tipo(str): Tipo do objeto em questão.
+            planilha(Planilha): Planilha que contém os dados a serem utilizados.
         """
         self.janela = janela
         self.tipo = tipo
@@ -82,9 +90,12 @@ class MenuNameDisp:
                             self.apagar_mensagem_confirmacao()
                             self.__frame_name_disp.update()
                             
-    def mensagem_confirmacao(self,mensagem) -> None:
+    def mensagem_confirmacao(self, mensagem:str) -> None:
         """
         Exibe uma mensagem de confirmação na interface.
+
+        Argumentos:
+            mensagem(str): Mensagem de confirmação a ser exibida.
         """
         self.texto = ctk.CTkLabel(master=self.__frame_name_disp, 
                                   text=mensagem,

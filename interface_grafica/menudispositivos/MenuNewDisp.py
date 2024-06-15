@@ -10,8 +10,14 @@ class MenuNewDisp:
     """
     Classe responsável por criar a interface gráfica para adicionar novos dispositivos.
     """
-
     def __init__(self, janela, planilha:Planilha) -> None:
+        """
+        Inicializa o menu de definição de um novo dispositivo.
+
+        Argumentos:
+            janela(ctk): Janela onde o frame da interface será fixado.
+            planilha(Planilha): Planilha que contém os dados a serem utilizados.
+        """
         self.janela = janela
         self.planilha = planilha
         

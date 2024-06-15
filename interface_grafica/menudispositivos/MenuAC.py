@@ -14,6 +14,11 @@ class MenuAC:
     def __init__(self, janela:ctk, nome:str, planilha:Planilha):
         """
         Inicializa a classe MenuAC.
+
+        Argumentos:
+            janela(ctk): Janela referência à inicialização do menu.
+            nome(str): ID do objeto em questão.
+            planilha(Planilha): Planilha que contém os dados a serem utilizados.
         """
         self.janela = janela
         self.nome = nome
@@ -101,12 +106,11 @@ class MenuAC:
         
     def botaoVoltar(self) -> None:
         """
-        Cria o botão de exclusão do ar condicionado.
+        Cria o botão de voltar ao menu anterior.
         """
         self.botao_voltar = Botao(self.__frame_ac, posx=140, posy=560, texto='Voltar',
                                   comando=self.__frame.destroy)
         self.botao_voltar.botao_menor('#f5e0df')
-
 
     def ligar_desligar(self) -> None:
         """
@@ -120,6 +124,9 @@ class MenuAC:
     def atualiza_valor(self, value) -> None:
         """
         Atualiza o valor da temperatura do ar condicionado.
+
+        Argumentos:
+            value: Valor atualizado.
         """
         self.temperatura_label.configure(text=f"Temperatura: {int(value)}° C")
         self.ar.mudar_temperatura(int(value))
@@ -129,6 +136,7 @@ class MenuAC:
         Exclui o ar condicionado.
         """
         from menudispositivos.MenuDispositivos import MenuDispositivos
+
         auto = Automacao(self.nome)
         if self.ar.excluir():
             auto.excluir_auto(1)
@@ -141,6 +149,9 @@ class MenuAC:
     def mensagem(self, mensagem:str) -> None:
         """
         Exibe uma mensagem na interface do ar condicionado.
+
+        Argumentos: 
+            mensagem(str): Texto a ser exibido.
         """
         self.texto = ctk.CTkLabel(master=self.__frame_ac, 
                                   text=mensagem, 

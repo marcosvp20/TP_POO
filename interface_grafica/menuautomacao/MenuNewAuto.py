@@ -2,38 +2,46 @@ import customtkinter as ctk
 from src.frame import Frame
 from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from src.automacao import Automacao
-from src.planilha_auto import PlanilhaAuto
-from src.planilha import Planilha
 from menuautomacao.MenuNameAuto import MenuNameAuto
 from src.botao import Botao
 
 class MenuNewAuto:
+    """
+    Classe que representa o menu da definição de uma nova automação.
+    """
     def __init__(self, janela) -> None:
-        # self.__planilha_disp = Planilha('planilhas/objetos.xlsx')
-        # self.__planilha_auto = PlanilhaAuto('planilhas/automacoestemp.xlsx')
-        # self.__caminho_plan_disp = 'planilhas/objetos.xlsx'
-        # self.__caminho_plan_autotemp = 'planilhas/automacoestemp.xlsx'
-        self.auto = Automacao(None)
-        
+        """
+        Inicializa o menu de definição de uma nova automação.
 
+        Argumentos:
+            janela(ctk): Janela onde o frame da interface será fixado.
         """
-        Inicializa a classe interfaceNewAuto.
-        """
+        self.auto = Automacao(None)
         self.janela = janela
         
     
-    def cria_frame(self,mensagem:str) -> None:
+    def cria_frame(self, mensagem1:str, mensagem2:str) -> None:
         """
         Cria o frame para adicionar uma nova automação.
+
+        Args:
+            mensagem1(str): Texto a ser exibido na primeira linha do frame.
+            mensagem2(str): Texto a ser exibido na segunda linha do frame.
         """
-        self.__frame = Frame(self.janela,mensagem)
+        self.__frame = Frame(self.janela, mensagem1, mensagem2)
         self.__frame_new_auto = self.__frame.retorna_frame()
         
     
     def insere_botoes(self) -> None:
+        """
+        Instancia um botão dinâmico de dispostivos para exibir na tela os dispositivos disponíveis.
+        """
         BotaoDinamicoDisp(self.janela, self.auto.planilha_auto_temp)
     
     def botaoProximo(self):
+        """
+        Adiciona um botão que avança para o menu de definição do nome da automação.
+        """
         nome_auto = MenuNameAuto(self.janela, self.auto)
         self.botao_proximo = Botao(janela=self.__frame_new_auto, posx=140, posy=560, texto='Próximo',
                                    comando=nome_auto.executar)
@@ -43,9 +51,6 @@ class MenuNewAuto:
         """
         Limpa a planilha temporária e a atualiza copiando da planilha de dispositivos atuais.
         """
-        # auto = Automacao(None)
-        # auto._excluir_temp()
-        # auto.planilha_auto_temp.copia_planilha('planilhas/objetos.xlsx')
         self.auto._excluir_temp()
         self.auto.planilha_auto_temp.copia_planilha('planilhas/objetos.xlsx')
         self.auto.planilha_auto_temp.adiciona_coluna_de_selecao()
@@ -56,10 +61,10 @@ class MenuNewAuto:
         """
         if not self.auto.planilha_disp.verifica_se_esta_vazio():
             self.atualiza_temp()
-            self.cria_frame('Adicionar automação: ')
+            self.cria_frame('Adicionar automação: ', '')
             self.insere_botoes()
             self.botaoProximo()
         else:
-            self.cria_frame('Adicione dispositivos\npara criar automações')
+            self.cria_frame('Adicione dispositivos', 'para criar automações')
         
         
