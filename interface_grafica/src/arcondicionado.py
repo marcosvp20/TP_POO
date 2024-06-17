@@ -26,9 +26,9 @@ class ArCondicionado(Objeto):
 
     def __init__(self, nome, planilha:Planilha) -> None:
         super().__init__(nome, planilha)
-        self.temperatura = 23
+        self.__temperatura = 23
         self.tipo = 'A/C'
-        self.dados_ar = [self.nome, self.tipo, self.temperatura, self.ligado]
+        self.dados_ar = [self.nome, self.tipo,self.__temperatura, self.ligado]
 
     def mudar_temperatura(self, temperatura) -> None:
         """

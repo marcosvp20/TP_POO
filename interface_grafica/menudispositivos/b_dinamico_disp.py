@@ -20,7 +20,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
         """
         super().__init__(janela)
         self.planilha = planilha  
-        self.quantidade = self.planilha.retorna_quantidade_dispositivos()
+        self.quantidade = self.planilha.retorna_quantidade_linhas()
         self.tipos = self.planilha.retorna_tipos()
         self.insere_botoes()
 

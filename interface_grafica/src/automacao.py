@@ -64,7 +64,7 @@ class Automacao:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
         """
-        self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_dispositivos() #retorna a quantidade de linhas da planilha
+        self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_linhas() #retorna a quantidade de linhas da planilha
         
         if not self.planilha_auto.verifica_se_objeto_existe(self.nome_auto):
             self.verifica_alteracoes()

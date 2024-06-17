@@ -6,7 +6,7 @@ class Planilha:
    Classe para facilitar na hora de salvar o status dos itens da casa.
    """
 
-   def __init__(self, nome_planilha):
+   def __init__(self, nome_planilha:str) -> None:
       """
       Inicializa a classe Planilha.
 
@@ -20,7 +20,7 @@ class Planilha:
       if not self.verifica_se_esta_vazio():
          self.exclui_linha_vazia()
 
-   def salvar(self, dados):
+   def salvar(self, dados:list) -> bool:
       """
       Salva uma lista de dados na planilha.
 
@@ -38,7 +38,7 @@ class Planilha:
          return True
       return False
 
-   def editar(self, dados:list, coluna:int):
+   def editar(self, dados:list, coluna:int) -> None:
       """
       Edita o status do objeto na planilha.
 
@@ -54,7 +54,7 @@ class Planilha:
             self.workbook.save(self.nome_planilha)
          i += 1
 
-   def verifica_se_objeto_existe(self, nome: str):
+   def verifica_se_objeto_existe(self, nome: str) -> bool:
       """
       Verifica se o objeto já está cadastrado na planilha.
 
@@ -70,7 +70,7 @@ class Planilha:
                return True
       return False
 
-   def retorna_valor(self, nome, coluna):
+   def retorna_valor(self, nome:str, coluna:int) -> str:
       """
       Retorna o valor da coluna desejada a partir do nome do objeto.
 
@@ -85,7 +85,7 @@ class Planilha:
          if linha[0] == nome:
             return linha[coluna-1]
 
-   def exclui_linha_vazia(self):
+   def exclui_linha_vazia(self) -> None:
       """
       Exclui as linhas vazias da planilha.
       """
@@ -100,7 +100,7 @@ class Planilha:
             self.workbook.save(self.nome_planilha)
          i += 1
 
-   def retorna_quantidade(self, tipo:str):
+   def retorna_quantidade(self, tipo:str) -> int: # modularizar mais isso aq, passa a coluna de referência como parametro   
       """
       Retorna a quantidade da classe de objetos presente na planilha.
 
@@ -119,7 +119,7 @@ class Planilha:
       else:
          return 0
 
-   def verifica_se_esta_vazio(self):
+   def verifica_se_esta_vazio(self) -> bool:
       """
       Verifica se a planilha está vazia.
 
@@ -132,7 +132,7 @@ class Planilha:
                return False
       return True
 
-   def retorna_quantidade_dispositivos(self):
+   def retorna_quantidade_linhas(self) -> int: # mudar o nome para retorna_quantidade_linhas
       """
       Retorna a quantidade de dispositivos presentes na planilha.
 
@@ -143,7 +143,7 @@ class Planilha:
          return 0
       return self.planilha.max_row
 
-   def retorna_nome(self):
+   def retorna_nome(self): # excluir esse metodo, deixar só o retorna linha
       """
       Retorna uma lista com os nomes dos objetos presentes na planilha.
 
@@ -158,7 +158,7 @@ class Planilha:
       else:
          return None
 
-   def retorna_tipos(self):
+   def retorna_tipos(self): #deixar só o retorna linha
       """
       Retorna uma lista com os tipos dos objetos presentes na planilha.
 
@@ -173,7 +173,7 @@ class Planilha:
       else:
          return None
 
-   def excluir_dispositivo(self, nome):
+   def excluir_dispositivo(self, nome:str): #excluir, deixar só o excluir linha
       """
       Exclui um dispositivo da planilha.
 
@@ -192,7 +192,7 @@ class Planilha:
          linha_a_excluir += 1
       return False
 
-   def retorna_coluna(self, coluna:int):
+   def retorna_coluna(self, coluna:int) -> list:
       """
       Retorna uma lista com os valores da coluna especificada.
 
@@ -203,12 +203,12 @@ class Planilha:
          list: Uma lista com os valores da coluna.
       """
       dados = []
-      for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_dispositivos(), values_only=True):
+      for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_linhas(), values_only=True):
          dados.append(linha[coluna-1])
 
       return dados
        
-   def retorna_linha(self, numero_linha) -> list:
+   def retorna_linha(self, numero_linha:int) -> list:
         """
         Retorna os valores de uma linha específica da planilha.
 
@@ -225,7 +225,7 @@ class Planilha:
 
         return valores_linha
 
-   def limpar_planilha(self):
+   def limpar_planilha(self) -> None:
       """
       Limpa todos os dados da planilha.
       """
@@ -236,7 +236,7 @@ class Planilha:
       self.planilha.delete_rows(1, self.planilha.max_row)
       self.workbook.save(self.nome_planilha)
    
-   def excluir_linha(self, nome:str, coluna:int):
+   def excluir_linha(self, nome:str, coluna:int) -> bool:
       """
       Exclui a linha em que o parâmetro passado esta.
 
