@@ -132,7 +132,7 @@ class Planilha:
                return False
       return True
 
-   def retorna_quantidade_linhas(self) -> int: # mudar o nome para retorna_quantidade_linhas
+   def retorna_quantidade_linhas(self) -> int: 
       """
       Retorna a quantidade de dispositivos presentes na planilha.
 
@@ -143,35 +143,35 @@ class Planilha:
          return 0
       return self.planilha.max_row
 
-   def retorna_nome(self): # excluir esse metodo, deixar só o retorna linha
-      """
-      Retorna uma lista com os nomes dos objetos presentes na planilha.
+   # def retorna_nome(self): # excluir esse metodo, deixar só o retorna coluna
+   #    """
+   #    Retorna uma lista com os nomes dos objetos presentes na planilha.
 
-      Returns:
-         list: Uma lista com os nomes dos objetos.
-      """
-      if not self.verifica_se_esta_vazio():
-         nomes = []
-         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-            nomes.append(linha[0])
-         return nomes
-      else:
-         return None
+   #    Returns:
+   #       list: Uma lista com os nomes dos objetos.
+   #    """
+   #    if not self.verifica_se_esta_vazio():
+   #       nomes = []
+   #       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+   #          nomes.append(linha[0])
+   #       return nomes
+   #    else:
+   #       return None
 
-   def retorna_tipos(self): #deixar só o retorna linha
-      """
-      Retorna uma lista com os tipos dos objetos presentes na planilha.
+   # def retorna_tipos(self): #deixar só o retorna coluna
+   #    """
+   #    Retorna uma lista com os tipos dos objetos presentes na planilha.
 
-      Returns:
-         list: Uma lista com os tipos dos objetos.
-      """
-      if not self.verifica_se_esta_vazio():
-         tipos = []
-         for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-            tipos.append(linha[1])
-         return tipos
-      else:
-         return None
+   #    Returns:
+   #       list: Uma lista com os tipos dos objetos.
+   #    """
+   #    if not self.verifica_se_esta_vazio():
+   #       tipos = []
+   #       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
+   #          tipos.append(linha[1])
+   #       return tipos
+   #    else:
+   #       return None
 
    def excluir_dispositivo(self, nome:str): #excluir, deixar só o excluir linha
       """
@@ -192,22 +192,29 @@ class Planilha:
          linha_a_excluir += 1
       return False
 
-   def retorna_coluna(self, coluna:int) -> list:
-      """
-      Retorna uma lista com os valores da coluna especificada.
+   def retorna_coluna(self, letra_coluna:int) -> list:
+      # """
+      # Retorna uma lista com os valores da coluna especificada.
 
-      Args:
-         coluna (int): O número da coluna.
+      # Args:
+      #    coluna (int): O número da coluna.
 
-      Returns:
-         list: Uma lista com os valores da coluna.
-      """
-      dados = []
-      for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_linhas(), values_only=True):
-         dados.append(linha[coluna-1])
+      # Returns:
+      #    list: Uma lista com os valores da coluna.
+      # """
+      # dados = []
+      # for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_linhas(), values_only=True):
+      #    dados.append(linha[coluna-1])
 
-      return dados
-       
+      # return dados
+
+         dados_coluna = []
+      # Percorre todas as células da coluna especificada
+         for celula in self.planilha[letra_coluna]:
+            dados_coluna.append(celula.value)
+      
+         return dados_coluna
+         
    def retorna_linha(self, numero_linha:int) -> list:
         """
         Retorna os valores de uma linha específica da planilha.

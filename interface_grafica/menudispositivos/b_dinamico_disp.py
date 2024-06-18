@@ -21,7 +21,7 @@ class BotaoDinamicoDisp(BotaoDinamico):
         super().__init__(janela)
         self.planilha = planilha  
         self.quantidade = self.planilha.retorna_quantidade_linhas()
-        self.tipos = self.planilha.retorna_tipos()
+        self.tipos = self.planilha.retorna_coluna('B')
         self.insere_botoes()
 
     def configura_botao(self, posx, posy, texto, imagem, comando):

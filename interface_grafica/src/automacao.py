@@ -34,7 +34,7 @@ class Automacao:
             return False
         else:
             if not self.planilha_auto.verifica_se_esta_vazio():
-                for i in range(0,len(self.planilha_auto.retorna_coluna(1))):
+                for i in range(0,len(self.planilha_auto.retorna_coluna('A'))):
                     self.planilha_auto.excluir_linha(self.nome_auto, coluna)
 
     def _excluir_temp(self) -> None:
@@ -54,7 +54,7 @@ class Automacao:
             int: A quantidade de automações com o nome informado.
         """
         self.__quantidade = 0
-        nomes_auto = self.planilha_auto.retorna_nome()
+        nomes_auto = self.planilha_auto.retorna_coluna('A')
         for i in range(0, len(nomes_auto)):
             if nomes_auto[i] == nome:
                 self.__quantidade += 1
@@ -82,7 +82,7 @@ class Automacao:
         """
         Retorna uma lista com os nomes das automações sem repetição
         """
-        self.__nomes_auto_temp = self.planilha_auto.retorna_coluna(1)
+        self.__nomes_auto_temp = self.planilha_auto.retorna_coluna('A')
         self.__nomes_auto = list(set(self.__nomes_auto_temp))
         
         return self.__nomes_auto
@@ -107,7 +107,7 @@ class Automacao:
         Verifica quais linhas da planilha de automações temporárias não foram selecionadas e as excluem.
         """
         linha_a_excluir = []
-        for i in range(1, len(self.planilha_auto_temp.retorna_coluna(1))+1):
+        for i in range(1, len(self.planilha_auto_temp.retorna_coluna('A'))+1):
             linha_auto_temp = self.planilha_auto_temp.retorna_linha(i)
 
             # Verifica se a 6ª coluna está definida como False

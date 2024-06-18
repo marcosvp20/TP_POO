@@ -54,7 +54,7 @@ class BotaoDinamico(ABC):
         """
         Importa os nomes dos botões a partir de uma planilha.
         """
-        self.nome = self.planilha.retorna_nome()
+        self.nome = self.planilha.retorna_coluna("A")
 
     @abstractmethod
     def abre_imagens(self) -> None:
