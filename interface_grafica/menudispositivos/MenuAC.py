@@ -92,7 +92,7 @@ class MenuAC(IMenuAC):
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
         
-        self.botao_excluir = Botao(janela=self.__frame_ac, posx=140, posy=500, imagem=image,
+        self.botao_excluir = Botao(janela=self.__frame_ac, posx=140, posy=560, imagem=image,
                                    comando=self.excluir, texto='Excluir dispositivo')
         self.botao_excluir.botao_menor('#f5e0df')
 
@@ -101,9 +101,9 @@ class MenuAC(IMenuAC):
         """
         Cria o botão de voltar ao menu anterior.
         """
-        self.botao_voltar = Botao(self.__frame_ac, posx=140, posy=560, texto='Voltar',
+        self.botao_voltar = Botao(self.__frame_ac, posx=140, posy=500, texto='Voltar',
                                   comando=self.__frame.destroy)
-        self.botao_voltar.botao_menor('#f5e0df')
+        self.botao_voltar.botao_menor('white')
 
     def ligar_desligar(self) -> None:
         """
@@ -161,9 +161,9 @@ class MenuAC(IMenuAC):
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/check.png'), size=(20,20))
         
-        self.botao_confirmar = Botao(janela=self.__frame_ac, posx=140, posy=500, imagem=image,
+        self.botao_confirmar = Botao(janela=self.__frame_ac, posx=140, posy=560, imagem=image,
                                    comando=self.confirmar, texto='Confirmar')
-        self.botao_confirmar.botao_menor('#f5e0df')
+        self.botao_confirmar.botao_menor('white')
 
     def confirmar(self) -> None:
         """

@@ -46,7 +46,7 @@ class MenuNewAuto(IMenuNewAuto):
         nome_auto = MenuNameAuto(self.janela, self.auto)
         self.botao_proximo = Botao(janela=self.__frame_new_auto, posx=140, posy=560, texto='Próximo',
                                    comando=nome_auto.executar)
-        self.botao_proximo.botao_menor('#f5e0df')
+        self.botao_proximo.botao_menor('white')
 
     def atualiza_temp(self) -> None:
         """

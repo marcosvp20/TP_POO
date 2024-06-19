@@ -92,7 +92,7 @@ class MenuLamp(IMenuLamp):
         Cria o botão de exclusão da lâmpada.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botaoExcluir = Botao(self.__frame_lamp, posx=140, posy=500,
+        self.botaoExcluir = Botao(self.__frame_lamp, posx=140, posy=560,
                                   texto='Excluir dispositivo',imagem=image, comando=self.excluir)
         self.botaoExcluir.botao_menor('#f5e0df')
 
@@ -107,9 +107,9 @@ class MenuLamp(IMenuLamp):
         Cria o botão de exclusão do ar condicionado.
         """
         
-        self.botao_voltar = Botao(self.__frame_lamp, posx=140, posy=560, texto='Voltar',
+        self.botao_voltar = Botao(self.__frame_lamp, posx=140, posy=500, texto='Voltar',
                                   comando=self.__frame.destroy)
-        self.botao_voltar.botao_menor('#f5e0df')
+        self.botao_voltar.botao_menor('white')
         
     def atualiza_valor(self, value) -> None:
         """
@@ -155,9 +155,9 @@ class MenuLamp(IMenuLamp):
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/check.png'), size=(20,20))
         
-        self.botao_confirmar = Botao(janela=self.__frame_lamp, posx=140, posy=500, imagem=image,
+        self.botao_confirmar = Botao(janela=self.__frame_lamp, posx=140, posy=560, imagem=image,
                                    comando=self.confirmar, texto='Confirmar')
-        self.botao_confirmar.botao_menor('#f5e0df')
+        self.botao_confirmar.botao_menor('white')
 
     def confirmar(self) -> None:
         """
