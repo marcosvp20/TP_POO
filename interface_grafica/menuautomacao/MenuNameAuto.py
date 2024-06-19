@@ -57,15 +57,16 @@ class MenuNameAuto(IMenuNameAuto):
         Adiciona uma nova automação a planilha principal de automações.
         """
         self.__nome_auto = self.txtbox_name_auto.get().strip()
-        self.auto.nome_auto = self.__nome_auto
-        if self.auto.adicionar_auto():
-            self.__mensagem_confirmacao('      Automação adicionada com sucesso!!')
-        else:
-            self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
+        if self.__nome_auto: # Impede adição de automação com nome vazio
+            self.auto.nome_auto = self.__nome_auto
+            if self.auto.adicionar_auto():
+                self.__mensagem_confirmacao('      Automação adicionada com sucesso!!')
+            else:
+                self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
 
-        from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
-        IA = MenuAutomacoes(self.janela)
-        IA.executar()
+            from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
+            IA = MenuAutomacoes(self.janela)
+            IA.executar()
     
     def __mensagem_confirmacao(self, mensagem:str) -> None:
         """
