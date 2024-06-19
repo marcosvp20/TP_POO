@@ -216,7 +216,9 @@ class MenuTV(IMenuTV):
         Seleciona o dispositivo para ser adicionado à uma automação.
         """
         self.__planilha.selecionar(self.nome)
-
+        self.mensagem('               Alterações salvas')
+        self.texto.destroy()
+        
     def executar(self) -> None:
         """
         Executa a interface da televisão.

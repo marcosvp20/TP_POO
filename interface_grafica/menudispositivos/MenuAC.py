@@ -149,7 +149,8 @@ class MenuAC(IMenuAC):
         self.texto = ctk.CTkLabel(master=self.__frame_ac, 
                                   text=mensagem, 
                                   font=('League Spartan', 20), 
-                                  fg_color='#CEE2EF')
+                                  fg_color='#CEE2EF',
+                                  anchor='center')
         self.texto.place(x=85, y=620)
         self.__frame_ac.update()
         time.sleep(1)
@@ -169,6 +170,8 @@ class MenuAC(IMenuAC):
         Seleciona o dispositivo para ser adicionado à uma automação.
         """
         self.__planilha.selecionar(self.nome)
+        self.mensagem('               Alterações salvas')
+        self.texto.destroy()
         
     def executar(self) -> None:
         """

@@ -41,7 +41,7 @@ class MenuAutomacao(IMenuExecutarAuto):
         """
         auto = Automacao(self.nome)
         auto.executar_automacao()
-        self.__frame.mensagem('Automação ativada com sucesso!')
+        self.__frame.mensagem('     Automação ativada com sucesso!')
         self.__frame.destroy()
         from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
         auto = MenuAutomacoes(self.janela)
