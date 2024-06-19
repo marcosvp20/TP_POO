@@ -1,5 +1,5 @@
-from src.planilha import Planilha
-from src.planilha_auto import PlanilhaAuto
+from interface_grafica.src.planilha import Planilha
+from interface_grafica.src.planilha_auto import PlanilhaAuto
 
 class Automacao:
     def __init__(self, nome_auto:str) -> None:

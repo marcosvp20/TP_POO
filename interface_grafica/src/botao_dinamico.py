@@ -1,10 +1,9 @@
 import customtkinter as ctk
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 import openpyxl
-from menudispositivos.MenuNewDisp import MenuNewDisp
-from PIL import Image
+from interface_grafica.menudispositivos.MenuNewDisp import MenuNewDisp
 from abc import ABC, abstractmethod
-from src.botao import Botao
+from interface_grafica.src.botao import Botao
 
 class BotaoDinamico(ABC):
     """

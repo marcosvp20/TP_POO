@@ -1,10 +1,10 @@
 from tkinter import *
 import customtkinter as ctk
-from src.frame import Frame
-from src.automacao import Automacao
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.automacao import Automacao
 from PIL import Image
 from time import sleep
-from src.botao import Botao
+from interface_grafica.src.botao import Botao
 
 class MenuNameAuto:
     """
@@ -62,7 +62,7 @@ class MenuNameAuto:
         else:
             self.__mensagem_confirmacao('Já existe uma automação com esse apelido!')
 
-        from menuautomacao.MenuAutomações import MenuAutomacoes
+        from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
         IA = MenuAutomacoes(self.janela)
         IA.executar()
     

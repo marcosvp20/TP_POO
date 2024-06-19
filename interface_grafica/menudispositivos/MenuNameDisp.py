@@ -2,12 +2,12 @@ from tkinter import *
 from PIL import Image
 import customtkinter as ctk
 import time
-from src.planilha import Planilha
-from src.arcondicionado import ArCondicionado
-from src.lampada import Lampada
-from src.televisao import Televisao
-from src.frame import Frame
-from src.botao import Botao
+from interface_grafica.src.planilha import Planilha
+from interface_grafica.src.arcondicionado import ArCondicionado
+from interface_grafica.src.lampada import Lampada
+from interface_grafica.src.televisao import Televisao
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.botao import Botao
 
 
 class MenuNameDisp:
@@ -115,7 +115,7 @@ class MenuNameDisp:
         """
         Para a execução da interface e retorna para o menu de dispositivos.
         """
-        from menudispositivos.MenuDispositivos import MenuDispositivos
+        from interface_grafica.menudispositivos.MenuDispositivos import MenuDispositivos
 
         self.__frame.destroy()
         MenuDispositivos(self.janela).executar()

@@ -1,4 +1,4 @@
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 import string
 import openpyxl
 

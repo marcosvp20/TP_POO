@@ -1,5 +1,5 @@
-from src.objetos import Objeto
-from src.planilha import Planilha
+from interface_grafica.src.objetos import Objeto
+from interface_grafica.src.planilha import Planilha
 
 class ArCondicionado(Objeto):
     """

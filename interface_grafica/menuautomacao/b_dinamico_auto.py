@@ -1,10 +1,10 @@
 import customtkinter as ctk
-from src.planilha import Planilha
-from menuautomacao.MenuNewAuto import MenuNewAuto
+from interface_grafica.src.planilha import Planilha
+from interface_grafica.menuautomacao.MenuNewAuto import MenuNewAuto
 from PIL import Image
-from src.botao_dinamico import BotaoDinamico
-from src.automacao import Automacao
-from src.botao import Botao
+from interface_grafica.src.botao_dinamico import BotaoDinamico
+from interface_grafica.src.automacao import Automacao
+from interface_grafica.src.botao import Botao
 
 class BotaoDinamicoAuto(BotaoDinamico):
     """
@@ -59,7 +59,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Insere os botões no frame.
         """
-        from menuautomacao.MenuExecutarAutomacoes import MenuAutomacao
+        from interface_grafica.menuautomacao.MenuExecutarAutomacoes import MenuAutomacao
 
         self.importar_posicoes()
         self.abre_imagens()

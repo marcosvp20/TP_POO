@@ -1,9 +1,9 @@
 import customtkinter as ctk
-from src.frame import Frame
-from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
-from src.automacao import Automacao
-from menuautomacao.MenuNameAuto import MenuNameAuto
-from src.botao import Botao
+from interface_grafica.src.frame import Frame
+from interface_grafica.menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from interface_grafica.src.automacao import Automacao
+from interface_grafica.menuautomacao.MenuNameAuto import MenuNameAuto
+from interface_grafica.src.botao import Botao
 
 class MenuNewAuto:
     """

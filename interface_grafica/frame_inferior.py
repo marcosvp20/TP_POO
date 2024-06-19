@@ -1,8 +1,8 @@
 import customtkinter as ctk
-from menudispositivos.MenuDispositivos import MenuDispositivos
-from menuautomacao.MenuAutomações import MenuAutomacoes
+from interface_grafica.menudispositivos.MenuDispositivos import MenuDispositivos
+from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
 from PIL import Image
-from tela_inicial import TelaInicial
+from interface_grafica.tela_inicial import TelaInicial
 
 class FrameInferior:
     """

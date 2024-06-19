@@ -1,9 +1,9 @@
 import customtkinter as ctk
-from src.planilha import Planilha
-from menudispositivos.MenuNewDisp import MenuNewDisp
+from interface_grafica.src.planilha import Planilha
+from interface_grafica.menudispositivos.MenuNewDisp import MenuNewDisp
 from PIL import Image
-from src.botao_dinamico import BotaoDinamico
-from src.botao import Botao
+from interface_grafica.src.botao_dinamico import BotaoDinamico
+from interface_grafica.src.botao import Botao
 
 class BotaoDinamicoDisp(BotaoDinamico):
     """
@@ -54,9 +54,9 @@ class BotaoDinamicoDisp(BotaoDinamico):
         """
         Insere os botões referentes aos dispositivos disponíveis na interface.
         """
-        from menudispositivos.MenuAC import MenuAC
-        from menudispositivos.MenuLamp import MenuLamp
-        from menudispositivos.MenuTV import MenuTV
+        from interface_grafica.menudispositivos.MenuAC import MenuAC
+        from interface_grafica.menudispositivos.MenuLamp import MenuLamp
+        from interface_grafica.menudispositivos.MenuTV import MenuTV
         
         self.importar_posicoes()
         self.importa_nomes()

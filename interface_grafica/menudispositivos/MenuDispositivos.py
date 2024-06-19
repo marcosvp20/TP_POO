@@ -1,6 +1,6 @@
-from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
-from src.frame import Frame
-from src.planilha import Planilha
+from interface_grafica.menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.planilha import Planilha
 
 class MenuDispositivos:
     """
