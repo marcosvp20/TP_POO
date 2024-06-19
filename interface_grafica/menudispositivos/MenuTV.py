@@ -189,7 +189,7 @@ class MenuTV(IMenuTV):
                                      fg_color='#CEE2EF')
         self.mensagem.place(x=85, y=620)
         self.__frame_tv.update()
-        time.sleep(2)
+        time.sleep(1)
         
     def atualiza_valor(self, value:int) -> None:
         """
@@ -217,7 +217,7 @@ class MenuTV(IMenuTV):
         """
         self.__planilha.selecionar(self.nome)
         self.mensagem('               Alterações salvas')
-        self.texto.destroy()
+        self.mensagem.destroy()
         
     def executar(self) -> None:
         """

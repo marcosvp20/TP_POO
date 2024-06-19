@@ -1,12 +1,12 @@
+from interface_grafica.src.interfaces_src.IBotaoDinamico import IBotaoDinamico
 import customtkinter as ctk
-from interface_grafica.src.planilha import Planilha
 import openpyxl
 from interface_grafica.menudispositivos.MenuNewDisp import MenuNewDisp
 from abc import ABC, abstractmethod
 from interface_grafica.src.botao import Botao
 from PIL import Image
 
-class BotaoDinamico(ABC):
+class BotaoDinamico(IBotaoDinamico):
     """
     Classe abstrata que representa um botão dinâmico em uma interface gráfica.
     """
