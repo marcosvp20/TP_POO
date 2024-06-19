@@ -59,7 +59,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         """
         Insere os botões no frame.
         """
-        from menuautomacao.MenuExecutarAutomacoes import MenuAutomacao
+        from menuautomacao.MenuExecutarAuto import MenuAutomacao
 
         self.importar_posicoes()
         self.abre_imagens()

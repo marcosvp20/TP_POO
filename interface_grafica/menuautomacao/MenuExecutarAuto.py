@@ -8,7 +8,7 @@ class MenuAutomacao:
     """
     Classe que representa um menu de uma automação.
     """
-    def __init__(self, janela:ctk, nome:str) -> None:
+    def __init__(self, janela: ctk, nome: str) -> None:
         """
         Inicializa o menu da automação.
 
