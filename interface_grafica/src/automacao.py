@@ -14,7 +14,7 @@ class Automacao(IAutomacao):
         self.planilha_auto = PlanilhaAuto('planilhas/automacoes.xlsx')
         self.planilha_auto_temp = PlanilhaAuto('planilhas/automacoestemp.xlsx')
         self.nome_auto = nome_auto
-        self.qnt_linhas_auto = len(self.planilha_auto.retorna_linha(1))
+        self.qnt_linhas_auto = self.planilha_auto.retorna_quantidade_linhas()
         
     def excluir_auto(self,coluna = None) -> bool:
         """
