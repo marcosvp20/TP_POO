@@ -31,9 +31,9 @@ class MenuAutomacao(IMenuExecutarAuto):
         """
         Cria o botão de ativação da automação.
         """
-        self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=420,
+        self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=500,
                                   texto='Ativar', comando=self.__click_ativar)
-        self.botao_ativar.botao_menor('#f5e0df')
+        self.botao_ativar.botao_menor('white')
     
     def __click_ativar(self) -> None:
         """
@@ -52,7 +52,7 @@ class MenuAutomacao(IMenuExecutarAuto):
         Cria o botão de exclusão da automação.
         """
         image = ctk.CTkImage(light_image=Image.open('imagens/excluir.png'), size=(20,20))
-        self.botao_excluir = Botao(janela=self.__frame_automacoes, posx=140, posy=500,
+        self.botao_excluir = Botao(janela=self.__frame_automacoes, posx=140, posy=560,
                                   texto='Excluir automação', comando=self.__click_excluir, imagem=image)
         self.botao_excluir.botao_menor('#f5e0df')
 
