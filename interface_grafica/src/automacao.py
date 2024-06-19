@@ -1,7 +1,8 @@
+from interface_grafica.src.interfaces_src.IAutomação import IAutomacao
 from interface_grafica.src.planilha import Planilha
 from interface_grafica.src.planilha_auto import PlanilhaAuto
 
-class Automacao:
+class Automacao(IAutomacao):
     def __init__(self, nome_auto:str) -> None:
         """
         Inicializa a classe Automacao.

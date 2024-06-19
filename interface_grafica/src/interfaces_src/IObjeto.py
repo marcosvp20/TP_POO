@@ -1,7 +1,7 @@
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 from abc import ABC, abstractmethod
 
-class Objeto(ABC):
+class IObjeto(ABC):
     @abstractmethod
     def __init__(self, nome:str, planilha:Planilha) -> None:
         pass

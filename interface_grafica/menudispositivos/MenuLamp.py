@@ -1,3 +1,4 @@
+from interface_grafica.menudispositivos.interfaces_disp.IMenuLamp import IMenuLamp
 from PIL import Image
 import customtkinter as ctk
 from interface_grafica.src.lampada import Lampada
@@ -8,7 +9,7 @@ from interface_grafica.src.planilha import Planilha
 from interface_grafica.src.botao import Botao
 from interface_grafica.src.slider import Slider
 
-class MenuLamp:
+class MenuLamp(IMenuLamp):
     """
     Classe que representa a interface gráfica de uma lâmpada.
     """

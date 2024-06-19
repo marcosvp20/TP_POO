@@ -1,3 +1,4 @@
+from interface_grafica.menudispositivos.interfaces_disp.IMenuNameDisp import IMenuNameDisp
 from tkinter import *
 from PIL import Image
 import customtkinter as ctk
@@ -10,7 +11,7 @@ from interface_grafica.src.frame import Frame
 from interface_grafica.src.botao import Botao
 
 
-class MenuNameDisp:
+class MenuNameDisp(IMenuNameDisp):
     """
     Classe responsável por criar a interface para adicionar um nome ao novo dispositivo.
     """

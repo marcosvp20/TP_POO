@@ -1,8 +1,9 @@
+from interface_grafica.src.interfaces_src.IFrame import IFrame
 import customtkinter as ctk
 from PIL import Image
 from time import sleep
 
-class Frame:
+class Frame(IFrame):
     """
     Classe que representa um frame na interface gráfica.
     """

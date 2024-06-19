@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import customtkinter as ctk
-from src.automacao import Automacao
+from interface_grafica.src.automacao import Automacao
 
 class IMenuNameAuto(ABC):
     @abstractmethod
@@ -17,14 +17,6 @@ class IMenuNameAuto(ABC):
 
     @abstractmethod
     def botao_confirmar(self) -> None:
-        pass
-
-    @abstractmethod
-    def __adicionar(self) -> None:
-        pass
-
-    @abstractmethod
-    def __mensagem_confirmacao(self, mensagem: str) -> None:
         pass
 
     @abstractmethod

@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
+from interface_grafica.src.interfaces_src.IObjeto import IObjeto
 from interface_grafica.src.planilha import Planilha
 
-class Objeto(ABC):
+class Objeto(IObjeto):
     def __init__(self, nome:str, planilha:Planilha) -> None:
         """
         Inicializa um objeto com um nome e uma planilha.

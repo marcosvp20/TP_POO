@@ -1,8 +1,9 @@
+from interface_grafica.menudispositivos.interfaces_disp.IMenuDispostivios import IMenuDispositivos
 from interface_grafica.menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
 from interface_grafica.src.frame import Frame
 from interface_grafica.src.planilha import Planilha
 
-class MenuDispositivos:
+class MenuDispositivos(IMenuDispositivos):
     """
     Classe responsável por criar a interface de dispositivos.
     """

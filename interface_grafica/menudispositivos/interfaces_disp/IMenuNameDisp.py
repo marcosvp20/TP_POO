@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import customtkinter as ctk
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 
 class IMenuNameDisp(ABC):
     @abstractmethod

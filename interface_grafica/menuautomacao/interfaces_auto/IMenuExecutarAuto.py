@@ -15,15 +15,7 @@ class IMenuExecutarAuto(ABC):
         pass
 
     @abstractmethod
-    def __click_ativar(self) -> None:
-        pass
-
-    @abstractmethod
     def botaoExcluir(self) -> None:
-        pass
-
-    @abstractmethod
-    def __click_excluir(self) -> None:
         pass
 
     @abstractmethod

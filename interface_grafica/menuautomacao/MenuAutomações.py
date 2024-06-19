@@ -1,8 +1,9 @@
+from interface_grafica.menuautomacao.interfaces_auto.IMenuAutomações import IMenuAutomacoes
 import customtkinter as ctk
 from interface_grafica.menuautomacao.b_dinamico_auto import BotaoDinamicoAuto
 from interface_grafica.src.frame import Frame
 
-class MenuAutomacoes:
+class MenuAutomacoes(IMenuAutomacoes):
     """
     Classe responsável por criar a interface gráfica para automações.
     """

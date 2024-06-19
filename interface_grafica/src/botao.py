@@ -1,6 +1,7 @@
+from interface_grafica.src.interfaces_src.IBotao import IBotao
 import customtkinter as ctk
 
-class Botao:
+class Botao(IBotao):
     """
     Classe que representa um botão personalizado em uma interface gráfica.
 

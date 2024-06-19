@@ -1,3 +1,4 @@
+from interface_grafica.menuautomacao.interfaces_auto.IMenuNameAuto import IMenuNameAuto
 from tkinter import *
 import customtkinter as ctk
 from interface_grafica.src.frame import Frame
@@ -6,7 +7,7 @@ from PIL import Image
 from time import sleep
 from interface_grafica.src.botao import Botao
 
-class MenuNameAuto:
+class MenuNameAuto(IMenuNameAuto):
     """
     Classe que representa o menu para adicionar nome à automação.
     """

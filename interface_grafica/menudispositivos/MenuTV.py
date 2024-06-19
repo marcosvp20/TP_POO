@@ -1,3 +1,4 @@
+from interface_grafica.menudispositivos.interfaces_disp.IMenuTV import IMenuTV
 from PIL import Image
 import customtkinter as ctk
 from interface_grafica.src.televisao import Televisao
@@ -7,7 +8,7 @@ from interface_grafica.src.automacao import Automacao
 from interface_grafica.src.planilha import Planilha
 from interface_grafica.src.botao import Botao
 from interface_grafica.src.slider import Slider
-class MenuTV:
+class MenuTV(IMenuTV):
     """
     Classe que representa a interface gráfica de uma televisão.
     """

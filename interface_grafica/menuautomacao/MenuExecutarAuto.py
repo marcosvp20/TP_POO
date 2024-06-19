@@ -1,10 +1,11 @@
+from interface_grafica.menuautomacao.interfaces_auto.IMenuExecutarAuto import IMenuExecutarAuto
 from PIL import Image
 import customtkinter as ctk
 from interface_grafica.src.automacao import Automacao
 from interface_grafica.src.frame import Frame
 from interface_grafica.src.botao import Botao
 
-class MenuAutomacao:
+class MenuAutomacao(IMenuExecutarAuto):
     """
     Classe que representa um menu de uma automação.
     """

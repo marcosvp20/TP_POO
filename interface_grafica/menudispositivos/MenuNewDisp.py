@@ -1,3 +1,4 @@
+from interface_grafica.menudispositivos.interfaces_disp.IMenuNewDisp import IMenuNewDisp
 from tkinter import *
 from PIL import Image
 import customtkinter as ctk
@@ -6,7 +7,7 @@ from interface_grafica.src.frame import Frame
 from interface_grafica.src.botao import Botao
 from interface_grafica.src.planilha import Planilha
 
-class MenuNewDisp:
+class MenuNewDisp(IMenuNewDisp):
     """
     Classe responsável por criar a interface gráfica para adicionar novos dispositivos.
     """

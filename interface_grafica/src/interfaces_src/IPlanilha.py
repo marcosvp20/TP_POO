@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Planilha(ABC):
+class IPlanilha(ABC):
     @abstractmethod
     def __init__(self, nome_planilha:str) -> None:
         pass

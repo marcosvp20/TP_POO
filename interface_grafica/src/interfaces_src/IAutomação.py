@@ -14,10 +14,6 @@ class IAutomacao(ABC):
         pass
     
     @abstractmethod
-    def __quantidade_automacoes(self, nome: str) -> int:
-        pass
-    
-    @abstractmethod
     def adicionar_auto(self) -> bool:
         pass
     

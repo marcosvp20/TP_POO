@@ -1,3 +1,4 @@
+from interface_grafica.menuautomacao.interfaces_auto.IMenuNewAuto import IMenuNewAuto
 import customtkinter as ctk
 from interface_grafica.src.frame import Frame
 from interface_grafica.menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
@@ -5,7 +6,7 @@ from interface_grafica.src.automacao import Automacao
 from interface_grafica.menuautomacao.MenuNameAuto import MenuNameAuto
 from interface_grafica.src.botao import Botao
 
-class MenuNewAuto:
+class MenuNewAuto(IMenuNewAuto):
     """
     Classe que representa o menu da definição de uma nova automação.
     """

@@ -1,7 +1,8 @@
+from interface_grafica.src.interfaces_src.IPlanilha import IPlanilha
 import openpyxl
 import string
 
-class Planilha:
+class Planilha(IPlanilha):
    """
    Classe para facilitar na hora de salvar o status dos itens da casa.
    """
