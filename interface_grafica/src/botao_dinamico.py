@@ -1,10 +1,10 @@
 import customtkinter as ctk
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 import openpyxl
-from menudispositivos.MenuNewDisp import MenuNewDisp
-from PIL import Image
+from interface_grafica.menudispositivos.MenuNewDisp import MenuNewDisp
 from abc import ABC, abstractmethod
-from src.botao import Botao
+from interface_grafica.src.botao import Botao
+from PIL import Image
 
 class BotaoDinamico(ABC):
     """
@@ -24,7 +24,7 @@ class BotaoDinamico(ABC):
         self.posicoesy = []
         pass
     
-    def configura_botao(self, posx, posy, texto, imagem, comando):
+    def configura_botao(self, posx: int, posy: int, texto: str, imagem: Image.Image, comando) -> None:
         """
         Configura as propriedades de um botão.
 

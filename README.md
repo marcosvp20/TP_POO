@@ -19,7 +19,9 @@ O objetivo do projeto é aplicar os conceitos de Programação Orientada a Objet
 
 1. Clone este repositório.
 2. Execute o comando `npm install` para instalar as dependências.
-3. Execute o comando que chame o compilador e chame o arquivo "janela_principal.py". Exemplo de chamada: "python3 interface_grafica/janela_principal.py".
+3. Execute o comando que chame o compilador e chame o arquivo "app.py". Exemplo de chamada:<br>
+    MacOS e Linux: `python3 app.py`.<br>
+    Windows: `python app.py`
 4. Após a execução do comando, uma nova janela será inicializada no computador que inicia o programa.
 
 ## Documentação

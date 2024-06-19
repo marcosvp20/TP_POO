@@ -1,11 +1,11 @@
-from src.objetos import Objeto
-from src.planilha import Planilha
+from interface_grafica.src.objetos import Objeto
+from interface_grafica.src.planilha import Planilha
 
 class Televisao (Objeto):
     """
     Classe que representa uma televisão.
 
-    Attributes:
+    Attributos:
     - nome (str): O nome da televisão.
     - planilha (str): O nome da planilha onde os dados da televisão são armazenados.
     - canal (int): O número do canal atual da televisão.
@@ -14,7 +14,7 @@ class Televisao (Objeto):
     - tipo (str): O tipo da televisão.
     - dados_tv (list): Lista com os dados da televisão.
 
-    Methods:
+    Metodos:
     - __init__(self, nome:str, planilha:str): Construtor da classe Televisao.
     - ligar(self): Liga a televisão.
     - mudar_canal(self, novo_canal): Muda o canal da televisão.
@@ -27,6 +27,14 @@ class Televisao (Objeto):
     """
 
     def __init__ (self, nome:str, planilha:Planilha) -> None:
+        
+        """
+        Construtor da classe Televisao.
+
+        Parâmetros:
+            nome (str): O nome da televisão.
+            planilha (Planilha): O objeto da planilha onde os dados da televisão são armazenados.
+        """
         super().__init__(nome, planilha)
         self.canal = 1
         self.volume = 0
@@ -47,7 +55,7 @@ class Televisao (Objeto):
             self.dados_tv[4] = False
         self.planilha.editar(self.dados_tv,4)
 
-    def mudar_canal (self, novo_canal) -> None:
+    def mudar_canal (self, novo_canal:int) -> None:
         """
         Muda o canal da televisão.
 
@@ -57,7 +65,7 @@ class Televisao (Objeto):
         self.dados_tv[2] = novo_canal
         self.planilha.editar(self.dados_tv,2)
 
-    def mudar_volume (self, novo_volume) -> None:
+    def mudar_volume (self, novo_volume:int) -> None:
         """
         Muda o volume da televisão.
 
@@ -79,7 +87,8 @@ class Televisao (Objeto):
         """
         Salva os dados da televisão na planilha.
 
-        Retorna True se os dados foram salvos com sucesso, False caso contrário.
+        Retorna:
+            bool: True se os dados foram salvos com sucesso, False caso contrário.
         """
         if self.planilha.retorna_quantidade('Televisor') < 6:
             if not (self.planilha.verifica_se_objeto_existe(self.nome)):
@@ -90,18 +99,28 @@ class Televisao (Objeto):
     def canal_atual(self) -> int:
         """
         Retorna o número do canal atual da televisão.
+        
+        Retorna:
+            int: O número do canal atual.
+
         """
         return self.planilha.retorna_valor(self.nome, 3)
     
     def volume_atual(self) -> int:
         """
         Retorna o nível de volume atual da televisão.
+        
+        Retorna:
+            int: O nível de volume atual.
         """
         return self.planilha.retorna_valor(self.nome, 4)
     
     def esta_ligado(self) -> bool:
         """
         Retorna True se a televisão está ligada, False caso contrário.
+        
+        Retorna:
+            bool: O estado atual da televisão.
         """
         return self.planilha.retorna_valor(self.nome, 5)
     
@@ -109,6 +128,7 @@ class Televisao (Objeto):
         """
         Exclui a televisão da planilha.
 
-        Retorna True se a televisão foi excluída com sucesso, False caso contrário.
+        Retorna:
+            bool: True se a televisão foi excluída com sucesso, False caso contrário.
         """
         return self.planilha.excluir_dispositivo(self.nome)

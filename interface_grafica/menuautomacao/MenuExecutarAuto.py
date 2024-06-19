@@ -1,8 +1,8 @@
 from PIL import Image
 import customtkinter as ctk
-from src.automacao import Automacao
-from src.frame import Frame
-from src.botao import Botao
+from interface_grafica.src.automacao import Automacao
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.botao import Botao
 
 class MenuAutomacao:
     """
@@ -42,7 +42,7 @@ class MenuAutomacao:
         auto.executar_automacao()
         self.__frame.mensagem('Automação ativada com sucesso!')
         self.__frame.destroy()
-        from menuautomacao.MenuAutomações import MenuAutomacoes
+        from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
         auto = MenuAutomacoes(self.janela)
         auto.executar()
         
@@ -63,7 +63,7 @@ class MenuAutomacao:
         if auto.excluir_auto():
             self.__frame.mensagem('A automação foi excluída com sucesso!')
             self.__frame.destroy()
-            from menuautomacao.MenuAutomações import MenuAutomacoes
+            from interface_grafica.menuautomacao.MenuAutomações import MenuAutomacoes
             auto = MenuAutomacoes(self.janela)
             auto.executar()
         else:

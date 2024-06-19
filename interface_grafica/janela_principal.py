@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from frame_inferior import FrameInferior
+from interface_grafica.frame_inferior import FrameInferior
 from PIL import Image
 
 class JanelaPrincipal:
@@ -31,6 +31,5 @@ class JanelaPrincipal:
         
         self.janela_principal.mainloop()
 
-j = JanelaPrincipal()
 
     

@@ -1,10 +1,10 @@
 from tkinter import *
 from PIL import Image
 import customtkinter as ctk
-from menudispositivos.MenuNameDisp import MenuNameDisp
-from src.frame import Frame
-from src.botao import Botao
-from src.planilha import Planilha
+from interface_grafica.menudispositivos.MenuNameDisp import MenuNameDisp
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.botao import Botao
+from interface_grafica.src.planilha import Planilha
 
 class MenuNewDisp:
     """

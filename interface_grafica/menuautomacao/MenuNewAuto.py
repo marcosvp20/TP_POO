@@ -1,20 +1,20 @@
 import customtkinter as ctk
-from src.frame import Frame
-from menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
-from src.automacao import Automacao
-from menuautomacao.MenuNameAuto import MenuNameAuto
-from src.botao import Botao
+from interface_grafica.src.frame import Frame
+from interface_grafica.menudispositivos.b_dinamico_disp import BotaoDinamicoDisp
+from interface_grafica.src.automacao import Automacao
+from interface_grafica.menuautomacao.MenuNameAuto import MenuNameAuto
+from interface_grafica.src.botao import Botao
 
 class MenuNewAuto:
     """
     Classe que representa o menu da definição de uma nova automação.
     """
-    def __init__(self, janela) -> None:
+    def __init__(self, janela:ctk.CTk) -> None:
         """
         Inicializa o menu de definição de uma nova automação.
 
         Argumentos:
-            janela(ctk): Janela onde o frame da interface será fixado.
+            janela(ctk.ctk): Janela onde o frame da interface será fixado.
         """
         self.auto = Automacao(None)
         self.janela = janela

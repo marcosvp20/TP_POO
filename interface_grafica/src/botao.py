@@ -20,6 +20,18 @@ class Botao:
     """
 
     def __init__(self, janela:ctk, posx:int, posy:int, texto:str, imagem = None, comando = None) -> None:
+
+        """
+        Inicializa um botão personalizado na interface gráfica.
+
+        Args:
+            janela (ctk): Objeto que representa a janela onde o botão será exibido.
+            posx (int): Posição horizontal do botão na janela.
+            posy (int): Posição vertical do botão na janela.
+            texto (str): Texto exibido no botão.
+            imagem (objeto, opcional): Imagem exibida no botão.
+            comando (função, opcional): Função a ser executada quando o botão for clicado.
+        """
         self.__posx = posx
         self.__posy = posy
         self.__janela = janela
@@ -28,6 +40,11 @@ class Botao:
         self.__comando = comando
     
     def botao_padrao(self) -> None:
+        """
+        Cria um botão personalizado padrão na janela.
+
+        O botão padrão tem um tamanho padrão e pode conter texto e/ou imagem.
+        """
         self.__botao = ctk.CTkButton(master=self.__janela, 
                                    width= 187, 
                                    height=82, 
@@ -43,6 +60,14 @@ class Botao:
                           y = self.__posy)
     
     def botao_menor(self, cor:str) -> None:
+        """
+        Cria um botão personalizado menor na janela.
+
+        O botão menor tem um tamanho reduzido e pode conter texto e/ou imagem.
+
+        Args:
+            cor (str): Cor(em hexadecimal) de fundo do botão.
+        """
         self.__botaomenor = ctk.CTkButton(master=self.__janela, 
                                              width=170, 
                                              height=50,

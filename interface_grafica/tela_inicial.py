@@ -5,8 +5,15 @@ from PIL import Image
 class TelaInicial:
     def __init__(self, janela:ctk) -> None:
         """
-        Classe responsável por criar a tela inicial da aplicação.
-        """
+            Classe responsável por criar a tela inicial da aplicação.
+
+            Atributos:
+                janela (ctk.CTk): A janela principal da aplicação.
+                frame (ctk.CTkFrame): O frame da tela inicial.
+                texto_ola (ctk.CTkLabel): O label para o texto "Olá".
+                texto_bomdia (ctk.CTkLabel): O label para o texto de saudação (Bom dia, Boa tarde, Boa noite).
+                hora_atual (int): A hora atual do sistema.
+            """
         self.janela = janela
         
     def cria_frame(self) -> None:

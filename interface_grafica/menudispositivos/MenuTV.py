@@ -1,12 +1,12 @@
 from PIL import Image
 import customtkinter as ctk
-from src.televisao import Televisao
+from interface_grafica.src.televisao import Televisao
 import time
-from src.frame import Frame
-from src.automacao import Automacao
-from src.planilha import Planilha
-from src.botao import Botao
-
+from interface_grafica.src.frame import Frame
+from interface_grafica.src.automacao import Automacao
+from interface_grafica.src.planilha import Planilha
+from interface_grafica.src.botao import Botao
+from interface_grafica.src.slider import Slider
 class MenuTV:
     """
     Classe que representa a interface gráfica de uma televisão.
@@ -86,19 +86,10 @@ class MenuTV:
                                           bg_color='transparent',
                                           fg_color='#F0F6FA',)
         self.label_volume.place(x=140, y=380)
-
-        slider_volume = ctk.CTkSlider(self.__frame_tv,
-                                            from_=0, to=100,
-                                            command=lambda value: self.atualiza_valor(value),
-                                            bg_color='#DFECF4',
-                                            fg_color='gray',
-                                            progress_color='#348faa',
-                                            button_color='black',
-                                            width = 270,
-                                            height = 20)
-        slider_volume.set(self.tv.volume_atual())
-        slider_volume.place(x=90, y=450)
-
+        
+        self.__slider_volume = Slider(frame=self.__frame_tv, inicio=0, fim=100,
+                                      comando=self.atualiza_valor, posicao_atual=self.tv.volume_atual,
+                                      posx=90, posy=450)
 
     def botaoExcluir(self) -> None:
         """
@@ -117,7 +108,7 @@ class MenuTV:
                                   comando=self.__frame.destroy)
         self.botao_voltar.botao_menor('#f5e0df')
     
-    def botoes_mudar_canal(self):
+    def botoes_mudar_canal(self) -> None:
         """
         Cria os botões de alteração de canal da TV.
         """
@@ -159,7 +150,7 @@ class MenuTV:
             canal -= 1
         self.alterar_canal(canal)
         
-    def alterar_canal(self, canal:int):
+    def alterar_canal(self, canal:int)->None:
         """
         Muda o canal da TV para um especificado.
 
@@ -173,11 +164,10 @@ class MenuTV:
         """
         Exclui a televisão.
         """
-        from menudispositivos.MenuDispositivos import MenuDispositivos
+        from interface_grafica.menudispositivos.MenuDispositivos import MenuDispositivos
         auto = Automacao(self.nome)
 
         if self.tv.excluir():
-            print(self.nome)
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
             self.__frame.destroy()
@@ -200,7 +190,7 @@ class MenuTV:
         self.__frame_tv.update()
         time.sleep(2)
         
-    def atualiza_valor(self, value) -> None:
+    def atualiza_valor(self, value:int) -> None:
         """
         Atualiza o valor do volume da tv.
 

@@ -1,9 +1,9 @@
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 import string
 import openpyxl
 
 class PlanilhaAuto(Planilha):
-    def __init__(self, nome_planilha) -> None:
+    def __init__(self, nome_planilha:str) -> None:
         """
         Inicializa uma nova instância da classe PlanilhaAuto.
 
@@ -12,7 +12,7 @@ class PlanilhaAuto(Planilha):
         """
         super().__init__(nome_planilha)
     
-    def salvar(self, dados) -> None:
+    def salvar(self, dados:list) -> None:
         """
         Salva várias automações com o mesmo nome na planilha.
 

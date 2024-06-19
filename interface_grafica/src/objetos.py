@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.planilha import Planilha
+from interface_grafica.src.planilha import Planilha
 
 class Objeto(ABC):
     def __init__(self, nome:str, planilha:Planilha) -> None:
@@ -8,13 +8,13 @@ class Objeto(ABC):
 
         Args:
             nome (str): O nome do objeto.
-            planilha (str): O caminho para a planilha associada ao objeto.
+            planilha (Planilha): A instância da classe Planilha associada ao objeto.
         """
         self.nome = nome
         self.planilha = planilha
         self.ligado = False
         
-    def salvar(self,dados) -> bool:
+    def salvar(self,dados:list) -> bool:
         """
         Salva os dados na planilha associada ao objeto.
 

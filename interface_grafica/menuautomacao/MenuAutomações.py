@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from menuautomacao.b_dinamico_auto import BotaoDinamicoAuto
-from src.frame import Frame
+from interface_grafica.menuautomacao.b_dinamico_auto import BotaoDinamicoAuto
+from interface_grafica.src.frame import Frame
 
 class MenuAutomacoes:
     """

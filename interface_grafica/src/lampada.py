@@ -1,5 +1,5 @@
-from src.objetos import Objeto
-from src.planilha import Planilha
+from interface_grafica.src.objetos import Objeto
+from interface_grafica.src.planilha import Planilha
 
 class Lampada(Objeto):
     def __init__(self, nome, planilha:Planilha) -> None:
@@ -8,7 +8,7 @@ class Lampada(Objeto):
 
         Args:
             nome (str): O nome da lâmpada.
-            planilha (str): O caminho para a planilha onde os dados serão armazenados.
+            planilha (Planilha): A instância da planilha onde os dados serão armazenados.
         """
         super().__init__(nome, planilha)
         self.brilho = 0
