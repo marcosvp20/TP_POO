@@ -6,7 +6,7 @@ from src.frame import Frame
 from src.automacao import Automacao
 from src.planilha import Planilha
 from src.botao import Botao
-
+from src.slider import Slider
 class MenuTV:
     """
     Classe que representa a interface gráfica de uma televisão.
@@ -86,19 +86,10 @@ class MenuTV:
                                           bg_color='transparent',
                                           fg_color='#F0F6FA',)
         self.label_volume.place(x=140, y=380)
-
-        slider_volume = ctk.CTkSlider(self.__frame_tv,
-                                            from_=0, to=100,
-                                            command=lambda value: self.atualiza_valor(value),
-                                            bg_color='#DFECF4',
-                                            fg_color='gray',
-                                            progress_color='#348faa',
-                                            button_color='black',
-                                            width = 270,
-                                            height = 20)
-        slider_volume.set(self.tv.volume_atual())
-        slider_volume.place(x=90, y=450)
-
+        
+        self.__slider_volume = Slider(frame=self.__frame_tv, inicio=0, fim=100,
+                                      comando=self.atualiza_valor, posicao_atual=self.tv.volume_atual,
+                                      posx=90, posy=450)
 
     def botaoExcluir(self) -> None:
         """

@@ -6,6 +6,7 @@ from src.frame import Frame
 from src.automacao import Automacao
 from src.planilha import Planilha
 from src.botao import Botao
+from src.slider import Slider
 
 class MenuAC:
     """
@@ -79,20 +80,11 @@ class MenuAC:
                                               bg_color='#F5F9FC', 
                                               fg_color='white',)
         self.temperatura_label.place(x=100, y=330)
-
-        slider_temperatura = ctk.CTkSlider(self.__frame_ac, 
-                                           from_=16, 
-                                           to=30, 
-                                           command=lambda value: self.atualiza_valor(value), 
-                                           bg_color='#EDF4F9', 
-                                           fg_color='gray', 
-                                           progress_color='#348faa', 
-                                           button_color='black', 
-                                           width=270, 
-                                           height=20)
-        slider_temperatura.set(self.ar.temperatura_atual())
-        slider_temperatura.place(x=90, y=400)
         
+        self.__slider_temperatura = Slider(frame=self.__frame_ac, inicio=16, fim=30,
+                                           comando=self.atualiza_valor, posicao_atual=self.ar.temperatura_atual,
+                                           posx=90, posy=400)
+
     def botaoExcluir(self) -> None:
         """
         Cria o botão de exclusão do ar condicionado.

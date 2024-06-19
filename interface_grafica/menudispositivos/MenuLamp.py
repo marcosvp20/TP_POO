@@ -6,6 +6,7 @@ from src.frame import Frame
 from src.automacao import Automacao
 from src.planilha import Planilha
 from src.botao import Botao
+from src.slider import Slider
 
 class MenuLamp:
     """
@@ -79,18 +80,11 @@ class MenuLamp:
                                           bg_color='transparent',
                                           fg_color='#F5F9FC',)
         self.brilho_label.place(x=100, y=330)
+        
+        self.__slider_brilho = Slider(frame=self.__frame_lamp, inicio=0, fim=100,
+                                      comando=self.atualiza_valor, posicao_atual=self.lampada.brilho_atual,
+                                      posx=90, posy=400)
 
-        slider_brilho = ctk.CTkSlider(self.__frame_lamp,
-                                            from_=0, to=100,
-                                            command=lambda value: self.atualiza_valor(value),
-                                            bg_color='#EDF4F9',
-                                            fg_color='gray',
-                                            progress_color='#348faa',
-                                            button_color='black',
-                                            width = 270,
-                                            height = 20)
-        slider_brilho.set(self.lampada.brilho_atual())
-        slider_brilho.place(x=90, y=400)
         
     def botao_excluir(self) -> None:
         """
