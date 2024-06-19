@@ -6,9 +6,21 @@ class Frame:
     """
     Classe que representa um frame na interface gráfica.
     """
-    def __init__(self, janela, texto1, texto2='') -> None:
+    def __init__(self, janela: ctk, texto1: str, texto2:str = '') -> None:
         """
         Inicializa o frame.
+ Args:
+            janela (ctk): Objeto da janela onde o frame será exibido.
+            texto1 (str): Texto a ser exibido na primeira caixa de texto.
+            texto2 (str, opcional): Texto a ser exibido na segunda caixa de texto (se houver).
+
+        Attributes:
+            __janela (ctk): Objeto da janela onde o frame será exibido.
+            __texto1 (str): Texto a ser exibido na primeira caixa de texto.
+            __texto2 (str): Texto a ser exibido na segunda caixa de texto (se houver).
+            __frame (ctk): Objeto do frame.
+            caixa_de_texto1 (ctk): Objeto da primeira caixa de texto.
+            caixa_de_texto2 (ctk): Objeto da segunda caixa de texto (opcional).
         """
         self.__janela = janela
         self.__texto1 = texto1
@@ -16,15 +28,10 @@ class Frame:
 
     def retorna_frame(self) -> ctk:
         """
-        Args:
-            janela (objeto): Objeto da janela onde o frame será exibido.
-            texto1 (str): Texto a ser exibido na primeira caixa de texto.
-            texto2 (str): Texto a ser exibido na segunda caixa de texto.
+        Retorna o frame.
 
-        Attributes:
-            frame (objeto): Objeto do frame.
-            caixa_de_texto1 (objeto): Objeto da primeira caixa de texto.
-            caixa_de_texto2 (objeto): Objeto da segunda caixa de texto (opcional).
+        Returns:
+            ctk: Objeto do frame criado na interface gráfica.
         """
         bg = ctk.CTkImage(light_image=Image.open('imagens/background.png'), 
                           size=(450,750))
@@ -65,6 +72,9 @@ class Frame:
     def mensagem(self, mensagem:str) -> None:
         """
         Exibe uma mensagem na interface do ar condicionado.
+
+        Args:
+            mensagem (str): Mensagem a ser exibida.
         """
         self.texto = ctk.CTkLabel(master=self.__frame, 
                                   text=mensagem, 
@@ -75,4 +85,7 @@ class Frame:
         sleep(1)
     
     def destroy(self) -> None:
+        """
+        Destroi o frame
+        """
         self.__frame.destroy()

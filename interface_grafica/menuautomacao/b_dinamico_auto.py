@@ -23,7 +23,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
         self.quantidade = len(self.nome)
         self.insere_botoes()
     
-    def configura_botao(self, posx:int, posy:int, texto:str, imagem:ctk, comando:object) -> None:
+    def configura_botao(self, posx:int, posy:int, texto:str, imagem:Image.Image, comando:callable) -> None:
         """
         Configura um botão dinâmico.
         
@@ -31,8 +31,8 @@ class BotaoDinamicoAuto(BotaoDinamico):
         posx (int): Posição horizontal do botão na janela.
         posy (int): Posição vertical do botão na janela.
         texto (str): Texto exibido no botão.
-        imagem (objeto): Imagem exibida no botão.
-        comando (função, opcional): Função a ser executada quando o botão for clicado.
+        imagem (image.image): Imagem exibida no botão.
+        comando (callable): Função a ser executada quando o botão for clicado.
         """
         super().configura_botao(posx, posy, texto, imagem, comando)
             

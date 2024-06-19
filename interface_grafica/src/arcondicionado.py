@@ -24,13 +24,13 @@ class ArCondicionado(Objeto):
         excluir: Exclui o ar condicionado da planilha.
     """
 
-    def __init__(self, nome, planilha:Planilha) -> None:
+    def __init__(self, nome:str, planilha:Planilha) -> None:
         super().__init__(nome, planilha)
         self.__temperatura = 23
         self.tipo = 'A/C'
         self.dados_ar = [self.nome, self.tipo,self.__temperatura, self.ligado]
 
-    def mudar_temperatura(self, temperatura) -> None:
+    def mudar_temperatura(self, temperatura:int) -> None:
         """
         Altera a temperatura do ar condicionado.
 
@@ -54,7 +54,7 @@ class ArCondicionado(Objeto):
         self.dados_ar[3] = False
         self.planilha.editar(self.dados_ar,3)
     
-    def salvar(self):
+    def salvar(self) -> bool:
         """
         Salva os dados do ar condicionado na planilha.
 

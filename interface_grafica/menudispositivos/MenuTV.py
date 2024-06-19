@@ -108,7 +108,7 @@ class MenuTV:
                                   comando=self.__frame.destroy)
         self.botao_voltar.botao_menor('#f5e0df')
     
-    def botoes_mudar_canal(self):
+    def botoes_mudar_canal(self) -> None:
         """
         Cria os botões de alteração de canal da TV.
         """
@@ -150,7 +150,7 @@ class MenuTV:
             canal -= 1
         self.alterar_canal(canal)
         
-    def alterar_canal(self, canal:int):
+    def alterar_canal(self, canal:int)->None:
         """
         Muda o canal da TV para um especificado.
 
@@ -168,7 +168,6 @@ class MenuTV:
         auto = Automacao(self.nome)
 
         if self.tv.excluir():
-            print(self.nome)
             auto.excluir_auto(1)
             self.mensagem('Dispositivo excluído com sucesso!')
             self.__frame.destroy()
@@ -191,7 +190,7 @@ class MenuTV:
         self.__frame_tv.update()
         time.sleep(2)
         
-    def atualiza_valor(self, value) -> None:
+    def atualiza_valor(self, value:int) -> None:
         """
         Atualiza o valor do volume da tv.
 

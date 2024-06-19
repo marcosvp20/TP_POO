@@ -100,7 +100,7 @@ class Planilha:
             self.workbook.save(self.nome_planilha)
          i += 1
 
-   def retorna_quantidade(self, tipo:str) -> int: # modularizar mais isso aq, passa a coluna de referência como parametro   
+   def retorna_quantidade(self, tipo:str) -> int: 
       """
       Retorna a quantidade da classe de objetos presente na planilha.
 
@@ -143,37 +143,8 @@ class Planilha:
          return 0
       return self.planilha.max_row
 
-   # def retorna_nome(self): # excluir esse metodo, deixar só o retorna coluna
-   #    """
-   #    Retorna uma lista com os nomes dos objetos presentes na planilha.
 
-   #    Returns:
-   #       list: Uma lista com os nomes dos objetos.
-   #    """
-   #    if not self.verifica_se_esta_vazio():
-   #       nomes = []
-   #       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-   #          nomes.append(linha[0])
-   #       return nomes
-   #    else:
-   #       return None
-
-   # def retorna_tipos(self): #deixar só o retorna coluna
-   #    """
-   #    Retorna uma lista com os tipos dos objetos presentes na planilha.
-
-   #    Returns:
-   #       list: Uma lista com os tipos dos objetos.
-   #    """
-   #    if not self.verifica_se_esta_vazio():
-   #       tipos = []
-   #       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-   #          tipos.append(linha[1])
-   #       return tipos
-   #    else:
-   #       return None
-
-   def excluir_dispositivo(self, nome:str): #excluir, deixar só o excluir linha
+   def excluir_dispositivo(self, nome:str) -> bool:
       """
       Exclui um dispositivo da planilha.
 
@@ -193,23 +164,8 @@ class Planilha:
       return False
 
    def retorna_coluna(self, letra_coluna:int) -> list:
-      # """
-      # Retorna uma lista com os valores da coluna especificada.
-
-      # Args:
-      #    coluna (int): O número da coluna.
-
-      # Returns:
-      #    list: Uma lista com os valores da coluna.
-      # """
-      # dados = []
-      # for linha in self.planilha.iter_rows(min_row=1, max_row=self.retorna_quantidade_linhas(), values_only=True):
-      #    dados.append(linha[coluna-1])
-
-      # return dados
 
          dados_coluna = []
-      # Percorre todas as células da coluna especificada
          for celula in self.planilha[letra_coluna]:
             dados_coluna.append(celula.value)
       
@@ -226,8 +182,6 @@ class Planilha:
             list: Uma lista contendo os valores das células da linha.
         """
         linha = self.planilha[numero_linha]
-
-        # Extrair os valores das células na linha
         valores_linha = [celula.value for celula in linha]
 
         return valores_linha
@@ -256,7 +210,6 @@ class Planilha:
       """
       linha_a_excluir = 1
       for linha in self.planilha.iter_rows(min_row=1, values_only=True):
-         print(coluna)
          if linha[coluna] == nome:
             self.planilha.delete_rows(linha_a_excluir)
             self.workbook.save(self.nome_planilha)
@@ -273,5 +226,4 @@ class Planilha:
                 if cell.value == objeto_id:
                     self.planilha.cell(row=cell.row, column=6).value = True
                     self.workbook.save(self.nome_planilha)
-                    print(f'Alterações confirmadas!')
                     break

@@ -63,6 +63,9 @@ class Automacao:
     def adicionar_auto(self) -> bool:
         """
         Adiciona as automações da planilha temporária para a planilha principal.
+
+        Returns:
+            bool: True se a automação foi adicionada com sucesso, False caso contrário.
         """
         self.qnt_linhas_auto = self.planilha_disp.retorna_quantidade_linhas() #retorna a quantidade de linhas da planilha
         

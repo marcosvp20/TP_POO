@@ -9,12 +9,12 @@ class MenuNewAuto:
     """
     Classe que representa o menu da definição de uma nova automação.
     """
-    def __init__(self, janela) -> None:
+    def __init__(self, janela:ctk.CTk) -> None:
         """
         Inicializa o menu de definição de uma nova automação.
 
         Argumentos:
-            janela(ctk): Janela onde o frame da interface será fixado.
+            janela(ctk.ctk): Janela onde o frame da interface será fixado.
         """
         self.auto = Automacao(None)
         self.janela = janela

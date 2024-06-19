@@ -5,12 +5,27 @@ from PIL import Image
 from interface_grafica.tela_inicial import TelaInicial
 
 class FrameInferior:
+    
     """
-    Esse arquivo contém a classe FrameInferior, que é responsável por criar e gerenciar o frame inferior da interface gráfica.
-    O frame inferior contém botões para acessar as funcionalidades de Dispositivos e Automações.
+        Classe responsável por criar e gerenciar o frame inferior da interface gráfica.
+        O frame inferior contém botões para acessar as funcionalidades de Dispositivos e Automações.
+
+        Atributos:
+            janela (ctk.CTk): A janela principal da aplicação.
+            frame_inferior (ctk.CTkFrame): O frame inferior da interface gráfica.
+            botao_dispositivos (ctk.CTkButton): O botão para acessar a interface de Dispositivos.
+            botao_automacao (ctk.CTkButton): O botão para acessar a interface de Automações.
     """
-    def __init__(self, janela:ctk) -> None:
+
+    def __init__(self, janela:ctk.CTk) -> None:
         self.janela = janela
+
+        """
+        Inicializa a classe FrameInferior.
+
+        Parâmetros:
+            janela (ctk.CTk): A janela principal da aplicação.
+        """
     
     def criaframe(self) -> None:
         """
