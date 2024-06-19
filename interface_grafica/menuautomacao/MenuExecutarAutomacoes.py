@@ -30,7 +30,7 @@ class MenuAutomacao:
         """
         Cria o botão de ativação da automação.
         """
-        self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=260,
+        self.botao_ativar = Botao(janela=self.__frame_automacoes, posx=140, posy=420,
                                   texto='Ativar', comando=self.__click_ativar)
         self.botao_ativar.botao_menor('#f5e0df')
     
