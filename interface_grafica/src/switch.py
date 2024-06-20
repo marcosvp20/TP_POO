@@ -12,7 +12,7 @@ class Switch:
         select(): Seleciona o switch.
     """
 
-    def __init__(self, frame: ctk.CTkFrame, comando: callable, set: bool) -> None:
+    def __init__(self, frame: ctk.CTkFrame, comando: callable, padx:int, pady:int) -> None:
         """
         Inicializa um novo switch.
 
@@ -20,14 +20,7 @@ class Switch:
             frame (ctk.CTkFrame): O frame onde o switch será adicionado.
             comando (callable): A função que será chamada quando o valor do switch mudar.
         """
-        self.__off_label = ctk.CTkLabel(frame,
-                                 text="OFF",
-                                 font=('League Spartan', 30),
-                                 fg_color='white',
-                                 bg_color='transparent')
-        self.__off_label.place(x=100, y=190)
-        
-        self.__switch = ctk.CTkSwitch(frame,
+        self.switch = ctk.CTkSwitch(frame,
                                 text="",
                                 command=comando,
                                 width=85,
@@ -39,17 +32,7 @@ class Switch:
                                 bg_color='white',
                                 switch_height=40,
                                 switch_width=85)
-        self.__switch.place(x=183, y=195)
+        self.switch.place(x=padx, y=pady)
         
-        self.__on_label = ctk.CTkLabel(frame,
-                                text="ON",
-                                font=('League Spartan', 30),
-                                fg_color='white',
-                                bg_color='transparent')
-        self.__on_label.place(x=305, y=190)
-
-        if set:
-            self.__switch.select()
-
-    # def select(self) -> None:
-    #     self.__switch.select()
+        # if set:
+        #     self.switch.select()

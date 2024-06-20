@@ -8,6 +8,7 @@ from interface_grafica.src.automacao import Automacao
 from interface_grafica.src.planilha import Planilha
 from interface_grafica.src.botao import Botao
 from interface_grafica.src.slider import Slider
+from interface_grafica.src.switch import Switch
 class MenuTV(IMenuTV):
     """
     Classe que representa a interface gráfica de uma televisão.
@@ -46,20 +47,23 @@ class MenuTV(IMenuTV):
                                  fg_color='white',
                                  bg_color='transparent')
         off_label.place(x=100, y=190)
+
+        self.__switch = Switch(self.__frame_tv, self.ligar_desligar,
+                               183, 195)
         
-        switch = ctk.CTkSwitch(self.__frame_tv,
-                                text="",
-                                command=self.ligar_desligar,
-                                width=85,
-                                height=40,
-                                fg_color="gray",
-                                progress_color="#348faa",
-                                button_color="black",
-                                corner_radius=35,
-                                bg_color='white',
-                                switch_height=40,
-                                switch_width=85)
-        switch.place(x=183, y=195)
+        # switch = ctk.CTkSwitch(self.__frame_tv,
+        #                         text="",
+        #                         command=self.ligar_desligar,
+        #                         width=85,
+        #                         height=40,
+        #                         fg_color="gray",
+        #                         progress_color="#348faa",
+        #                         button_color="black",
+        #                         corner_radius=35,
+        #                         bg_color='white',
+        #                         switch_height=40,
+        #                         switch_width=85)
+        # switch.place(x=183, y=195)
         
         on_label = ctk.CTkLabel(self.__frame_tv,
                                 text="ON",
@@ -69,7 +73,7 @@ class MenuTV(IMenuTV):
         on_label.place(x=305, y=190)
 
         if self.tv.esta_ligado():
-            switch.select()
+            self.__switch.switch.select()
 
     def ligar_desligar(self) -> None:
         """
