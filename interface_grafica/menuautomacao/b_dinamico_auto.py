@@ -67,7 +67,7 @@ class BotaoDinamicoAuto(BotaoDinamico):
             if self.quantidade > 0:
                 for i in range(0, self.quantidade):
                     self.configura_botao(posx=int(self.posicoesx[i]), posy=int(self.posicoesy[i]),
-                                        texto='"'+self.nome[i]+'"', imagem=self.imagem_automacao, comando= MenuAutomacao(self.janela, self.nome[i]).executar)
+                                        texto=self.nome[i], imagem=self.imagem_automacao, comando= MenuAutomacao(self.janela, self.nome[i]).executar)
             
                 
     def botao_add (self, posx:int, posy:int) -> None:
