@@ -50,20 +50,6 @@ class MenuAC(IMenuAC):
         
         self.__switch = Switch(self.__frame_ac, self.ligar_desligar,
                                183, 195)
-        
-        # switch = ctk.CTkSwitch(self.__frame_ac, 
-        #                        text="", 
-        #                        command=self.ligar_desligar, 
-        #                        width=85, 
-        #                        height=40, 
-        #                        fg_color="gray", 
-        #                        progress_color="#348faa", 
-        #                        button_color="black", 
-        #                        corner_radius=35, 
-        #                        bg_color='white', 
-        #                        switch_height=40, 
-        #                        switch_width=85)
-        # switch.place(x=183, y=195)
                 
         on_label = ctk.CTkLabel(self.__frame_ac, 
                                 text="ON", 

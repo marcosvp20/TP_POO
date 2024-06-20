@@ -1,6 +1,7 @@
 import customtkinter as ctk
+from interface_grafica.src.interfaces_src.ISlider import ISlider
 
-class Slider:
+class Slider(ISlider):
     """
     Classe Slider para criar um controle deslizante personalizado usando customtkinter.
 

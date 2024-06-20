@@ -1,6 +1,7 @@
 import customtkinter as ctk
+from interface_grafica.src.interfaces_src.ISwitch import ISwitch
 
-class Switch:
+class Switch(ISwitch):
     """
     Classe Switch para criar um switch personalizado usando customtkinter.
 
@@ -33,6 +34,3 @@ class Switch:
                                 switch_height=40,
                                 switch_width=85)
         self.switch.place(x=padx, y=pady)
-        
-        # if set:
-        #     self.switch.select()
